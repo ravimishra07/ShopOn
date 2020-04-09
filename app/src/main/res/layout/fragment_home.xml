@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--top circle view-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="78dp"
+                    android:layout_gravity="center">
+
+                    <RelativeLayout
+                        android:id="@+id/top"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/topMenuRecylerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <!--viewpager-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardVieww"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/viewPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_200sdp"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:overScrollMode="never" />
+
+                        <!--                        <com.viewpagerindicator.CirclePageIndicator-->
+                        <!--                            android:id="@+id/indicator"-->
+                        <!--                            android:layout_width="fill_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_alignParentBottom="true"-->
+                        <!--                            android:layout_centerHorizontal="true"-->
+                        <!--                            android:gravity="bottom"-->
+                        <!--                            android:padding="18dip"-->
+                        <!--                            app:centered="true"-->
+                        <!--                            app:fillColor="@color/white"-->
+                        <!--                            app:pageColor="@color/colorAccent" />-->
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+
+            <!-- Product recycler small-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_240sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+
+                app:cardElevation="@dimen/_6sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_240sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/ll1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="11dp"
+                            android:text="Popular Products"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Button
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_2sdp"
+                            android:background="@color/colorPrimary"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/popularRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll1"
+
+                        android:orientation="horizontal">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- New arrivals featured recycler small-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_240sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+
+                app:cardElevation="@dimen/_6sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_240sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/ll2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="11dp"
+                            android:text="New Arrivals"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Button
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_2sdp"
+                            android:background="@color/colorPrimary"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll2"
+
+                        android:orientation="horizontal">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- Product recycler small-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_240sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+
+                app:cardElevation="@dimen/_6sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_240sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/ll3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="11dp"
+                            android:text="Featured Products"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Button
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_2sdp"
+                            android:background="@color/colorPrimary"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll3"
+
+                        android:orientation="horizontal">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Popular stores-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+
+                app:cardElevation="@dimen/_6sdp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_140sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/ll4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_6sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="11dp"
+                            android:text="Popular Stores"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Button
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_22sdp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_2sdp"
+                            android:background="@color/colorPrimary"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/storeRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ll4"
+
+                        android:orientation="horizontal">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Swipable tab layout -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextColor="#a7adb7"
+
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="@dimen/_3sdp"
+                >
+
+                <FrameLayout
+                    android:id="@+id/mainFrame"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_2sdp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewpager2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--            &lt;!&ndash;all working&ndash;&gt;-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/cardViewww"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                android:layout_marginBottom="@dimen/_5sdp"-->
+            <!--                android:background="@drawable/background"-->
+            <!--                android:elevation="@dimen/_10sdp"-->
+            <!--                app:cardCornerRadius="@dimen/_5sdp">-->
+
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginBottom="@dimen/_24sdp">-->
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:id="@+id/x"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="@dimen/_40sdp">-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_centerVertical="true"-->
+            <!--                            android:layout_marginLeft="@dimen/_15sdp"-->
+            <!--                            android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                            android:fontFamily="@string/font_family_condensed"-->
+            <!--                            android:text="Top Offers"-->
+            <!--                            android:textColor="@color/black"-->
+            <!--                            android:textSize="@dimen/_12sdp" />-->
+
+            <!--                        <code.view.CustomButton-->
+            <!--                            android:layout_width="@dimen/_80sdp"-->
+            <!--                            android:layout_height="@dimen/_25sdp"-->
+            <!--                            android:layout_alignParentEnd="true"-->
+            <!--                            android:layout_alignParentRight="true"-->
+            <!--                            android:layout_centerVertical="true"-->
+            <!--                            android:layout_marginRight="@dimen/_15sdp"-->
+            <!--                            android:background="@drawable/rectangle_gradient_pink"-->
+            <!--                            android:text="View All"-->
+            <!--                            android:textAllCaps="false"-->
+            <!--                            android:textColor="@color/white"-->
+            <!--                            android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                        <View-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="1dp"-->
+            <!--                            android:layout_alignParentBottom="true"-->
+            <!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                            android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                            android:background="@color/bluee" />-->
+
+
+            <!--                    </RelativeLayout>-->
+
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_below="@+id/x">-->
+
+
+            <!--                        <LinearLayout-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="match_parent"-->
+            <!--                            android:orientation="horizontal"-->
+            <!--                            android:weightSum="2">-->
+
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="0dp"-->
+            <!--                                android:layout_height="match_parent"-->
+            <!--                                android:layout_weight="1"-->
+            <!--                                android:orientation="vertical">-->
+
+            <!--                                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                    android:layout_width="match_parent"-->
+            <!--                                    android:layout_height="96dp"-->
+            <!--                                    android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                                    android:src="@drawable/two1"-->
+            <!--                                    app:civ_border_color="#FF000000"-->
+            <!--                                    app:civ_border_width="2dp" />-->
+
+
+            <!--                                <TextView-->
+            <!--                                    android:layout_width="wrap_content"-->
+            <!--                                    android:layout_height="wrap_content"-->
+            <!--                                    android:layout_gravity="center"-->
+            <!--                                    android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                    android:fontFamily="@string/font_family_medium"-->
+            <!--                                    android:text="Samsung A 20"-->
+            <!--                                    android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="wrap_content"-->
+            <!--                                    android:layout_height="wrap_content"-->
+            <!--                                    android:layout_gravity="center"-->
+            <!--                                    android:gravity="center">-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="Rs 1"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="48000"-->
+            <!--                                        android:textColor="@color/bluee"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="99% off"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                </LinearLayout>-->
+
+
+            <!--                            </LinearLayout>-->
+
+            <!--                            <View-->
+            <!--                                android:layout_width="1dp"-->
+            <!--                                android:layout_height="match_parent"-->
+            <!--                                android:background="@color/black" />-->
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="0dp"-->
+            <!--                                android:layout_height="match_parent"-->
+            <!--                                android:layout_weight="1"-->
+            <!--                                android:orientation="vertical">-->
+
+            <!--                                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                    android:layout_width="match_parent"-->
+            <!--                                    android:layout_height="96dp"-->
+            <!--                                    android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                                    android:src="@drawable/two2"-->
+            <!--                                    app:civ_border_color="#FF000000"-->
+            <!--                                    app:civ_border_width="2dp" />-->
+
+
+            <!--                                <TextView-->
+            <!--                                    android:layout_width="wrap_content"-->
+            <!--                                    android:layout_height="wrap_content"-->
+            <!--                                    android:layout_gravity="center"-->
+            <!--                                    android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                    android:fontFamily="@string/font_family_medium"-->
+            <!--                                    android:text="Coolers"-->
+            <!--                                    android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="wrap_content"-->
+            <!--                                    android:layout_height="wrap_content"-->
+            <!--                                    android:layout_gravity="center"-->
+            <!--                                    android:gravity="center">-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="Rs 1"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="48000"-->
+            <!--                                        android:textColor="@color/bluee"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:layout_marginLeft="@dimen/_3sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:layout_marginRight="@dimen/_3sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="99% off"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                </LinearLayout>-->
+
+
+            <!--                            </LinearLayout>-->
+
+            <!--                        </LinearLayout>-->
+
+            <!--                    </RelativeLayout>-->
+
+            <!--                </RelativeLayout>-->
+
+
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/cardViewwww"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/_280sdp"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                android:layout_marginBottom="@dimen/_10sdp"-->
+            <!--                android:background="@drawable/background"-->
+            <!--                android:elevation="@dimen/_10sdp"-->
+            <!--                app:cardCornerRadius="@dimen/_5sdp">-->
+
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content">-->
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:id="@+id/xx"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="@dimen/_40sdp">-->
+
+            <!--                        <TextView-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_centerVertical="true"-->
+            <!--                            android:layout_marginLeft="@dimen/_15sdp"-->
+            <!--                            android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                            android:fontFamily="@string/font_family_condensed"-->
+            <!--                            android:text="Top Offers"-->
+            <!--                            android:textColor="@color/black"-->
+            <!--                            android:textSize="@dimen/_12sdp" />-->
+
+            <!--                        <code.view.CustomButton-->
+            <!--                            android:layout_width="@dimen/_80sdp"-->
+            <!--                            android:layout_height="@dimen/_25sdp"-->
+            <!--                            android:layout_alignParentEnd="true"-->
+            <!--                            android:layout_alignParentRight="true"-->
+            <!--                            android:layout_centerVertical="true"-->
+            <!--                            android:layout_marginRight="@dimen/_15sdp"-->
+            <!--                            android:background="@drawable/rectangle_gradient_pink"-->
+            <!--                            android:text="View All"-->
+            <!--                            android:textAllCaps="false"-->
+            <!--                            android:textColor="@color/white"-->
+            <!--                            android:textSize="@dimen/_12sdp" />-->
+
+            <!--                        <View-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="1dp"-->
+            <!--                            android:layout_alignParentBottom="true"-->
+            <!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                            android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                            android:background="@color/grey" />-->
+
+
+            <!--                    </RelativeLayout>-->
+
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:layout_below="@+id/xx">-->
+
+
+            <!--                        <LinearLayout-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="match_parent"-->
+            <!--                            android:orientation="vertical"-->
+            <!--                            android:weightSum="2">-->
+
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="0dp"-->
+            <!--                                android:layout_weight="1"-->
+            <!--                                android:weightSum="3">-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1">-->
+
+
+            <!--                                    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="match_parent"-->
+            <!--                                        android:layout_height="96dp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/pf1" />-->
+
+
+            <!--                                </LinearLayout>-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_gravity="center_vertical"-->
+            <!--                                    android:layout_weight="2"-->
+            <!--                                    android:gravity="center_vertical"-->
+            <!--                                    android:orientation="vertical">-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="Shoes"-->
+            <!--                                        android:textColor="@color/black"-->
+            <!--                                        android:textSize="@dimen/_12sdp"-->
+            <!--                                        android:textStyle="bold" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="Rs 500"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_light"-->
+            <!--                                        android:text="40% Off"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                                </LinearLayout>-->
+
+
+            <!--                            </LinearLayout>-->
+
+            <!--                            <View-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="1dp"-->
+            <!--                                android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                                android:background="@color/grey" />-->
+
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="0dp"-->
+            <!--                                android:layout_weight="1">-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1">-->
+
+            <!--                                    <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="match_parent"-->
+            <!--                                        android:layout_height="96dp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/second" />-->
+
+
+            <!--                                </LinearLayout>-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="2">-->
+
+            <!--                                    <LinearLayout-->
+            <!--                                        android:layout_width="0dp"-->
+            <!--                                        android:layout_height="match_parent"-->
+            <!--                                        android:layout_gravity="center_vertical"-->
+            <!--                                        android:layout_weight="2"-->
+            <!--                                        android:gravity="center_vertical"-->
+            <!--                                        android:orientation="vertical">-->
+
+            <!--                                        <TextView-->
+            <!--                                            android:layout_width="wrap_content"-->
+            <!--                                            android:layout_height="wrap_content"-->
+            <!--                                            android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                            android:fontFamily="@string/font_family_black"-->
+            <!--                                            android:text="Shoes"-->
+            <!--                                            android:textColor="@color/black"-->
+            <!--                                            android:textSize="@dimen/_12sdp"-->
+            <!--                                            android:textStyle="bold" />-->
+
+            <!--                                        <TextView-->
+            <!--                                            android:layout_width="wrap_content"-->
+            <!--                                            android:layout_height="wrap_content"-->
+            <!--                                            android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                            android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                            android:fontFamily="@string/font_family_medium"-->
+            <!--                                            android:text="Rs 500"-->
+            <!--                                            android:textColor="@color/centerColor"-->
+            <!--                                            android:textSize="@dimen/_12sdp" />-->
+
+            <!--                                        <TextView-->
+            <!--                                            android:layout_width="wrap_content"-->
+            <!--                                            android:layout_height="wrap_content"-->
+            <!--                                            android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                            android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                            android:fontFamily="@string/font_family_light"-->
+            <!--                                            android:text="40% Off"-->
+            <!--                                            android:textColor="@color/centerColor"-->
+            <!--                                            android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                                    </LinearLayout>-->
+
+
+            <!--                                </LinearLayout>-->
+
+            <!--                            </LinearLayout>-->
+
+
+            <!--                        </LinearLayout>-->
+
+            <!--                    </RelativeLayout>-->
+
+            <!--                </RelativeLayout>-->
+
+
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+            <!--            <RelativeLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/_350sdp"-->
+            <!--                android:background="@color/lightblack">-->
+
+            <!--                <RelativeLayout-->
+            <!--                    android:id="@+id/xxx"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="@dimen/_40sdp">-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_centerVertical="true"-->
+            <!--                        android:layout_marginLeft="@dimen/_15sdp"-->
+            <!--                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                        android:fontFamily="@string/font_family_black"-->
+            <!--                        android:text="Most Popular"-->
+            <!--                        android:textColor="@color/white"-->
+            <!--                        android:textSize="@dimen/_14sdp"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                    <code.view.CustomButton-->
+            <!--                        android:layout_width="@dimen/_80sdp"-->
+            <!--                        android:layout_height="@dimen/_25sdp"-->
+            <!--                        android:layout_alignParentEnd="true"-->
+            <!--                        android:layout_alignParentRight="true"-->
+            <!--                        android:layout_centerVertical="true"-->
+            <!--                        android:layout_marginRight="@dimen/_15sdp"-->
+            <!--                        android:background="@drawable/rectangle_gradient_pink"-->
+            <!--                        android:text="View All"-->
+            <!--                        android:textAllCaps="false"-->
+            <!--                        android:textColor="@color/white"-->
+            <!--                        android:textSize="@dimen/_12sdp" />-->
+
+
+            <!--                </RelativeLayout>-->
+
+            <!--                <androidx.cardview.widget.CardView-->
+            <!--                    android:id="@+id/cardViewwwww"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_below="@+id/xxx"-->
+            <!--                    android:layout_gravity="center"-->
+            <!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                    android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                    android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+            <!--                    android:background="@drawable/background"-->
+            <!--                    android:elevation="@dimen/_10sdp"-->
+            <!--                    app:cardCornerRadius="@dimen/_5sdp">-->
+
+            <!--                    <RelativeLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="match_parent">-->
+
+            <!--                        <LinearLayout-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="match_parent"-->
+            <!--                            android:orientation="vertical"-->
+            <!--                            android:weightSum="2">-->
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="0dp"-->
+            <!--                                android:layout_weight="1"-->
+            <!--                                android:orientation="horizontal"-->
+            <!--                                android:weightSum="2">-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1"-->
+            <!--                                    android:gravity="center"-->
+            <!--                                    android:orientation="vertical">-->
+
+            <!--                                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="@dimen/_70sdp"-->
+            <!--                                        android:layout_height="@dimen/_70sdp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/fifth"-->
+            <!--                                        app:civ_border_color="#FF000000"-->
+            <!--                                        app:civ_border_width="2dp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:fontFamily="@string/font_family_regular"-->
+            <!--                                        android:text="Colleros"-->
+            <!--                                        android:textSize="@dimen/_11sdp"-->
+            <!--                                        android:textStyle="bold" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="Rs 500"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_10sdp" />-->
+            <!--                                </LinearLayout>-->
+
+            <!--                                <View-->
+            <!--                                    android:layout_width="1dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                                    android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                                    android:background="@color/grey" />-->
+
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1"-->
+            <!--                                    android:gravity="center"-->
+            <!--                                    android:orientation="vertical">-->
+
+            <!--                                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="@dimen/_70sdp"-->
+            <!--                                        android:layout_height="@dimen/_70sdp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/two5"-->
+            <!--                                        app:civ_border_color="#FF000000"-->
+            <!--                                        app:civ_border_width="2dp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:fontFamily="@string/font_family_condensed"-->
+            <!--                                        android:text="Embrioridary Sarees"-->
+            <!--                                        android:textSize="@dimen/_11sdp"-->
+            <!--                                        android:textStyle="bold" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="Rs 500"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_10sdp" />-->
+
+            <!--                                </LinearLayout>-->
+
+
+            <!--                            </LinearLayout>-->
+
+
+            <!--                            <View-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="1dp"-->
+            <!--                                android:layout_marginLeft="@dimen/_10sdp"-->
+            <!--                                android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                                android:background="@color/grey" />-->
+
+
+            <!--                            <LinearLayout-->
+            <!--                                android:layout_width="match_parent"-->
+            <!--                                android:layout_height="0dp"-->
+            <!--                                android:layout_weight="1">-->
+
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1"-->
+            <!--                                    android:gravity="center"-->
+            <!--                                    android:orientation="vertical">-->
+
+            <!--                                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="@dimen/_70sdp"-->
+            <!--                                        android:layout_height="@dimen/_70sdp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/second"-->
+            <!--                                        app:civ_border_color="#FF000000"-->
+            <!--                                        app:civ_border_width="2dp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:fontFamily="@string/font_family_medium"-->
+            <!--                                        android:text="Electronics"-->
+            <!--                                        android:textSize="@dimen/_11sdp"-->
+            <!--                                        android:textStyle="bold" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="Rs 500"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_10sdp" />-->
+            <!--                                </LinearLayout>-->
+
+            <!--                                <View-->
+            <!--                                    android:layout_width="1dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_marginRight="@dimen/_10sdp"-->
+            <!--                                    android:background="@color/grey" />-->
+
+            <!--                                <LinearLayout-->
+            <!--                                    android:layout_width="0dp"-->
+            <!--                                    android:layout_height="match_parent"-->
+            <!--                                    android:layout_weight="1"-->
+            <!--                                    android:gravity="center"-->
+            <!--                                    android:orientation="vertical">-->
+
+            <!--                                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--                                        android:layout_width="@dimen/_70sdp"-->
+            <!--                                        android:layout_height="@dimen/_70sdp"-->
+            <!--                                        android:layout_gravity="center"-->
+            <!--                                        android:src="@drawable/fifth"-->
+            <!--                                        app:civ_border_color="#FF000000"-->
+            <!--                                        app:civ_border_width="2dp" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:fontFamily="@string/font_family_condensed"-->
+            <!--                                        android:text="Materails"-->
+            <!--                                        android:textSize="@dimen/_12sdp"-->
+            <!--                                        android:textStyle="bold" />-->
+
+            <!--                                    <TextView-->
+            <!--                                        android:layout_width="wrap_content"-->
+            <!--                                        android:layout_height="wrap_content"-->
+            <!--                                        android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                                        android:fontFamily="@string/font_family_black"-->
+            <!--                                        android:text="Rs 500"-->
+            <!--                                        android:textColor="@color/centerColor"-->
+            <!--                                        android:textSize="@dimen/_12sdp" />-->
+            <!--                                </LinearLayout>-->
+
+
+            <!--                            </LinearLayout>-->
+
+
+            <!--                        </LinearLayout>-->
+
+            <!--                    </RelativeLayout>-->
+
+
+            <!--                </androidx.cardview.widget.CardView>-->
+
+            <!--            </RelativeLayout>-->
+
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/recyclerViewthird"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/_200sdp"-->
+            <!--                android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                android:nestedScrollingEnabled="false"-->
+            <!--                android:orientation="horizontal">-->
+
+            <!--            </androidx.recyclerview.widget.RecyclerView>-->
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout><!--
+ <LinearLayout
+                        android:layout_width="match_parent"
+                        android:weightSum="6"
+                        android:background="@drawable/rectangle_white"
+                        android:orientation="horizontal"
+                        android:id="@+id/topfour"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/pf1"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Deals"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/pf4"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Bearing"/>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/pf2"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Womens"/>
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/forth"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Mens"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/fifth"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Gadgets"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_height="match_parent">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_height="96dp"
+                                android:src="@drawable/pf3"
+                                app:civ_border_width="2dp"
+                                app:civ_border_color="#FF000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@string/font_family_medium"
+                                android:layout_height="wrap_content"
+                                android:text="Electronic"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+-->
