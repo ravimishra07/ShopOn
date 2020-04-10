@@ -23,7 +23,7 @@ import java.util.List;
 public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapter.viewholder> {
 
     private Context context;
-    int mList[];
+    int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;
     public MainTabStoreAdapter(Context context, List<TabRecyclerViewModel> productModel) {
@@ -55,8 +55,8 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
 
         // holder.img.setImageResource(R.drawable.pf1);
         holder.productName.setText(model.getProductName());
-        holder.productRating.setText(model.getRating());
-        holder.offer.setText(model.getOffer());
+       // holder.productRating.setText(model.getRating());
+      //  holder.offer.setText(model.getOffer());
         holder.productPice.setText(model.getProctPrice());
     }
 
@@ -68,15 +68,14 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
     class viewholder extends RecyclerView.ViewHolder {
 
         ImageView img;
-        TextView productName, productPice,productRating,offer;
+        TextView productName, productPice,productRating;
         public viewholder(@NonNull View itemView) {
             super(itemView);
 
-            img = itemView.findViewById(R.id.imageId);
-            productName = itemView.findViewById(R.id.productId);
+            //img = itemView.findViewById(R.id.productImage);
+            productName = itemView.findViewById(R.id.productName);
             productPice = itemView.findViewById(R.id.productPrice);
-            productRating = itemView.findViewById(R.id.ratingId);
-            offer = itemView.findViewById(R.id.productPrice);
+           // productRating = itemView.findViewById(R.id.ratingId);
 
         }
     }

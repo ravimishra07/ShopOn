@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Fragment;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,12 +18,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.ravimishra.tradzhub.Activity.StoreActivity;
 import com.ravimishra.tradzhub.Adapter.BannerAddapter;
 import com.ravimishra.tradzhub.Adapter.OnEAdpater;
 import com.ravimishra.tradzhub.Adapter.StoreAdapter;
@@ -64,14 +67,14 @@ public class HomeFragment extends Fragment {
 
     TabLayout tabs;
     ViewPager viewPager,viewPager2;
+    Button popularBtn,featuredBtn,newArrivalBtn;
 
-
-    private int drawone[] = {R.drawable.first, R.drawable.second, R.drawable.pf2, R.drawable.forth, R.drawable.fifth, R.drawable.pf1
+    private int[] drawone = {R.drawable.first, R.drawable.second, R.drawable.pf2, R.drawable.forth, R.drawable.fifth, R.drawable.pf1
             , R.drawable.seventh};
 
-    private int TwoSet[] = {R.drawable.two1, R.drawable.two2, R.drawable.two3, R.drawable.two4, R.drawable.two5, R.drawable.two1
+    private int[] TwoSet = {R.drawable.two1, R.drawable.two2, R.drawable.two3, R.drawable.two4, R.drawable.two5, R.drawable.two1
             , R.drawable.two2, R.drawable.two2};
-    private int banner[] = {R.drawable.pf1, R.drawable.pf2, R.drawable.pf3};
+    private int[] banner = {R.drawable.pf1, R.drawable.pf2, R.drawable.pf3};
 
     OnEAdpater bottomDealer;
 
@@ -100,6 +103,37 @@ public class HomeFragment extends Fragment {
         topMenuRecyclerView = view.findViewById(R.id.topMenuRecylerView);
         recylerView2 = view.findViewById(R.id.recyclerView2);
         recylerView3 = view.findViewById(R.id.recyclerView3);
+
+        //buttons
+        newArrivalBtn = view.findViewById(R.id.newArrivalViewAllBtn);
+        popularBtn = view.findViewById(R.id.popularViewAllBtn);
+        featuredBtn = view.findViewById(R.id.featuredViewAllBtn);
+        newArrivalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), StoreActivity.class);
+                i.putExtra("type",2);
+                startActivity(i);
+            }
+        });
+
+        popularBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), StoreActivity.class);
+                i.putExtra("type",1);
+                startActivity(i);
+            }
+        });
+
+        featuredBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), StoreActivity.class);
+                i.putExtra("type",3);
+                startActivity(i);
+            }
+        });
 
         //recyclersecond = view.findViewById(R.id.bootomrecyclersecond);
 //        recyclerthird = view.findViewById(R.id.recyclerViewthird);

@@ -1,76 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="@dimen/_150sdp"
-    app:cardCornerRadius="@dimen/_8sdp"
-    android:elevation="4dp"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="@dimen/_145sdp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_2sdp">
-<ImageView
-    android:id="@+id/imageId"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_200sdp"
-    android:scaleType="fitXY"
-    android:src="@drawable/pf4"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_140sdp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="6dp"
+   >
 
-    />
-    <TextView
-        android:id="@+id/productId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Macbook Air"
-       android:textSize="@dimen/_14sdp"
-        android:layout_marginLeft="@dimen/_2sdp"
-        android:layout_marginRight="@dimen/_2sdp"
+        android:layout_margin="@dimen/_2sdp"
+        android:orientation="vertical">
 
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:id="@+id/productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$ 77.99"
-            android:textSize="@dimen/_12sdp"
-            android:layout_margin="@dimen/_2sdp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/offerId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="(50% off)"
-            android:textSize="@dimen/_10sdp"
-            android:layout_margin="@dimen/_2sdp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        >
-        <TextView
-            android:id="@+id/ratingId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.4"
-            android:textColor="@color/white"
-            android:layout_margin="@dimen/_2sdp"
-            android:textStyle="bold"/>
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_margin="@dimen/_2sdp"
-            app:srcCompat="@drawable/ic_star"/>
-    </LinearLayout>
+            android:id="@+id/imageId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_160sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/pf1"
+
+            />
+
+        <TextView
+            android:id="@+id/productId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:text="Macbook Air"
+            android:textSize="@dimen/_14sdp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/productPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="$ 77.99"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/offerId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="(50% off)"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ratingId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:text="4.4"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_margin="@dimen/_2sdp"
+                app:srcCompat="@drawable/ic_star"
+                tools:ignore="VectorDrawableCompat" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

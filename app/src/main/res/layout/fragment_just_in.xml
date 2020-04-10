@@ -3,110 +3,111 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
->
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:orientation="vertical">
+    android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-           >
+            android:layout_height="30dp"
+            android:gravity="center"
+
+            android:weightSum="2">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimary"
-android:layout_marginRight="2dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="right">
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    app:srcCompat="@drawable/ic_sort_white"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="@dimen/_6sdp"
-                    />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/_6sdp"
+                            app:srcCompat="@drawable/ic_sort_white" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Sort"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Sort"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="@dimen/_6sdp"
-                    android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-
-
-            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/colorPrimary"
-                android:layout_marginRight="2dp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="horizontal"
+
+
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="right">
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorAccent"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        app:srcCompat="@drawable/ic_filter_white"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="@dimen/_6sdp"
-                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/_6sdp"
+                            app:srcCompat="@drawable/ic_filter_white" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Filter"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Filter"
-                    android:textColor="@color/white"
-                    android:layout_marginLeft="@dimen/_6sdp"
-                    android:textStyle="bold" />
             </LinearLayout>
+
+
         </LinearLayout>
-
-
-    </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_420sdp"
             android:layout_marginTop="@dimen/_4sdp" />
     </LinearLayout>
 </FrameLayout>

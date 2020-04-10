@@ -124,12 +124,12 @@
                             android:textStyle="bold" />
 
                         <Button
-
+                                android:id="@+id/popularViewAllBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_22sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
+                            android:background="@color/colorAccent"
                             android:text="View All"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -180,12 +180,12 @@
                             android:textStyle="bold" />
 
                         <Button
-
+                            android:id="@+id/newArrivalViewAllBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_22sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
+                            android:background="@color/colorAccent"
                             android:text="View All"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -237,12 +237,12 @@
                             android:textStyle="bold" />
 
                         <Button
-
+                        android:id="@+id/featuredViewAllBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_22sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
+                            android:background="@color/colorAccent"
                             android:text="View All"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -298,7 +298,7 @@
                             android:layout_height="@dimen/_22sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
+                            android:background="@color/colorAccent"
                             android:text="View All"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
@@ -326,7 +326,7 @@
                 android:layout_height="wrap_content"
 
                 android:minHeight="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:background="@color/white"
                 app:tabIndicatorColor="@color/colorPrimary"
                 app:tabIndicatorHeight="2dp"
                 app:tabMode="scrollable"
@@ -353,7 +353,7 @@
                         android:id="@+id/viewpager2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
+                        android:layout_height="580dp"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                 </FrameLayout>
