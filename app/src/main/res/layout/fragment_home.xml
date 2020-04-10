@@ -52,7 +52,7 @@
 
             </RelativeLayout>
 
-            <!--viewpager-->
+            <!--Bannner viewpager-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -94,7 +94,7 @@
             </RelativeLayout>
 
 
-            <!-- Product recycler small-->
+            <!-- Product recycler-->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_240sdp"
@@ -150,7 +150,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- New arrivals featured recycler small-->
+            <!-- New arrivals featured recycler -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_240sdp"
@@ -207,13 +207,12 @@
             </androidx.cardview.widget.CardView>
 
 
-            <!-- Product recycler small-->
+            <!--  Featured recyclerview -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_240sdp"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_6sdp"
-
                 app:cardElevation="@dimen/_6sdp">
 
                 <RelativeLayout
@@ -293,7 +292,7 @@
                             android:textStyle="bold" />
 
                         <Button
-
+                            android:id="@+id/storeBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_22sdp"
                             android:layout_alignParentRight="true"

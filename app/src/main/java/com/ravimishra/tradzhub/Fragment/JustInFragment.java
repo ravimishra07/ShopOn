@@ -38,8 +38,10 @@ public class JustInFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_just_in, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
+
         // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         TabRecyclerViewAdapter adapter = new TabRecyclerViewAdapter(getActivity(), tabRecyclerViewModel);
         recyclerView.setAdapter(adapter);

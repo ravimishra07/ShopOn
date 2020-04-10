@@ -202,5 +202,7 @@
     <string name="registered_emailid">Please enter your Registered Email Id below:</string>
 
     <string name="back">BACK</string>
+    <string name="title_activity_item_detail">ItemDetailActivity</string>
+    <string name="title_activity_product">ProductActivity</string>
 
 </resources>

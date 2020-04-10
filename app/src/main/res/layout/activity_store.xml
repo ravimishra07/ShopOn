@@ -37,7 +37,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+                android:paddingRight="@dimen/_12sdp"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" >
+                <ImageView
+                    android:id="@+id/backImageBtn"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/back"
+                    android:tint="@color/white"
+                    />
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

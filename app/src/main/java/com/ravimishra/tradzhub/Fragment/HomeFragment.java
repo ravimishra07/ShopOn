@@ -2,29 +2,19 @@ package com.ravimishra.tradzhub.Fragment;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
-import androidx.core.widget.NestedScrollView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import com.google.android.material.tabs.TabLayout;
+import com.ravimishra.tradzhub.Activity.ItemDetailActivity;
 import com.ravimishra.tradzhub.Activity.StoreActivity;
 import com.ravimishra.tradzhub.Adapter.BannerAddapter;
 import com.ravimishra.tradzhub.Adapter.OnEAdpater;
@@ -34,7 +24,6 @@ import com.ravimishra.tradzhub.Adapter.TopMenuAdapter;
 import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.TopMenuModel;
 import com.ravimishra.tradzhub.R;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -43,50 +32,28 @@ import java.util.TimerTask;
 public class HomeFragment extends Fragment {
 
     private static int currentPage = 0;
-    ProgressBar simpleProgressBar;
-    private BannerAddapter bannerAddapter;
     private ArrayList<Integer> topBannerList = new ArrayList<>();
     private static final String TAG = "HomeFragment";
 
-    //Indicator
-    //CirclePageIndicator indicator;
-    TextView tvFilter, tvreset, tvnofilter;
-    //ImageView
-    ImageView ivcart, ivloader;
+   private Button popularBtn,featuredBtn,newArrivalBtn, storeBtn;
     //RelaytiveLayout
-    RelativeLayout RlFilter, rllfilter;
+
     private RecyclerView topMenuRecyclerView,popularRecyclerView, recylerView2,recylerView3, storeRecyclerView;
-
-    ProgressBar progresbar;
-    //NestedScrollView
-    NestedScrollView scrollView;
-    SwipeRefreshLayout simpleSwipeRefreshLayout;
-
     //ViewPager
     private ViewPager viewP;
+   private TabLayout tabs;
+   private ViewPager viewPager2;
 
-    TabLayout tabs;
-    ViewPager viewPager,viewPager2;
-    Button popularBtn,featuredBtn,newArrivalBtn;
-
-    private int[] drawone = {R.drawable.first, R.drawable.second, R.drawable.pf2, R.drawable.forth, R.drawable.fifth, R.drawable.pf1
-            , R.drawable.seventh};
-
-    private int[] TwoSet = {R.drawable.two1, R.drawable.two2, R.drawable.two3, R.drawable.two4, R.drawable.two5, R.drawable.two1
-            , R.drawable.two2, R.drawable.two2};
     private int[] banner = {R.drawable.pf1, R.drawable.pf2, R.drawable.pf3};
 
-    OnEAdpater bottomDealer;
-
-
-    List<TopMenuModel> topModel = new ArrayList<>();
+   private List<TopMenuModel> topModel = new ArrayList<>();
 
     // recylverview 1
-    List<ProductModel> productModel = new ArrayList<>();
+   private List<ProductModel> productModel = new ArrayList<>();
     // recylverview 1
-    List<ProductModel> productModel2 = new ArrayList<>();
+  private   List<ProductModel> productModel2 = new ArrayList<>();
     // recylverview 1
-    List<ProductModel> productModel3 = new ArrayList<>();
+   private List<ProductModel> productModel3 = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -108,46 +75,13 @@ public class HomeFragment extends Fragment {
         newArrivalBtn = view.findViewById(R.id.newArrivalViewAllBtn);
         popularBtn = view.findViewById(R.id.popularViewAllBtn);
         featuredBtn = view.findViewById(R.id.featuredViewAllBtn);
-        newArrivalBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), StoreActivity.class);
-                i.putExtra("type",2);
-                startActivity(i);
-            }
-        });
+        storeBtn = view.findViewById(R.id.storeBtn);
 
-        popularBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), StoreActivity.class);
-                i.putExtra("type",1);
-                startActivity(i);
-            }
-        });
-
-        featuredBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), StoreActivity.class);
-                i.putExtra("type",3);
-                startActivity(i);
-            }
-        });
-
-        //recyclersecond = view.findViewById(R.id.bootomrecyclersecond);
-//        recyclerthird = view.findViewById(R.id.recyclerViewthird);
+        // initilaszes the button and sets click listenners
+        setUpButtons();
         storeRecyclerView = view.findViewById(R.id.storeRecyclerView);
-
-
-
-//        indicator = view.findViewById(R.id.indicator);
         viewP = view.findViewById(R.id.viewPager);
-
-        // findViewById(view);
-
         inisilizerecycler();
-
         //setUpanner();
         topModel.add(new TopMenuModel("img1", "Deals"));
         topModel.add(new TopMenuModel("img1", "Electronics"));
@@ -192,35 +126,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-
-    //findViewById
-//    private void findViewById(View view) {
-//
-//        //LinearLayout
-//        ivcart = view.findViewById(R.id.ivcart);
-//        scrollView = view.findViewById(R.id.scrollView);
-//        progresbar = view.findViewById(R.id.progresbar1);
-//
-//        simpleProgressBar = view.findViewById(R.id.progresbar);
-//
-//
-//        //ViewPager
-//        //viewPager = view.findViewById(R.id.viewPager);
-//
-//        //Loader
-//        ivloader = view.findViewById(R.id.ivloader);
-//
-//
-//        //RelayTiveLayout
-//        //   RlFilter = view.findViewById(R.id.RlFilter);
-//
-//
-//
-//
-//        //   inisilizerecycler();
-//
-//    }
-
     private void setupViewPager(ViewPager viewPager) {
         TabAdapter adapter = new TabAdapter(getFragmentManager());
         adapter.addFragment(new JustInFragment(), "Just In");
@@ -231,50 +136,51 @@ public class HomeFragment extends Fragment {
         viewPager2.setAdapter(adapter);
     }
 
+    public void setUpButtons(){
+        newArrivalBtn.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ItemDetailActivity.class);
+            i.putExtra("title","New Arrivals");
+            startActivity(i);
+        });
+
+        popularBtn.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ItemDetailActivity.class);
+            i.putExtra("title","Popular");
+            startActivity(i);
+        });
+
+        featuredBtn.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ItemDetailActivity.class);
+            i.putExtra("title","Featured");
+            startActivity(i);
+        });
+        storeBtn.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), StoreActivity.class);
+            i.putExtra("type",2);
+            startActivity(i);
+        });
+    }
     private void inisilizerecycler() {
 
         Log.d(TAG, "inisilizerecycler: ");
-        // Top menu RV
+
         topMenuRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recylerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recylerView3.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         storeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
         popularRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        //recyclerthird.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
+       // settings up adapters
         TopMenuAdapter topMenuAdapter = new TopMenuAdapter(getContext(),topModel);
         topMenuRecyclerView.setAdapter(topMenuAdapter);
-
         OnEAdpater onEAdpater = new OnEAdpater(getActivity(), productModel);
         popularRecyclerView.setAdapter(onEAdpater);
-
         OnEAdpater adapter2 = new OnEAdpater(getActivity(), productModel2);
         recylerView2.setAdapter(adapter2);
         OnEAdpater adapter3 = new OnEAdpater(getActivity(), productModel3);
         recylerView3.setAdapter(adapter3);
-
-
-
-
-
         StoreAdapter storeAdapter = new StoreAdapter(getActivity());
         storeRecyclerView.setAdapter(storeAdapter);
-
-//        ThirdAdapter thirdAdapter = new ThirdAdapter(getActivity(), TwoSet);
-//        recyclerthird.setAdapter(thirdAdapter);
-////
-//        CircleAdapter circleAdapter = new CircleAdapter(getActivity(),circle);
-//        topCircle.setAdapter(circleAdapter);
-
-        //SecondAdapter secondAdapter = new SecondAdapter(getActivity(),TwoSet);
-        // recyclersecond.setAdapter(secondAdapter);
-
-
-        //  fifAdpater fifAdpater = new fifAdpater(getActivity(),five);
-        // recyclerfiffth.setAdapter(fifAdpater);
     }
 
     @Override
