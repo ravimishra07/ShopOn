@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import com.google.android.material.tabs.TabLayout;
 import com.ravimishra.tradzhub.Activity.ItemDetailActivity;
+import com.ravimishra.tradzhub.Activity.ProductActivity;
 import com.ravimishra.tradzhub.Activity.StoreActivity;
 import com.ravimishra.tradzhub.Adapter.BannerAddapter;
 import com.ravimishra.tradzhub.Adapter.OnEAdpater;
@@ -24,6 +25,8 @@ import com.ravimishra.tradzhub.Adapter.TopMenuAdapter;
 import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.TopMenuModel;
 import com.ravimishra.tradzhub.R;
+
+import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -81,6 +84,7 @@ public class HomeFragment extends Fragment {
         setUpButtons();
         storeRecyclerView = view.findViewById(R.id.storeRecyclerView);
         viewP = view.findViewById(R.id.viewPager);
+
         inisilizerecycler();
         //setUpanner();
         topModel.add(new TopMenuModel("img1", "Deals"));
@@ -157,6 +161,18 @@ public class HomeFragment extends Fragment {
         storeBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), StoreActivity.class);
             i.putExtra("type",2);
+            startActivity(i);
+        });
+        popularRecyclerView.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ProductActivity.class);
+            startActivity(i);
+        });
+        recylerView2.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ProductActivity.class);
+            startActivity(i);
+        });
+        recylerView3.setOnClickListener(v -> {
+            Intent i = new Intent(getActivity(), ProductActivity.class);
             startActivity(i);
         });
     }

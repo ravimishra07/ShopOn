@@ -2,6 +2,7 @@ package com.ravimishra.tradzhub.Adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ravimishra.tradzhub.Activity.ProductActivity;
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel;
 import com.ravimishra.tradzhub.R;
 
@@ -19,7 +21,7 @@ import java.util.List;
 public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerViewAdapter.viewholder> {
 
     private Context context;
-    int mList[];
+    int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;
     public TabRecyclerViewAdapter(Context context, List<TabRecyclerViewModel> productModel) {
@@ -54,6 +56,10 @@ public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerView
         holder.productRating.setText(model.getRating());
         holder.offer.setText(model.getOffer());
         holder.productPice.setText(model.getProctPrice());
+        holder.itemView.setOnClickListener(v -> {
+          Intent i = new Intent(context, ProductActivity.class);
+            context.startActivity(i);
+        });
     }
 
     @Override

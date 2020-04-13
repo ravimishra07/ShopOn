@@ -5,17 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/colorPrimary"
     tools:context=".Activity.FirstActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         app:cardCornerRadius="@dimen/_12sdp"
         >
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:background="@color/colorPrimary"
         android:src="@drawable/logo"
         />
     </androidx.cardview.widget.CardView>

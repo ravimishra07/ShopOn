@@ -26,6 +26,8 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
     int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;
+   //private final View.OnClickListener mOnClickListener = new MyOnClickListener();
+
     public MainTabStoreAdapter(Context context, List<TabRecyclerViewModel> productModel) {
         this.context = context;
         this.productModel = productModel;
@@ -46,6 +48,7 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
         imageArray[8] = R.drawable.pf3;
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_store_row, parent, false);
+       // itemView.setOnClickListener(mOnClickListener);
         return new MainTabStoreAdapter.viewholder(itemView);
     }
 

@@ -35,7 +35,8 @@
             android:text="Product"
             android:textSize="@dimen/_12sdp"
             android:textColor="@color/black"
-            android:layout_marginLeft="@dimen/_8sdp"/>
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"

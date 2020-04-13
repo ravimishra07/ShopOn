@@ -4,14 +4,13 @@
     android:id="@+id/scroll_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/login_background"
+    android:background="@drawable/background_vector_dark"
     android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_350sdp"
         android:layout_marginLeft="@dimen/_12sdp"
-
         android:layout_marginRight="@dimen/_12sdp"
         android:gravity="center"
         android:orientation="vertical">
@@ -28,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_20sdp"
             android:elevation="@dimen/_6sdp"
-            app:cardCornerRadius="@dimen/_21sdp">
+            app:cardCornerRadius="@dimen/_12sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,9 +41,7 @@
                 <!--  Email Label -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp">
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/input_email"
@@ -57,9 +54,7 @@
                 <!--  Password Label -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp">
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/input_password"
@@ -73,8 +68,8 @@
                     android:id="@+id/btn_login"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginBottom="18dp"
                     android:background="@color/colorPrimary"
                     android:padding="12dp"
                     android:text="Login"

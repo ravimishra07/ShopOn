@@ -9,12 +9,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true">
         <activity
-            android:name=".Activity.ProductActivity"
-            android:label="@string/title_activity_product"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Activity.FirstActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            android:name=".Activity.CartActivity"
+            android:label="Cart"
+            android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,15 +20,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.ItemDetailActivity"
-            android:label="Products"
+            android:name=".Activity.ProductActivity"
+            android:label="Product"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".Activity.FirstActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Activity.ItemDetailActivity"
+            android:label="Products"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Activity.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity
             android:name=".Activity.LogActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity
             android:name=".Activity.StoreActivity"
             android:label="Store"

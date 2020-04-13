@@ -31,7 +31,8 @@
             android:layout_marginRight="@dimen/_2sdp"
             android:text="Macbook Air"
             android:textSize="@dimen/_14sdp"
-
+            android:textColor="@color/black"
+            android:textStyle="bold"
             />
 
         <LinearLayout

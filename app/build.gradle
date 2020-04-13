@@ -45,4 +45,5 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.0.0'
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'me.relex:circleindicator:1.2.2@aar'
 }

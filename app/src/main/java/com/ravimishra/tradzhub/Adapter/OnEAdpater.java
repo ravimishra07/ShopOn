@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ravimishra.tradzhub.Activity.ProductActivity;
 import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.R;
 
@@ -18,7 +20,7 @@ import java.util.List;
 public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
 
     private Context context;
-    int mList[];
+    int[] mList;
     int[] imageArray = new int[9];
     List<ProductModel> productModel;
     public OnEAdpater(Context context, List<ProductModel> productModel) {
@@ -30,13 +32,13 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
+
         imageArray[0] = R.drawable.pf1;
         imageArray[1] = R.drawable.pf4;
         imageArray[2] = R.drawable.pf3;
         imageArray[3] = R.drawable.pf4;
         imageArray[4] = R.drawable.pf3;
         imageArray[5] = R.drawable.pf1;
-
         imageArray[6] = R.drawable.pf1;
         imageArray[7] = R.drawable.pf4;
         imageArray[8] = R.drawable.pf3;
@@ -54,6 +56,10 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
         String priceString = String.valueOf(price);
         holder.productName.setText(model.getProductName());
         holder.productPice.setText(priceString);
+        holder.itemView.setOnClickListener(v -> {
+            Intent i = new Intent(context, ProductActivity.class);
+            context.startActivity(i);
+        });
 
 
     }
