@@ -1,7 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12sp"
+    android:elevation="@dimen/_4sdp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/_2sdp"
+    android:layout_margin="@dimen/_4sdp">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cartImage"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:padding="@dimen/_12sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/store5" />
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_toRightOf="@id/cartImage"
+            android:maxLines="2"
+            android:text="Iphone 8(64gb) Triple Camera 8gb ram"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <TextView
+            android:id="@id/productPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/itemName"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_toRightOf="@+id/cartImage"
+            android:text="$ 799"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/productInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productPrice"
+            android:layout_toRightOf="@+id/cartImage"
+            android:text="Ram: 8GB"
+
+            android:textSize="@dimen/_14sdp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightGrey"
+            android:layout_below="@+id/cartImage" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:text="Remove"
+            android:layout_below="@+id/cartImage"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

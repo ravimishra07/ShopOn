@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.ravimishra.tradzhub.Adapter.ProductivityDetailAdapter;
+import com.ravimishra.tradzhub.Adapter.WishListAdapter;
 import com.ravimishra.tradzhub.Model.ProductDetailModel;
 import com.ravimishra.tradzhub.R;
 
@@ -41,7 +42,7 @@ public class WishlistActivtry extends AppCompatActivity {
         //  productDetailModels.add(new ProductDetailModel("$ 499","iPhone 8","32 gb","3 business days"));
 
 
-        ProductivityDetailAdapter adapter = new ProductivityDetailAdapter(this, productDetailModels);
+        WishListAdapter adapter = new WishListAdapter(this, productDetailModels);
         recyclerView.setAdapter(adapter);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
