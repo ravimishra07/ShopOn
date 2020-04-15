@@ -7,13 +7,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
-import com.ravimishra.tradzhub.Adapter.MainTabStoreAdapter;
 import com.ravimishra.tradzhub.Adapter.ProductivityDetailAdapter;
 import com.ravimishra.tradzhub.Model.ProductDetailModel;
 import com.ravimishra.tradzhub.R;
@@ -21,18 +19,18 @@ import com.ravimishra.tradzhub.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
+public class WishlistActivtry extends AppCompatActivity {
     RecyclerView recyclerView;
     List<ProductDetailModel> productDetailModels = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_wishlist_activtry);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        FloatingActionButton fab = findViewById(R.id.fab);
+
         recyclerView = findViewById(R.id.recyclerView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -45,6 +43,7 @@ public class CartActivity extends AppCompatActivity {
 
         ProductivityDetailAdapter adapter = new ProductivityDetailAdapter(this, productDetailModels);
         recyclerView.setAdapter(adapter);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
     }

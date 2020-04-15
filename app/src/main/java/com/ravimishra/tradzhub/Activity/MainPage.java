@@ -37,7 +37,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
     RelativeLayout rlHome,rlStoreCat,rlstore,rlAboutUs,rlShare;
 
     LinearLayout shopCatLinearLayout,storeLinearLayout;
-    ImageView ivborrowers,ivbranches,ivStoreCat,ivStore;
+    ImageView ivborrowers, ivbranches, ivStoreCat, ivStore, ivCart;
 
 
     @Override
@@ -93,6 +93,11 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
             startActivity(i);
             return true;
         }
+        if (id == R.id.myWishList) {
+            Intent i = new Intent(this, WishlistActivtry.class);
+            startActivity(i);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -137,6 +142,10 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         rlStoreCat.setOnClickListener(this);
         rlstore = findViewById(R.id.rlStore);
         rlstore.setOnClickListener(this);
+
+        //cart click
+        ivCart = findViewById(R.id.ivCart);
+        ivCart.setOnClickListener(this);
 
     }
 
@@ -185,6 +194,13 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
                     storeLinearLayout.setVisibility(View.VISIBLE);
                 }
                 break;
+
+            case R.id.ivCart:
+
+                Intent i = new Intent(this, CartActivity.class);
+                startActivity(i);
+                break;
+
         }
     }
 

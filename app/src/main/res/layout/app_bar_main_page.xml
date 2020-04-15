@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="code.main.MainPage">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -38,7 +37,7 @@
 
 
                 <ImageView
-                    android:id="@+id/ivSearch"
+                    android:id="@+id/ivCart"
                     android:layout_width="@dimen/_17sdp"
                     android:layout_alignParentRight="true"
                     android:layout_height="@dimen/_17sdp"
@@ -46,7 +45,8 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:tint="@color/white"
                     android:backgroundTint="@color/white"
-                    app:srcCompat="@drawable/ic_cart" />
+                    app:srcCompat="@drawable/cartt"
+                    tools:ignore="VectorDrawableCompat" />
 
 
             </RelativeLayout>

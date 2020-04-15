@@ -7,21 +7,156 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.CartActivity"
     tools:showIn="@layout/activity_cart">
+
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/addAddressbtn">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/addAddressbtn"
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerView">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/orderTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:gravity="center_vertical"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Order Summary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/lightgray"
+                    android:layout_below="@+id/orderTextView" />
+
+                <LinearLayout
+                    android:id="@+id/pricell"
+                    android:layout_below="@+id/orderTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:gravity="center_vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price(Total)"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="@dimen/_4sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$ 499"
+                        android:layout_marginRight="@dimen/_4sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/shippingll"
+                    android:layout_below="@+id/pricell"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:gravity="center_vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shipping Fee"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="@dimen/_4sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$5"
+                        android:layout_marginRight="@dimen/_4sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/taxll"
+                    android:layout_below="@+id/shippingll"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tax"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="@dimen/_4sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$ 0"
+                        android:layout_marginRight="@dimen/_4sdp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/sep2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/lightgray"
+                    android:layout_below="@+id/taxll" />
+
+                <LinearLayout
+                    android:id="@+id/totalll"
+                    android:layout_below="@+id/sep2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_24sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:gravity="center_vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Payable amount"
+                        android:layout_weight="2"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="@dimen/_4sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$ 504"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginRight="@dimen/_4sdp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
     <Button
         android:id="@+id/addAddressbtn"

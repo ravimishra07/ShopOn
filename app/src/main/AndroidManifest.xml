@@ -9,24 +9,25 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true">
         <activity
+            android:name=".Activity.WishlistActivtry"
+            android:label="My Whishlist"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Activity.CartActivity"
             android:label="Cart"
-            android:theme="@style/AppTheme.NoActionBar">
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activity.ProductActivity"
+            android:label="Product"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.FirstActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".Activity.ProductActivity"
-            android:label="Product"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Activity.FirstActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
-
         </activity>
         <activity
             android:name=".Activity.ItemDetailActivity"
