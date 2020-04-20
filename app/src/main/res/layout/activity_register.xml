@@ -135,6 +135,8 @@
                     android:background="@color/colorPrimary"
                     android:padding="12dp"
                     android:text="Create Account"
+                    style="@style/TradzHubThemeFont"
+
                     android:textColor="@color/white" />
 
                 <TextView
@@ -143,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
+                    style="@style/TradzHubThemeFont"
 
                     android:text="Already a member? Login"
                     android:textSize="16dip" />
@@ -165,6 +168,8 @@
                         android:layout_height="@dimen/_32sdp"
                         android:layout_centerInParent="true"
                         android:gravity="center"
+                        style="@style/TradzHubThemeFont"
+
                         android:text="OR" />
 
                     <View
@@ -220,6 +225,7 @@
                                     android:layout_height="@dimen/_28sdp"
                                     android:layout_marginLeft="@dimen/_2sdp"
                                     android:gravity="center"
+
                                     android:text="Login with Google"
 
                                     android:textColor="@color/white"

@@ -25,6 +25,8 @@
         android:text="No review"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
+        style="@style/TradzHubThemeFont"
+
         />
 </LinearLayout>
 </FrameLayout>

@@ -17,7 +17,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <!--top circle view-->
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -97,7 +96,7 @@
             <!-- Product recycler-->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_240sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_6sdp"
 
@@ -105,7 +104,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_240sdp">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/ll1"
@@ -114,26 +113,27 @@
                         android:layout_margin="@dimen/_6sdp">
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="11dp"
                             android:text="Popular Products"
                             android:textColor="@color/black"
                             android:textSize="16sp"
+
                             android:textStyle="bold" />
 
                         <Button
-                                android:id="@+id/popularViewAllBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_22sdp"
+                            android:id="@+id/popularViewAllBtn"
+                            style="@style/ThemeButton"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
                             android:text="View All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textAllCaps="false" />
 
                     </RelativeLayout>
 
@@ -153,15 +153,14 @@
             <!-- New arrivals featured recycler -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_240sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_6sdp"
-
                 app:cardElevation="@dimen/_6sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_240sdp">
+                    android:layout_height="match_parent">
 
                     <RelativeLayout
                         android:id="@+id/ll2"
@@ -170,9 +169,11 @@
                         android:layout_margin="@dimen/_6sdp">
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="11dp"
                             android:text="New Arrivals"
                             android:textColor="@color/black"
@@ -181,15 +182,13 @@
 
                         <Button
                             android:id="@+id/newArrivalViewAllBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_22sdp"
+                            style="@style/ThemeButton"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
                             android:text="View All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textAllCaps="false"/>
 
                     </RelativeLayout>
 
@@ -210,14 +209,14 @@
             <!--  Featured recyclerview -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_240sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_6sdp"
                 app:cardElevation="@dimen/_6sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_240sdp">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/ll3"
@@ -226,6 +225,7 @@
                         android:layout_margin="@dimen/_6sdp">
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -233,19 +233,19 @@
                             android:text="Featured Products"
                             android:textColor="@color/black"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+
+                            />
 
                         <Button
-                        android:id="@+id/featuredViewAllBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_22sdp"
+                            android:id="@+id/featuredViewAllBtn"
+                            style="@style/ThemeButton"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
                             android:text="View All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textAllCaps="false"  />
 
                     </RelativeLayout>
 
@@ -254,7 +254,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ll3"
-
                         android:orientation="horizontal">
 
                     </androidx.recyclerview.widget.RecyclerView>
@@ -282,6 +281,7 @@
                         android:layout_margin="@dimen/_6sdp">
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -289,19 +289,18 @@
                             android:text="Popular Stores"
                             android:textColor="@color/black"
                             android:textSize="16sp"
+                            android:layout_centerVertical="true"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/storeBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_22sdp"
+                            style="@style/ThemeButton"
+                            android:layout_width="@dimen/_60sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
-                            android:background="@color/colorPrimary"
                             android:text="View All"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textAllCaps="false"  />
 
                     </RelativeLayout>
 
@@ -311,7 +310,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ll4"
 
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        >
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -324,8 +324,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:minHeight="?attr/actionBarSize"
                 android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
                 app:tabIndicatorColor="@color/colorPrimary"
                 app:tabIndicatorHeight="2dp"
                 app:tabMode="scrollable"
@@ -337,16 +337,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:elevation="@dimen/_3sdp"
-                >
+                android:elevation="@dimen/_3sdp">
 
                 <FrameLayout
                     android:id="@+id/mainFrame"
-                    android:layout_marginLeft="@dimen/_2sdp"
-                    android:layout_marginRight="@dimen/_2sdp"
-
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_2sdp">
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/viewpager2"

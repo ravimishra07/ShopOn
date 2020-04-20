@@ -39,6 +39,8 @@
                     android:layout_margin="@dimen/_4sdp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
+                    style="@style/TradzHubThemeFont"
+
                     android:text="Order Summary" />
 
                 <View
@@ -62,12 +64,16 @@
                         android:layout_height="wrap_content"
                         android:text="Price(Total)"
                         android:layout_weight="2"
-                        android:layout_marginLeft="@dimen/_4sdp" />
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        style="@style/TradzHubThemeFont"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$ 499"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginRight="@dimen/_4sdp" />
                 </LinearLayout>
 
@@ -86,12 +92,16 @@
                         android:layout_height="wrap_content"
                         android:text="Shipping Fee"
                         android:layout_weight="2"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginLeft="@dimen/_4sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$5"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginRight="@dimen/_4sdp" />
                 </LinearLayout>
 
@@ -109,12 +119,16 @@
                         android:layout_height="wrap_content"
                         android:text="Tax"
                         android:layout_weight="2"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginLeft="@dimen/_4sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$ 0"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginRight="@dimen/_4sdp" />
                 </LinearLayout>
 
@@ -142,6 +156,10 @@
                         android:layout_weight="2"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        style="@style/TradzHubThemeFont"
+
+
+
                         android:layout_marginLeft="@dimen/_4sdp" />
 
                     <TextView
@@ -150,6 +168,8 @@
                         android:text="$ 504"
                         android:textColor="@color/black"
                         android:textStyle="bold"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_marginRight="@dimen/_4sdp" />
                 </LinearLayout>
             </RelativeLayout>

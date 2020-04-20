@@ -26,6 +26,8 @@
         android:layout_marginTop="@dimen/_3sdp"
         android:layout_toRightOf="@id/cartImage"
         android:maxLines="2"
+        style="@style/TradzHubThemeFont"
+
         android:text="Iphone 8(64gb) Triple Camera 8gb ram"
         android:textColor="@color/black"
         android:textSize="@dimen/_16sdp" />
@@ -38,6 +40,8 @@
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_toRightOf="@+id/cartImage"
         android:text="$ 799"
+        style="@style/TradzHubThemeFont"
+
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
     <TextView
@@ -47,6 +51,7 @@
         android:layout_below="@id/productPrice"
         android:layout_toRightOf="@+id/cartImage"
         android:text="Ram: 8GB"
+        style="@style/TradzHubThemeFont"
 
         android:textSize="@dimen/_14sdp" />
 
@@ -73,6 +78,8 @@
           android:layout_toRightOf="@id/infoImage"
           android:gravity="center_vertical"
           android:text="5 Business days"
+          style="@style/TradzHubThemeFont"
+
           android:textSize="@dimen/_12sdp"
           />
   </RelativeLayout>
@@ -104,6 +111,8 @@
             android:layout_marginLeft="@dimen/_12sdp"
             android:layout_marginRight="@dimen/_12sdp"
             android:gravity="center"
+            style="@style/TradzHubThemeFont"
+
             android:text="2"
             />
 

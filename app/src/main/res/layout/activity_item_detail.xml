@@ -48,6 +48,8 @@
                         android:text="Inside Android"
                         android:textColor="#fff"
                         android:textSize="18dp"
+                        style="@style/TradzHubThemeFont"
+
                         android:textStyle="bold" />
 
                 </LinearLayout>

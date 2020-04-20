@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
    private TabLayout tabs;
    private ViewPager viewPager2;
 
-    private int[] banner = {R.drawable.pf1, R.drawable.pf2, R.drawable.pf3};
+    private int[] banner = {R.drawable.banner4, R.drawable.banner3, R.drawable.banner2, R.drawable.banner1,R.drawable.banner2, R.drawable.banner3, R.drawable.banner4, R.drawable.banner1};
 
    private List<TopMenuModel> topModel = new ArrayList<>();
 
@@ -65,7 +65,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         topBannerList.clear();
 
-        topBannerList.add(banner[0]);
+        topBannerList
+                .add(banner[0]);
         topBannerList.add(banner[1]);
         topBannerList.add(banner[2]);
 
@@ -246,7 +247,7 @@ public class HomeFragment extends Fragment {
 
                 handler.post(Update);
             }
-        }, 5000, 3000);
+        }, 3000, 3000);
 
         // Pager listener over indicator
 

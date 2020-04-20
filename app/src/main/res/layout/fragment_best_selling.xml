@@ -55,6 +55,8 @@
                         android:text="Sort"
                         android:textColor="@color/white"
                         android:layout_marginLeft="@dimen/_6sdp"
+                        style="@style/TradzHubThemeFont"
+
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -95,6 +97,8 @@
                         android:text="Filter"
                         android:textColor="@color/white"
                         android:layout_marginLeft="@dimen/_6sdp"
+                        style="@style/TradzHubThemeFont"
+
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>

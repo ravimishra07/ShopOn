@@ -6,8 +6,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/topMenuImage"
         android:layout_width="52dp"
@@ -19,7 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_2sdp"
         android:text="Mens fashion"
+        style="@style/TradzHubThemeFont"
+android:maxLines="1"
         android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp" />
+        android:textSize="@dimen/_10sdp" />
 
 </LinearLayout>

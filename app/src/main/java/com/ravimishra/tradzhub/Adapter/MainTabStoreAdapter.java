@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,8 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
             productName = itemView.findViewById(R.id.productName);
             productPice = itemView.findViewById(R.id.productPrice);
            // productRating = itemView.findViewById(R.id.ratingId);
+            Typeface typeFace=Typeface.createFromAsset(context.getAssets(),"fonts/lato_regular.ttf");
+            productName.setTypeface(typeFace);
 
         }
     }

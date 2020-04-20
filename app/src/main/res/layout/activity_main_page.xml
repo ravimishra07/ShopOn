@@ -55,7 +55,7 @@
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_below="@+id/ivPic"
-                    android:fontFamily="@string/font_family_regular"
+                    style="@style/TradzHubThemeFont"
                     android:textStyle="bold"
                     android:textSize="@dimen/_14sdp"
                     android:textColor="@color/white"/>
@@ -67,7 +67,7 @@
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:textStyle="bold"
                     android:layout_below="@+id/tvName"
-                    android:fontFamily="@string/font_family_regular"
+                    style="@style/TradzHubThemeFont"
                     android:textSize="@dimen/_9sdp"
                     android:visibility="gone"
                     android:textColor="@color/white"/>
@@ -104,6 +104,8 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/bluee"
                         android:singleLine="true"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_centerVertical="true"/>
 
                 </RelativeLayout>
@@ -133,6 +135,8 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/bluee"
                         android:singleLine="true"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_centerVertical="true"/>
 
                     <ImageView
@@ -176,6 +180,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -202,6 +208,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -228,6 +236,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -254,6 +264,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -280,6 +292,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -306,6 +320,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -336,6 +352,8 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/bluee"
                         android:singleLine="true"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_centerVertical="true"/>
 
                     <ImageView
@@ -379,6 +397,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -405,6 +425,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -431,6 +453,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -457,6 +481,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -483,6 +509,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -509,6 +537,8 @@
                             android:textSize="@dimen/_10sdp"
                             android:gravity="center_vertical"
                             android:textColor="@color/black"
+                            style="@style/TradzHubThemeFont"
+
                             android:layout_centerVertical="true"/>
 
                     </RelativeLayout>
@@ -551,9 +581,9 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/bluee"
                         android:singleLine="true"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_centerVertical="true"/>
-
-
 
                 </RelativeLayout>
 
@@ -584,6 +614,8 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/bluee"
                         android:singleLine="true"
+                        style="@style/TradzHubThemeFont"
+
                         android:layout_centerVertical="true"/>
                 </RelativeLayout>
             </LinearLayout>

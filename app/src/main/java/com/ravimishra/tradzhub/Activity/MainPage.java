@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 
@@ -47,6 +48,9 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
         findviewbyid();
 
@@ -146,6 +150,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         //cart click
         ivCart = findViewById(R.id.ivCart);
         ivCart.setOnClickListener(this);
+
 
     }
 

@@ -57,8 +57,10 @@
                         android:layout_marginLeft="@dimen/_12sdp"
                         android:gravity="center_vertical"
                         android:maxLines="2"
+                        style="@style/TradzHubThemeFont"
+                        android:textColor="@color/black"
                         android:text="Macbook Air  i5 intel"
-                        android:textSize="@dimen/_16sdp" />
+                        android:textSize="@dimen/_18sdp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_24sdp"
@@ -82,8 +84,10 @@
                         android:gravity="center_vertical"
                         android:maxLines="1"
                         android:text="$ 600"
+                        style="@style/TradzHubThemeFont"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
+                         />
 
                     <LinearLayout
                         android:id="@+id/ll2"
@@ -105,7 +109,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:paddingLeft="@dimen/_6sdp"
-                            android:text="4 business days" />
+                            android:text="4 business days"
+                            android:textSize="@dimen/_12sdp"
+                            style="@style/TradzHubThemeFont"
+                            android:textColor="@color/black"/>
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -152,6 +159,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_2sdp"
+                                style="@style/TradzHubThemeFont"
+                                android:textColor="@color/black"
                                 android:text="Add to collection" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -184,7 +193,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_2sdp"
                                 android:text="Group Gift"
-
+                                style="@style/TradzHubThemeFont"
+                                android:textColor="@color/black"
                                 />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -208,6 +218,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_2sdp"
                     android:text="DESCRIPTION"
+                    style="@style/TradzHubThemeFont"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
@@ -215,6 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_4sdp"
                     android:text="@string/demo_text"
+                    style="@style/TradzHubThemeFont"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -237,6 +250,8 @@
                     android:layout_margin="@dimen/_2sdp"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:text="SOLD BY"
+                    style="@style/TradzHubThemeFont"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <RelativeLayout
@@ -267,6 +282,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLines="1"
+                            style="@style/TradzHubThemeFont"
+                            android:textColor="@color/black"
                             android:text="Tradz Hub Store"
                             android:textSize="@dimen/_14sdp" />
 
@@ -359,6 +376,8 @@
                         android:text="ADD TO CART"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp"
+                        style="@style/TradzHubThemeFont"
+
                         android:textStyle="bold"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -388,6 +407,8 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp"
                         android:textStyle="bold"
+                        style="@style/TradzHubThemeFont"
+
                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -53,6 +53,8 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="Sort"
+                        style="@style/TradzHubThemeFont"
+
                         android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -97,6 +99,8 @@
                         android:gravity="center_vertical"
                         android:text="Filter"
                         android:textColor="@color/white"
+                        style="@style/TradzHubThemeFont"
+
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>

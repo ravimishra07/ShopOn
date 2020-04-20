@@ -31,6 +31,8 @@
                     android:id="@+id/name"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"
+                    style="@style/TradzHubThemeFont"
+
                     android:layout_toLeftOf="@+id/ivSearch"
                     android:layout_centerVertical="true"
                     android:layout_height="wrap_content" />
