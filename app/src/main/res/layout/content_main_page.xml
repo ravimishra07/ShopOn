@@ -46,16 +46,7 @@
                     android:textColor="@color/black" />
 
 
-                <ImageView
-                    android:id="@+id/ivSearch"
-                    android:layout_width="@dimen/_17sdp"
-                    android:layout_alignParentRight="true"
-                    android:layout_height="@dimen/_17sdp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_25sdp"
-                    android:layout_marginRight="@dimen/_5sdp"
-                    android:layout_toLeftOf="@+id/ivFavourite"
-                    app:srcCompat="@drawable/ic_speak" />
+                
 
                 <ImageView
                     android:id="@+id/ivmac"

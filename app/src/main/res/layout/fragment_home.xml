@@ -129,11 +129,12 @@
                             android:id="@+id/popularViewAllBtn"
                             style="@style/ThemeButton"
                             android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_32sdp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
-                            android:textAllCaps="false" />
+
+                             android:textAllCaps="false" />
 
                     </RelativeLayout>
 
@@ -184,7 +185,7 @@
                             android:id="@+id/newArrivalViewAllBtn"
                             style="@style/ThemeButton"
                             android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_32sdp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
@@ -241,7 +242,7 @@
                             android:id="@+id/featuredViewAllBtn"
                             style="@style/ThemeButton"
                             android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_32sdp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
@@ -296,7 +297,7 @@
                             android:id="@+id/storeBtn"
                             style="@style/ThemeButton"
                             android:layout_width="@dimen/_60sdp"
-                            android:layout_height="@dimen/_32sdp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
