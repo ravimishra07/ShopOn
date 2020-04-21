@@ -3,12 +3,10 @@
     <string name="database_name">zozima</string>
     <string name="errorInternet">Please check your internet connection.</string>
     <string name="please_wait">Please Wait</string>
-    <string name="next">Next</string>
     <string name="permission_message">Allow Permissions</string>
     <string name="ok">Ok</string>
     <string name="comma">,</string>
     <string name="cancel">Cancel</string>
-    <string name="skip">Skip</string>
     <string name="worest">WORST!</string>
     <string name="best">BEST!</string>
     <string name="getStarted">Get Started</string>
@@ -207,4 +205,25 @@
     <string name="demo_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="title_activity_cart">CartActivity</string>
     <string name="title_activity_wishlist_activtry">WishlistActivtry</string>
+
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Shop on mobile</string>
+    <string name="slide_1_desc">Shop from comfort of you home!</string>
+
+    <string name="slide_2_title">Browse through stores</string>
+    <string name="slide_2_desc">Browse item of your need from hundreds stores</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">Super fast delivery</string>
+    <string name="slide_4_desc">Get order delivered at your doorstep!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>

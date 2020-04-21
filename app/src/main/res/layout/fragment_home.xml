@@ -188,7 +188,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
-                            android:textAllCaps="false"/>
+                            android:textAllCaps="false" />
 
                     </RelativeLayout>
 
@@ -245,7 +245,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
-                            android:textAllCaps="false"  />
+                            android:textAllCaps="false" />
 
                     </RelativeLayout>
 
@@ -285,11 +285,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="11dp"
                             android:text="Popular Stores"
                             android:textColor="@color/black"
                             android:textSize="16sp"
-                            android:layout_centerVertical="true"
                             android:textStyle="bold" />
 
                         <Button
@@ -300,7 +300,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/_2sdp"
                             android:text="View All"
-                            android:textAllCaps="false"  />
+                            android:textAllCaps="false" />
 
                     </RelativeLayout>
 
@@ -310,8 +310,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ll4"
 
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -321,18 +320,25 @@
             <!-- Swipable tab layout -->
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/tab_height"
+                android:layout_gravity="center"
+                android:background="@drawable/tab_background"
+                android:foregroundGravity="center"
                 android:minHeight="?attr/actionBarSize"
-                app:tabIndicatorColor="@color/colorPrimary"
-                app:tabIndicatorHeight="2dp"
+                app:tabBackground="@drawable/tab_layout_selector"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="0dp"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextColor="#a7adb7"
-
-                />
+                app:tabPaddingEnd="16dp"
+                app:tabPaddingStart="16dp"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/TabTextAppearance"
+                app:tabTextColor="@color/colorPrimary" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

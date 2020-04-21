@@ -26,7 +26,6 @@ import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.TopMenuModel;
 import com.ravimishra.tradzhub.R;
 
-import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -135,9 +134,8 @@ public class HomeFragment extends Fragment {
         TabAdapter adapter = new TabAdapter(getFragmentManager());
         adapter.addFragment(new JustInFragment(), "Just In");
 
-       // adapter.addFragment(new FlashSaleFragment(), "Flash Sale");
-        adapter.addFragment(new BestSellingFragment(), "Best Selling products");
-
+        adapter.addFragment(new BestSellingFragment(), "Best Selling");
+        adapter.addFragment(new FlashDealFragment(), "Flash Sale");
         viewPager2.setAdapter(adapter);
     }
 
