@@ -21,12 +21,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.ravimishra.tradzhub.Fragment.HomeFragment;
 import com.ravimishra.tradzhub.R;
+import com.victor.loading.rotate.RotateLoading;
 
 public class MainPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,8 +43,8 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
     LinearLayout shopCatLinearLayout,storeLinearLayout;
     ImageView ivborrowers, ivbranches, ivStoreCat, ivStore, ivCart;
-
-
+    FrameLayout fragmentContainer;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +52,6 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
 
         findviewbyid();
@@ -65,6 +67,13 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
         ivStoreCat.setRotation(180);
         findViewById();
+        showLoader();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     @Override
@@ -72,9 +81,12 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+//         else {
+//            super.onBackPressed();
+//            fragmentContainer.setVisibility(View.VISIBLE);
+//            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -130,7 +142,34 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 //        drawer.closeDrawer(GravityCompat.START);
 //        return true;
 //    }
+   private  void showLoader(){
+        progressBar.setVisibility(View.VISIBLE);
+       fragmentContainer.setVisibility(View.GONE);
 
+       Thread myThread = new Thread()
+       {
+           @Override
+           public void run() {
+               try {
+                   sleep(800);
+
+
+                   runOnUiThread(new Runnable() {
+                       @Override
+                       public void run() {
+                           progressBar.setVisibility(View.GONE);
+                           fragmentContainer.setVisibility(View.VISIBLE);
+                       }
+                   });
+                  ;
+
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+           }
+       };
+       myThread.start();
+   }
     private void findviewbyid() {
 
         //images
@@ -150,6 +189,10 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         //cart click
         ivCart = findViewById(R.id.ivCart);
         ivCart.setOnClickListener(this);
+
+        // loader
+        progressBar = findViewById(R.id.progressbar);
+        fragmentContainer = findViewById(R.id.container);
 
 
     }

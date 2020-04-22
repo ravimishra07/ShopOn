@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
     private ViewPager viewP;
    private TabLayout tabs;
    private ViewPager viewPager2;
-
+    Timer swipeTimer;
     private int[] banner = {R.drawable.banner4, R.drawable.banner3, R.drawable.banner2, R.drawable.banner1,R.drawable.banner2, R.drawable.banner3, R.drawable.banner4, R.drawable.banner1};
 
    private List<TopMenuModel> topModel = new ArrayList<>();
@@ -64,8 +64,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         topBannerList.clear();
 
-        topBannerList
-                .add(banner[0]);
+        topBannerList.add(banner[0]);
         topBannerList.add(banner[1]);
         topBannerList.add(banner[2]);
 
@@ -86,7 +85,7 @@ public class HomeFragment extends Fragment {
         viewP = view.findViewById(R.id.viewPager);
 
         inisilizerecycler();
-        //setUpanner();
+        setUpanner();
         topModel.add(new TopMenuModel("img1", "Deals"));
         topModel.add(new TopMenuModel("img1", "Electronics"));
         topModel.add(new TopMenuModel("img1", "Men"));
@@ -95,11 +94,11 @@ public class HomeFragment extends Fragment {
         topModel.add(new TopMenuModel("img1", "Appliance"));
 
         // RV1
-        productModel.add(new ProductModel("Mackbook air", 1299,"img1"));
+        productModel.add(new ProductModel("Macbook air", 1299,"img1"));
         productModel.add(new ProductModel("Nikon D5612", 399,"img2"));
         productModel.add(new ProductModel("iPhone 11", 599,"img3"));
         productModel.add(new ProductModel("Men's casual shirt", 29,"img14"));
-        productModel.add(new ProductModel("Mackbook air", 1299,"img1"));
+        productModel.add(new ProductModel("Macbook air", 1299,"img1"));
         productModel.add(new ProductModel("Nikon D5612", 399,"img2"));
         productModel.add(new ProductModel("iPhone 11", 599,"img3"));
         productModel.add(new ProductModel("Men's casual shirt", 29,"img14"));
@@ -143,27 +142,37 @@ public class HomeFragment extends Fragment {
         newArrivalBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title","New Arrivals");
+            swipeTimer.cancel();
             startActivity(i);
+
         });
 
         popularBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title","Popular");
+            swipeTimer.cancel();
+
             startActivity(i);
         });
 
         featuredBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title","Featured");
+            swipeTimer.cancel();
+
             startActivity(i);
         });
         storeBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), StoreActivity.class);
             i.putExtra("type",2);
+            swipeTimer.cancel();
+
             startActivity(i);
         });
         popularRecyclerView.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ProductActivity.class);
+            swipeTimer.cancel();
+
             startActivity(i);
         });
         recylerView2.setOnClickListener(v -> {
@@ -172,6 +181,8 @@ public class HomeFragment extends Fragment {
         });
         recylerView3.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ProductActivity.class);
+            swipeTimer.cancel();
+
             startActivity(i);
         });
     }
@@ -201,28 +212,36 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        setUpanner();
+
     }
 
     private void setUpanner() {
 
         viewP.setAdapter(new BannerAddapter(getActivity(), topBannerList));
-        // indicator.setViewPager(viewP);
 
         final float density = getResources().getDisplayMetrics().density;
 
-        //Set circle indicator radius
-        //  indicator.setRadius(6 * density);
-        // Auto start of viewpager
         final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
+        final Runnable Update = () -> {
+
+            if (currentPage == topBannerList.size()) {
+                currentPage = 0;
+            }
+            viewP.setCurrentItem(currentPage++, true);
+        };
+
+        swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+
+            @Override
             public void run() {
+                handler.post(Update);
+            }
+        }, 3000, 3000);
 
-                if (currentPage == topBannerList.size()) {
-                    currentPage = 0;
-                }
-                viewP.setCurrentItem(currentPage++, true);
 
+    }
+}
 //                if(currentPage==0){
 //                    viewP.setCurrentItem(0, true);
 //                }else if(currentPage==1){
@@ -232,30 +251,6 @@ public class HomeFragment extends Fragment {
 //                    viewP.setCurrentItem(2, true);
 //                    currentPage=0;
 //                }
-            }
-        };
-
-        Timer swipeTimer = new Timer();
-
-        swipeTimer.schedule(new TimerTask() {
-
-            @Override
-
-            public void run() {
-
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-        // Pager listener over indicator
-
-
-    }
-
-
-}
-
-
 /*
 
     private int circle[] = {R.drawable.first,R.drawable.second,R.drawable.third,R.drawable.forth,R.drawable.fifth,R.drawable.sixth

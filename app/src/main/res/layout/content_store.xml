@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/scrollView"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.StoreActivity"
     tools:showIn="@layout/activity_store">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -41,5 +43,6 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </FrameLayout>
+
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>

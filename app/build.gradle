@@ -47,5 +47,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'me.relex:circleindicator:1.2.2@aar'
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
-    implementation 'com.github.varunest:sparkbutton:1.0.6'
+    implementation 'com.victor:lib:1.0.4'
+
 }

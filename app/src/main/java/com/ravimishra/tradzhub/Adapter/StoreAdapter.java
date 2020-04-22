@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ravimishra.tradzhub.Activity.ProductActivity;
+import com.ravimishra.tradzhub.Activity.StoreActivity;
 import com.ravimishra.tradzhub.R;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> {
@@ -39,6 +42,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
         holder.img.setImageResource(imageArray[position]);
+        holder.itemView.setOnClickListener(v -> {
+            Intent i = new Intent(context, StoreActivity.class);
+            i.putExtra("type",2);
+            context.startActivity(i);
+        });
     }
 
 

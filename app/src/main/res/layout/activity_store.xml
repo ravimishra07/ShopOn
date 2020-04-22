@@ -27,7 +27,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 />
@@ -63,5 +62,16 @@ android:visibility="gone"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@drawable/ic_follow"
         tools:ignore="VectorDrawableCompat" />
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="250dp"
+        android:max="100"
+        android:foregroundGravity="center"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:progress="1" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

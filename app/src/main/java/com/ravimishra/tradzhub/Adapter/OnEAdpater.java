@@ -33,7 +33,7 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
 
-        imageArray[0] = R.drawable.pf1;
+        imageArray[0] = R.drawable.banner4;
         imageArray[1] = R.drawable.pf4;
         imageArray[2] = R.drawable.pf3;
         imageArray[3] = R.drawable.pf4;

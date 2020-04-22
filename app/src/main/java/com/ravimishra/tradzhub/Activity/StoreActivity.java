@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -31,7 +32,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,11 @@ public class StoreActivity extends AppCompatActivity {
     Bundle bundle;
     ImageView backImageBtn;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    AppBarLayout appBarLayout;
+    FrameLayout frameLayout;
+    ProgressBar progressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +72,9 @@ public class StoreActivity extends AppCompatActivity {
         Drawable banner4 = getResources().getDrawable(R.drawable.banner4);
         backImageBtn = findViewById(R.id.backImageBtn);
 
+        frameLayout = findViewById(R.id.mainFrame);
+        progressBar = findViewById(R.id.progressbar);
+        appBarLayout = findViewById(R.id.app_bar);
 
         if (value == 1) {
             //bundle.putString("type", "3");
@@ -93,6 +104,7 @@ public class StoreActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
          bundle = new Bundle();
+        showLoader();
     }
     private void setupViewPager(ViewPager viewPager) {
 
@@ -105,5 +117,34 @@ public class StoreActivity extends AppCompatActivity {
         adapter.addFragment(new StoreReviewFragment(), "Store Review");
         adapter.addFragment(new StoreFollowersFragment(), "Followers");
         viewPager.setAdapter(adapter);
+    }
+    private  void showLoader(){
+        progressBar.setVisibility(View.VISIBLE);
+        appBarLayout.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.GONE);
+        tabs.setVisibility(View.GONE);
+        Thread myThread = new Thread()
+        {
+            @Override
+            public void run() {
+                try {
+                    sleep(800);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                            appBarLayout.setVisibility(View.VISIBLE);
+                            frameLayout.setVisibility(View.VISIBLE);
+                            tabs.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    ;
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        myThread.start();
     }
 }
