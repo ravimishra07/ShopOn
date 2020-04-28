@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import com.ravimishra.tradzhub.Model.RegisterModel;
+import com.ravimishra.tradzhub.Model.UserModel;
 import com.ravimishra.tradzhub.R;
+import com.ravimishra.tradzhub.api.APIService;
+import com.ravimishra.tradzhub.api.APIUrl;
+
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
@@ -39,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signup();
+               // userSignUp();
             }
         });
 
@@ -95,7 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
-        finish();
+        userSignUp();
+
+
     }
 
     public void onSignupFailed() {
@@ -158,5 +173,69 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+
+    private void userSignUp() {
+
+        //defining a progress dialog to show while signing up
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Signing Up...");
+        progressDialog.show();
+
+        //getting the user values
+        //final RadioButton radioSex = (RadioButton) findViewById(radioGender.getCheckedRadioButtonId());
+
+        String name = _nameText.getText().toString().trim();
+        String email = _emailText.getText().toString().trim();
+        String password = _passwordText.getText().toString().trim();
+        String rePassword = _reEnterPasswordText.getText().toString().trim();
+        String address = _addressText.getText().toString().trim();
+        String phNumber = _mobileText.getText().toString().trim();
+
+       // String gender = radioSex.getText().toString();
+
+
+        //building retrofit object
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //Defining retrofit api service
+        APIService service = retrofit.create(APIService.class);
+
+        //Defining the user object as we need to pass it with the call
+        UserModel user = new UserModel(name,email,password,rePassword,phNumber,address);
+
+        //defining the call
+        Call<RegisterModel> call = service.createUser(
+                user.getName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getRePassword(),
+                user.getAddress(),
+                user.getPhNumber()
+        );
+
+        //calling the api
+        call.enqueue(new Callback<RegisterModel>() {
+            @Override
+            public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
+                //hiding progress dialog
+                progressDialog.dismiss();
+     Log.v("successRegister",response.body().getMessage());
+                //displaying the message from the response as toast
+                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<RegisterModel> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.v("failRegister",t.getMessage());
+
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
