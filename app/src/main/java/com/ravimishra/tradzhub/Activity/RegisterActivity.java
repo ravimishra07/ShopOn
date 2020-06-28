@@ -1,6 +1,7 @@
 package com.ravimishra.tradzhub.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,14 +33,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    @BindView(R.id.input_name) EditText _nameText;
-    @BindView(R.id.input_address) EditText _addressText;
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_mobile) EditText _mobileText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.input_reEnterPassword) EditText _reEnterPasswordText;
-    @BindView(R.id.btn_signup) Button _signupButton;
-    @BindView(R.id.link_login) TextView _loginLink;
+    @BindView(R.id.input_name)
+    EditText _nameText;
+    @BindView(R.id.input_address)
+    EditText _addressText;
+    @BindView(R.id.input_email)
+    EditText _emailText;
+    @BindView(R.id.input_mobile)
+    EditText _mobileText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
+    @BindView(R.id.input_reEnterPassword)
+    EditText _reEnterPasswordText;
+    @BindView(R.id.btn_signup)
+    Button _signupButton;
+    @BindView(R.id.link_login)
+    TextView _loginLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signup();
-               // userSignUp();
+                // userSignUp();
             }
         });
 
@@ -59,10 +68,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(),LogActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LogActivity.class);
                 startActivity(intent);
                 finish();
-              //  overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                //  overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }
@@ -151,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (mobile.isEmpty() || mobile.length()!=10) {
+        if (mobile.isEmpty() || mobile.length() != 10) {
             _mobileText.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
@@ -193,7 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
         String address = _addressText.getText().toString().trim();
         String phNumber = _mobileText.getText().toString().trim();
 
-       // String gender = radioSex.getText().toString();
+        // String gender = radioSex.getText().toString();
 
 
         //building retrofit object
@@ -206,7 +215,7 @@ public class RegisterActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         //Defining the user object as we need to pass it with the call
-        UserModel user = new UserModel(name,email,password,rePassword,phNumber,address);
+        UserModel user = new UserModel(name, email, password, rePassword, phNumber, address);
 
         //defining the call
         Call<RegisterModel> call = service.createUser(
@@ -224,7 +233,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
                 //hiding progress dialog
                 progressDialog.dismiss();
-     Log.v("successRegister",response.body().getMessage());
+                Log.v("successRegister", response.body().getMessage());
                 //displaying the message from the response as toast
                 Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -232,7 +241,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterModel> call, Throwable t) {
                 progressDialog.dismiss();
-                Log.v("failRegister",t.getMessage());
+                Log.v("failRegister", t.getMessage());
 
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }

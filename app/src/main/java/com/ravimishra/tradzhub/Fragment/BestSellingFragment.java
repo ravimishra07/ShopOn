@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import com.ravimishra.tradzhub.Adapter.TabRecyclerViewAdapter;
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel;
 import com.ravimishra.tradzhub.R;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,19 +39,19 @@ public class BestSellingFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2, LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         TabRecyclerViewAdapter adapter = new TabRecyclerViewAdapter(getActivity(), tabRecyclerViewModel);
         recyclerView.setAdapter(adapter);
         tabRecyclerViewModel.clear();
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("iPhone 8", "$ 199","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Macbook Air", "$ 499","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Men's Shirt", "$ 49","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Women's Top", "$ 99","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "$ 149","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "$ 499","(20%off)","4.1","img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("iPhone 8", "$ 199", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Macbook Air", "$ 499", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Men's Shirt", "$ 49", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Women's Top", "$ 99", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "$ 149", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "$ 499", "(20%off)", "4.1", "img1"));
 
         return view;
     }

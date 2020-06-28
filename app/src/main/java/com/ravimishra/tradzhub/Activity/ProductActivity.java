@@ -30,7 +30,7 @@ public class ProductActivity extends AppCompatActivity {
     TextView[] bottomBars;
     LinearLayout Layout_bars;
     MyViewPagerAdapter myvpAdapter;
-    Drawable banner2, banner3,banner4;
+    Drawable banner2, banner3, banner4;
 
     NestedScrollView scrollView;
     LinearLayout bottomLL;
@@ -81,7 +81,7 @@ public class ProductActivity extends AppCompatActivity {
         viewPager.setAdapter(myvpAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         ColoredBars(0);
-       showLoader();
+        showLoader();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
@@ -104,12 +104,11 @@ public class ProductActivity extends AppCompatActivity {
             bottomBars[thisScreen].setTextColor(colorsActive[thisScreen]);
     }
 
-    private  void showLoader(){
+    private void showLoader() {
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
         bottomLL.setVisibility(View.GONE);
-        Thread myThread = new Thread()
-        {
+        Thread myThread = new Thread() {
             @Override
             public void run() {
                 try {
@@ -131,6 +130,7 @@ public class ProductActivity extends AppCompatActivity {
         };
         myThread.start();
     }
+
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }

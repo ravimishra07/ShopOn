@@ -24,7 +24,8 @@ public class LogActivity extends AppCompatActivity {
 
     @BindView(R.id.input_email)
     EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
     @BindView(R.id.btn_login)
     Button _loginButton;
     @BindView(R.id.link_signup)
@@ -52,7 +53,7 @@ public class LogActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
                 finish();
-               // overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                // overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }

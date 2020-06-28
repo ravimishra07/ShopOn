@@ -24,6 +24,7 @@ public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerView
     int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;
+
     public TabRecyclerViewAdapter(Context context, List<TabRecyclerViewModel> productModel) {
         this.context = context;
         this.productModel = productModel;
@@ -57,7 +58,7 @@ public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerView
         holder.offer.setText(model.getOffer());
         holder.productPice.setText(model.getProctPrice());
         holder.itemView.setOnClickListener(v -> {
-          Intent i = new Intent(context, ProductActivity.class);
+            Intent i = new Intent(context, ProductActivity.class);
             context.startActivity(i);
         });
     }
@@ -70,7 +71,8 @@ public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerView
     class viewholder extends RecyclerView.ViewHolder {
 
         ImageView img;
-        TextView productName, productPice,productRating,offer;
+        TextView productName, productPice, productRating, offer;
+
         public viewholder(@NonNull View itemView) {
             super(itemView);
 

@@ -3,12 +3,10 @@
     android:shape="rectangle">
 
     <!-- radius should be half of the desired TabLayout height -->
-    <corners
-        android:radius="@dimen/tab_half_radius"/>
+    <corners android:radius="@dimen/tab_half_radius" />
 
     <!-- color of the selected tab -->
-    <solid
-        android:color="@color/white"/>
+    <solid android:color="@color/white" />
 
 </shape>
 

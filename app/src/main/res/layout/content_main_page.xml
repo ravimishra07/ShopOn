@@ -46,7 +46,6 @@
                     android:textColor="@color/black" />
 
 
-
                 <ImageView
                     android:id="@+id/ivmac"
                     android:layout_width="@dimen/_17sdp"
@@ -72,6 +71,7 @@
 
 
     </FrameLayout>
+
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
@@ -95,16 +95,15 @@
     <!--</androidx.viewpager.widget.ViewPager>-->
 
 
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/rlBottom"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/_45sdp"-->
+    <!--        android:layout_alignParentBottom="true">-->
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/rlBottom"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/_45sdp"-->
-<!--        android:layout_alignParentBottom="true">-->
-
-<!--        <include layout="@layout/inflate_footer"/>-->
+    <!--        <include layout="@layout/inflate_footer"/>-->
 
 
-<!--    </RelativeLayout>-->
+    <!--    </RelativeLayout>-->
 
 </RelativeLayout>

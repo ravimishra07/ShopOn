@@ -6,99 +6,102 @@
 
 
     android:layout_height="wrap_content">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:cardCornerRadius="4dp"
-        >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:cardCornerRadius="4dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/productImage"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_160sdp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pf3" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/productName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="@dimen/_8sdp"
-            style="@style/TradzHubThemeFont"
-            android:maxLines="1"
-            android:textStyle="bold"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
-
-            android:layout_marginLeft="@dimen/_8sdp">
-
-            <TextView
-
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.85"
-                android:textColor="@color/black"
-                style="@style/TradzHubThemeFont"
-                android:text="$ " />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/productPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.15"
-                android:text="99.99"
-                android:textColor="@color/black"
-                style="@style/TradzHubThemeFont" />
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_160sdp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pf3" />
 
-        </LinearLayout>
-    </LinearLayout>
-        <androidx.cardview.widget.CardView
-            android:layout_width="@dimen/heart_size"
-            android:layout_height="@dimen/heart_size"
-            app:cardCornerRadius="@dimen/half_heart_size"
-            app:cardElevation="2dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:foregroundGravity="center">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:gravity="center">
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    style="@style/TradzHubThemeFont"
+                    android:maxLines="1"
+                    android:textStyle="bold" />
 
-           <com.like.LikeButton
-               android:id="@+id/star_button"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:anim_scale_factor="1.5"
-               app:circle_end_color="@color/colorAccent"
-               app:circle_start_color="@color/colorPrimary"
-               app:dots_primary_color="@color/colorAccent"
-               app:dots_secondary_color="@color/colorPrimary"
-               app:icon_size="18dp"
-               app:icon_type="heart"
-               app:like_drawable="@drawable/ic_heart_svg"
-               app:unlike_drawable="@drawable/ic_heart_unfilled_svg" />
-       </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+
+                    android:layout_marginLeft="@dimen/_8sdp">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.85"
+                        android:textColor="@color/black"
+                        style="@style/TradzHubThemeFont"
+                        android:text="$ " />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:text="99.99"
+                        android:textColor="@color/black"
+                        style="@style/TradzHubThemeFont" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/heart_size"
+                android:layout_height="@dimen/heart_size"
+                app:cardCornerRadius="@dimen/half_heart_size"
+                app:cardElevation="2dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:foregroundGravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <com.like.LikeButton
+                        android:id="@+id/star_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:anim_scale_factor="1.5"
+                        app:circle_end_color="@color/colorAccent"
+                        app:circle_start_color="@color/colorPrimary"
+                        app:dots_primary_color="@color/colorAccent"
+                        app:dots_secondary_color="@color/colorPrimary"
+                        app:icon_size="18dp"
+                        app:icon_type="heart"
+                        app:like_drawable="@drawable/ic_heart_svg"
+                        app:unlike_drawable="@drawable/ic_heart_unfilled_svg" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

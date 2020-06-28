@@ -80,12 +80,12 @@ public class StoreActivity extends AppCompatActivity {
             //bundle.putString("type", "3");
             toolbarImageView.setImageDrawable(banner2);
 
-        }else if (value == 2){
+        } else if (value == 2) {
             toolbarImageView.setImageDrawable(banner3);
 
-        }else if (value == 3 ) {
+        } else if (value == 3) {
             toolbarImageView.setImageDrawable(banner4);
-        }else{
+        } else {
             toolbarImageView.setImageDrawable(banner3);
         }
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -99,13 +99,14 @@ public class StoreActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        tabs= findViewById(R.id.tabLayout);
+        tabs = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
-         bundle = new Bundle();
+        bundle = new Bundle();
         showLoader();
     }
+
     private void setupViewPager(ViewPager viewPager) {
 
 
@@ -118,13 +119,13 @@ public class StoreActivity extends AppCompatActivity {
         adapter.addFragment(new StoreFollowersFragment(), "Followers");
         viewPager.setAdapter(adapter);
     }
-    private  void showLoader(){
+
+    private void showLoader() {
         progressBar.setVisibility(View.VISIBLE);
         appBarLayout.setVisibility(View.GONE);
         frameLayout.setVisibility(View.GONE);
         tabs.setVisibility(View.GONE);
-        Thread myThread = new Thread()
-        {
+        Thread myThread = new Thread() {
             @Override
             public void run() {
                 try {

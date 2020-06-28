@@ -42,15 +42,15 @@ public class ItemDetailActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String titleText = extras.getString("title");
         setContentView(R.layout.activity_item_detail);
-        toolbar =findViewById(R.id.toolbar);
-        toolbarTitle =findViewById(R.id.toolbar_title);
+        toolbar = findViewById(R.id.toolbar);
+        toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(titleText);
         setSupportActionBar(toolbar);
         backImageBtn = findViewById(R.id.back);
         setUpViews();
     }
 
-    private  void addFabButton(){
+    private void addFabButton() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,27 +60,27 @@ public class ItemDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpViews(){
+    private void setUpViews() {
         recyclerView = findViewById(R.id.recyclerView);
-        fab=findViewById(R.id.fab);
-       backImageBtn.setOnClickListener(v -> {
-           Intent i = new Intent(this, MainPage.class);
-           startActivity(i);
-       });
+        fab = findViewById(R.id.fab);
+        backImageBtn.setOnClickListener(v -> {
+            Intent i = new Intent(this, MainPage.class);
+            startActivity(i);
+        });
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         MainTabStoreAdapter adapter = new MainTabStoreAdapter(this, tabRecyclerViewModel);
         recyclerView.setAdapter(adapter);
         tabRecyclerViewModel.clear();
 
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("iPhone 8", "199","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Macbook Air", "499","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Men's Shirt", "49","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Women's Top", "99","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "149","(20%off)","4.1","img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "499","(20%off)","4.1","img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("iPhone 8", "199", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Macbook Air", "499", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Men's Shirt", "49", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Women's Top", "99", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "149", "(20%off)", "4.1", "img1"));
+        tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "499", "(20%off)", "4.1", "img1"));
 
     }
 }

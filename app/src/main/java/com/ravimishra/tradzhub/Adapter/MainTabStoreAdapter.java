@@ -21,13 +21,13 @@ import com.ravimishra.tradzhub.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapter.viewholder> {
+public class MainTabStoreAdapter extends RecyclerView.Adapter<MainTabStoreAdapter.viewholder> {
 
     private Context context;
     int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;
-   //private final View.OnClickListener mOnClickListener = new MyOnClickListener();
+    //private final View.OnClickListener mOnClickListener = new MyOnClickListener();
 
     public MainTabStoreAdapter(Context context, List<TabRecyclerViewModel> productModel) {
         this.context = context;
@@ -49,7 +49,7 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
         imageArray[8] = R.drawable.pf3;
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_store_row, parent, false);
-       // itemView.setOnClickListener(mOnClickListener);
+        // itemView.setOnClickListener(mOnClickListener);
         return new MainTabStoreAdapter.viewholder(itemView);
     }
 
@@ -59,8 +59,8 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
 
         // holder.img.setImageResource(R.drawable.pf1);
         holder.productName.setText(model.getProductName());
-       // holder.productRating.setText(model.getRating());
-      //  holder.offer.setText(model.getOffer());
+        // holder.productRating.setText(model.getRating());
+        //  holder.offer.setText(model.getOffer());
         holder.productPice.setText(model.getProctPrice());
     }
 
@@ -72,14 +72,15 @@ public class MainTabStoreAdapter  extends RecyclerView.Adapter<MainTabStoreAdapt
     class viewholder extends RecyclerView.ViewHolder {
 
         ImageView img;
-        TextView productName, productPice,productRating;
+        TextView productName, productPice, productRating;
+
         public viewholder(@NonNull View itemView) {
             super(itemView);
 
             //img = itemView.findViewById(R.id.productImage);
             productName = itemView.findViewById(R.id.productName);
             productPice = itemView.findViewById(R.id.productPrice);
-           // productRating = itemView.findViewById(R.id.ratingId);
+            // productRating = itemView.findViewById(R.id.ratingId);
 
 
         }

@@ -22,14 +22,14 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
+
             <ImageView
                 android:id="@+id/toolbarImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                />
+                android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -37,14 +37,14 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 android:paddingRight="@dimen/_12sdp"
-                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" >
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay">
+
                 <ImageView
                     android:id="@+id/backImageBtn"
                     android:layout_width="@dimen/_16sdp"
                     android:layout_height="@dimen/_16sdp"
                     android:src="@drawable/back"
-                    android:tint="@color/white"
-                    />
+                    android:tint="@color/white" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -57,11 +57,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
-android:visibility="gone"
+        android:visibility="gone"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@drawable/ic_follow"
         tools:ignore="VectorDrawableCompat" />
+
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"

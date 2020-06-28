@@ -37,8 +37,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 style="@style/TradzHubThemeFont"
-
-                android:layout_marginLeft="@dimen/_8sdp"/>
+                android:maxLines="1"
+                android:layout_marginLeft="@dimen/_8sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,9 +64,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.15"
                     android:text="99.99"
+                    android:maxLines="1"
+
                     android:textColor="@color/black"
-                    style="@style/TradzHubThemeFont"
-/>
+                    style="@style/TradzHubThemeFont" />
 
             </LinearLayout>
 

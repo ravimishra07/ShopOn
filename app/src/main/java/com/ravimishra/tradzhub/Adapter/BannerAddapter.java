@@ -2,8 +2,10 @@ package com.ravimishra.tradzhub.Adapter;
 
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +20,12 @@ public class BannerAddapter extends PagerAdapter {
     private ArrayList<Integer> images;
     private LayoutInflater inflater;
     private Context context;
+
     public BannerAddapter(Context context, ArrayList<Integer> images) {
 
         this.context = context;
 
-        this.images=images;
+        this.images = images;
 
         inflater = LayoutInflater.from(context);
     }
@@ -58,7 +61,7 @@ public class BannerAddapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
 
-        return  view.equals(o);
+        return view.equals(o);
     }
 
 }

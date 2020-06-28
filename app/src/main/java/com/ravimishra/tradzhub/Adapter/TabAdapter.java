@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
 public class TabAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragment=new ArrayList<>();
-    private final List<String> TitleList=new ArrayList<>();
+    private final List<Fragment> mFragment = new ArrayList<>();
+    private final List<String> TitleList = new ArrayList<>();
+
     public TabAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -32,7 +34,7 @@ public class TabAdapter extends FragmentPagerAdapter {
         return TitleList.get(position);
     }
 
-    public void addFragment(Fragment fragment, String title){
+    public void addFragment(Fragment fragment, String title) {
         mFragment.add(fragment);
         TitleList.add(title);
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +45,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
         holder.img.setImageResource(imageArray[position]);
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, StoreActivity.class);
-            i.putExtra("type",2);
+            i.putExtra("type", 2);
             context.startActivity(i);
         });
     }
@@ -67,4 +68,5 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
 
 
         }
-    }    }
+    }
+}

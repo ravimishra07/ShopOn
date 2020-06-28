@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ravimishra.tradzhub">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -9,7 +10,8 @@
         android:roundIcon="@drawable/logo"
         android:usesCleartextTraffic="true"
         android:supportsRtl="true">
-        <activity android:name=".Activity.WelcomeActivity"
+        <activity
+            android:name=".Activity.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

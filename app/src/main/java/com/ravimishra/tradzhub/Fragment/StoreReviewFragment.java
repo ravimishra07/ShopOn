@@ -1,4 +1,4 @@
- package com.ravimishra.tradzhub.Fragment;
+package com.ravimishra.tradzhub.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -21,21 +21,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 
- public class StoreReviewFragment extends  Fragment {
+public class StoreReviewFragment extends Fragment {
 
-     RecyclerView recyclerView;
-     List<TabRecyclerViewModel> tabRecyclerViewModel = new ArrayList<>();
+    RecyclerView recyclerView;
+    List<TabRecyclerViewModel> tabRecyclerViewModel = new ArrayList<>();
 
-     public StoreReviewFragment() {
-         // Required empty public constructor
-     }
+    public StoreReviewFragment() {
+        // Required empty public constructor
+    }
 
 
-     @Override
-     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
-         // Inflate the layout for this fragment
-         View view = inflater.inflate(R.layout.fragment_store_review, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_store_review, container, false);
 
 //         recyclerView = view.findViewById(R.id.recyclerView);
 //         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2, LinearLayoutManager.VERTICAL,false);
@@ -53,9 +53,9 @@ import java.util.List;
 //         tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "$ 149","(20%off)","4.1","img1"));
 //         tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "$ 499","(20%off)","4.1","img1"));
 
-         return view;
-     }
+        return view;
+    }
 
 
- }
+}
 

@@ -15,8 +15,7 @@
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
             android:src="@drawable/ic_discount"
-            android:tint="@color/white"
-            />
+            android:tint="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -5,124 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardCornerRadius="2dp"
-   >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/ll1"
+    app:cardCornerRadius="2dp">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_2sdp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageId"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_160sdp"
-            android:scaleType="fitXY"
-            android:src="@drawable/pf1"
-
-            />
-
-        <TextView
-            android:id="@+id/productId"
+        <LinearLayout
+            android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_2sdp"
-            android:layout_marginRight="@dimen/_2sdp"
-            android:text="Macbook Air"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:maxLines="1"
-            style="@style/TradzHubThemeFont"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/productPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_2sdp"
-                android:text="$ 77.99"
-                android:textSize="@dimen/_12sdp"
-                style="@style/TradzHubThemeFont"
-
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/offerId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_2sdp"
-                android:text="(50% off)"
-                android:textSize="@dimen/_10sdp"
-                style="@style/TradzHubThemeFont"
-
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_corner"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/ratingId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_2sdp"
-                android:text="4.4"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_9sdp"
-                style="@style/TradzHubThemeFont"
-
-                android:textStyle="bold" />
+            android:layout_margin="@dimen/_2sdp"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_margin="@dimen/_2sdp"
-                app:srcCompat="@drawable/ic_star"
-                tools:ignore="VectorDrawableCompat" />
-        </LinearLayout>
-    </LinearLayout>
-    <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/heart_size"
-        android:layout_height="@dimen/heart_size"
-        app:cardCornerRadius="@dimen/half_heart_size"
-        app:cardElevation="2dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:foregroundGravity="center">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+                android:id="@+id/imageId"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/pf1"
 
-            <com.like.LikeButton
-                android:id="@+id/star_button"
-                android:layout_width="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/productId"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:anim_scale_factor="1.5"
-                app:circle_end_color="@color/colorAccent"
-                app:circle_start_color="@color/colorPrimary"
-                app:dots_primary_color="@color/colorAccent"
-                app:dots_secondary_color="@color/colorPrimary"
-                app:icon_size="18dp"
-                app:icon_type="heart"
-                app:like_drawable="@drawable/ic_heart_svg"
-                app:unlike_drawable="@drawable/ic_heart_unfilled_svg" />
+                android:layout_marginLeft="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_2sdp"
+                android:text="Macbook Air"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:maxLines="1"
+                style="@style/TradzHubThemeFont" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:text="$ 77.99"
+                    android:textSize="@dimen/_12sdp"
+                    style="@style/TradzHubThemeFont"
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/offerId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:text="(50% off)"
+                    android:textSize="@dimen/_10sdp"
+                    style="@style/TradzHubThemeFont"
+
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_corner"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ratingId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:text="4.4"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    style="@style/TradzHubThemeFont"
+
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_margin="@dimen/_2sdp"
+                    app:srcCompat="@drawable/ic_star"
+                    tools:ignore="VectorDrawableCompat" />
+            </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/heart_size"
+            android:layout_height="@dimen/heart_size"
+            app:cardCornerRadius="@dimen/half_heart_size"
+            app:cardElevation="2dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:foregroundGravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.like.LikeButton
+                    android:id="@+id/star_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:anim_scale_factor="1.5"
+                    app:circle_end_color="@color/colorAccent"
+                    app:circle_start_color="@color/colorPrimary"
+                    app:dots_primary_color="@color/colorAccent"
+                    app:dots_secondary_color="@color/colorPrimary"
+                    app:icon_size="18dp"
+                    app:icon_type="heart"
+                    app:like_drawable="@drawable/ic_heart_svg"
+                    app:unlike_drawable="@drawable/ic_heart_unfilled_svg" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

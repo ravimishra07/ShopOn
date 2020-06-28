@@ -10,8 +10,7 @@
         android:adjustViewBounds="true"
         android:layout_gravity="center"
         android:scaleType="fitXY"
-        android:id="@+id/img_banner"
-        />
+        android:id="@+id/img_banner" />
     <!-- </android.support.v7.widget.CardView>-->
 
 </FrameLayout>

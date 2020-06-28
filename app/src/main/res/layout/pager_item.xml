@@ -10,12 +10,12 @@
     android:paddingRight="@dimen/_6sdp"
     android:paddingBottom="@dimen/_12sdp"
     app:cardCornerRadius="@dimen/_2sdp">
-<ImageView
 
-    android:id="@+id/productImage"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/product_item_height"
-    android:scaleType="fitCenter"
-    android:src="@drawable/pf1">
-</ImageView>
+    <ImageView
+
+        android:id="@+id/productImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/product_item_height"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pf1"></ImageView>
 </androidx.cardview.widget.CardView>

@@ -85,6 +85,7 @@
         <item name="android:background">@drawable/button_corner_accent</item>
         <item name="android:minHeight">30dp</item>
     </style>
+
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#fff</item>

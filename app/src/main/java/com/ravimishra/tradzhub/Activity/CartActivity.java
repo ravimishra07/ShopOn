@@ -24,6 +24,7 @@ import java.util.List;
 public class CartActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<ProductDetailModel> productDetailModels = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

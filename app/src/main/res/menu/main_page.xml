@@ -16,23 +16,20 @@
                 android:title="My Account"
                 app:showAsAction="always|withText"
                 android:icon="@drawable/ic_my_account"
-                android:orderInCategory="101"
-                />
+                android:orderInCategory="101" />
             <item
                 android:id="@+id/myOrder"
                 android:title="My Orders"
                 android:icon="@drawable/ic_my_orders"
                 app:showAsAction="always|withText"
-                android:orderInCategory="102"
-                />
+                android:orderInCategory="102" />
             <item
                 android:id="@+id/myWishList"
                 android:title="My Wishlist"
                 app:showAsAction="always|withText"
                 android:icon="@drawable/ic_my_wishlist"
 
-                android:orderInCategory="103"
-                />
+                android:orderInCategory="103" />
 
             <item
                 android:id="@+id/settings"
@@ -40,15 +37,13 @@
                 app:showAsAction="always|withText"
                 android:icon="@drawable/ic_settings_icon"
 
-                android:orderInCategory="104"
-                />
+                android:orderInCategory="104" />
             <item
                 android:id="@+id/login"
                 android:title="Login or Register"
                 app:showAsAction="always|withText"
                 android:icon="@drawable/ic_person"
-                android:orderInCategory="105"
-                />
+                android:orderInCategory="105" />
         </menu>
     </item>
     <!--        />-->

@@ -7,18 +7,19 @@
     tools:context="code.basic.LogoPage"
     android:orientation="vertical"
     android:gravity="center">
-<androidx.cardview.widget.CardView
-    android:layout_width="@dimen/_100sdp"
-    android:layout_height="@dimen/_100sdp"
-    app:cardCornerRadius="@dimen/_12sdp"
-    >
-    <ImageView
-        android:id="@+id/main_logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/logo"/>
 
-</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        app:cardCornerRadius="@dimen/_12sdp">
+
+        <ImageView
+            android:id="@+id/main_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="match_parent"
@@ -26,5 +27,5 @@
         android:text="TradzHub"
         android:layout_marginTop="@dimen/_8sdp"
         android:textSize="@dimen/_16sdp"
-        android:gravity="center"/>
+        android:gravity="center" />
 </LinearLayout>

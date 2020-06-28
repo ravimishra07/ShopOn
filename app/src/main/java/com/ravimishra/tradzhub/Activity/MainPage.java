@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 
-
 import android.util.Log;
 import android.view.View;
 
@@ -37,14 +36,12 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
     private Fragment fragment;
 
     private static final String TAG = "MainPage";
-
-
-    RelativeLayout rlHome,rlStoreCat,rlstore,rlAboutUs,rlShare;
-
-    LinearLayout shopCatLinearLayout,storeLinearLayout;
+    RelativeLayout rlHome, rlStoreCat, rlstore, rlAboutUs, rlShare;
+    LinearLayout shopCatLinearLayout, storeLinearLayout;
     ImageView ivborrowers, ivbranches, ivStoreCat, ivStore, ivCart;
     FrameLayout fragmentContainer;
     ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +115,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         return super.onOptionsItemSelected(item);
     }
 
-//    @SuppressWarnings("StatementWithEmptyBody")
+    //    @SuppressWarnings("StatementWithEmptyBody")
 //    @Override
 //    public boolean onNavigationItemSelected(MenuItem item) {
 //        // Handle navigation view item clicks here.
@@ -142,34 +139,34 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 //        drawer.closeDrawer(GravityCompat.START);
 //        return true;
 //    }
-   private  void showLoader(){
+    private void showLoader() {
         progressBar.setVisibility(View.VISIBLE);
-       fragmentContainer.setVisibility(View.GONE);
+        fragmentContainer.setVisibility(View.GONE);
 
-       Thread myThread = new Thread()
-       {
-           @Override
-           public void run() {
-               try {
-                   sleep(800);
+        Thread myThread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(800);
 
 
-                   runOnUiThread(new Runnable() {
-                       @Override
-                       public void run() {
-                           progressBar.setVisibility(View.GONE);
-                           fragmentContainer.setVisibility(View.VISIBLE);
-                       }
-                   });
-                  ;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                            fragmentContainer.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    ;
 
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-           }
-       };
-       myThread.start();
-   }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        myThread.start();
+    }
+
     private void findviewbyid() {
 
         //images
@@ -213,17 +210,14 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.rlShopCategories:
 
-                if(shopCatLinearLayout.getVisibility()==View.VISIBLE)
-                {
+                if (shopCatLinearLayout.getVisibility() == View.VISIBLE) {
                     ivStoreCat.setRotation(0);
                     shopCatLinearLayout.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ivStoreCat.setRotation(180);
                     shopCatLinearLayout.setVisibility(View.VISIBLE);
                 }
@@ -231,13 +225,10 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.rlStore:
 
-                if(storeLinearLayout.getVisibility()==View.VISIBLE)
-                {
+                if (storeLinearLayout.getVisibility() == View.VISIBLE) {
                     ivStore.setRotation(0);
                     storeLinearLayout.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ivStore.setRotation(180);
                     storeLinearLayout.setVisibility(View.VISIBLE);
                 }

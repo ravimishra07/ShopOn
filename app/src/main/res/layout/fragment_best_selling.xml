@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
->
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -11,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_4sdp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -22,8 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,6 +46,7 @@
                             android:tint="@color/white"
                             app:srcCompat="@drawable/ic_sort_white" />
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -60,6 +60,7 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -86,9 +87,9 @@
                             app:srcCompat="@drawable/ic_filter_white"
                             android:layout_gravity="center_vertical"
                             android:tint="@color/white"
-                            android:layout_marginRight="@dimen/_6sdp"
-                            />
+                            android:layout_marginRight="@dimen/_6sdp" />
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
