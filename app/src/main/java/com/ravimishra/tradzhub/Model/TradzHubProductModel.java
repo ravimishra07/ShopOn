@@ -2,9 +2,10 @@ package com.ravimishra.tradzhub.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TradzHubProductModel {
+public class TradzHubProductModel implements Serializable {
     @SerializedName("status")
     public Integer status;
     @SerializedName("message")
@@ -12,7 +13,7 @@ public class TradzHubProductModel {
     @SerializedName("data")
     public List<TradzHubProductModel.ResponseData> data = null;
 
-    public class ResponseData {
+    public class ResponseData implements Serializable {
         @SerializedName("product_id")
         public String productID;
         @SerializedName("title")

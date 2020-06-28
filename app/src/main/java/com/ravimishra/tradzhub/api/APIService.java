@@ -1,5 +1,6 @@
 package com.ravimishra.tradzhub.api;
 
+import com.ravimishra.tradzhub.Model.AuthModel;
 import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.NewProductModel;
 import com.ravimishra.tradzhub.Model.RegisterModel;
@@ -17,16 +18,34 @@ import retrofit2.http.POST;
 
 public interface APIService {
 
-    //The register call
+    /**  register call */
     @FormUrlEncoded
-    @POST("register")
-    public abstract Call<RegisterModel> createUser(
-            @Field("name") String name,
+    @POST("function.php")
+    public abstract Call<AuthModel> createUser(
+            @Field("register") int register,
+            @Field("username") String username,
+
+            @Field("surname") String surname,
             @Field("email") String email,
+            @Field("phone") String phone,
+            @Field("address1") String address1,
+
+            @Field("address2") String address2,
+            @Field("city") String city,
+            @Field("zip") String zip,
+
             @Field("password") String password,
-            @Field("password_confirmation") String rePassword,
-            @Field("address") String address,
-            @Field("phone") String phNumber);
+            @Field("country") String country,
+            @Field("state") String state
+            );
+
+    /** The register call */
+    @FormUrlEncoded
+    @POST("function.php")
+    public abstract Call<AuthModel> userLogin(
+            @Field("login") int register,
+            @Field("email") String email,
+            @Field("password") String password);
 
 
     /** Top menu */
@@ -34,8 +53,6 @@ public interface APIService {
     @POST("function.php")
     public abstract Call<CategoryModel> getCategory(
             @Field("allcategory") int allcategory);
-
-
 
     /** featured products */
     @FormUrlEncoded

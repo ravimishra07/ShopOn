@@ -2,9 +2,10 @@ package com.ravimishra.tradzhub.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NewProductModel {
+public class NewProductModel implements Serializable {
 
     @SerializedName("product_id")
     public String productID;

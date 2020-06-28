@@ -18,6 +18,11 @@ public class RegisterModel {
         this.user = user;
     }
 
+    public RegisterModel(Boolean error, String message) {
+        this.error = error;
+        this.message = message;
+    }
+
     public Boolean getError() {
         return error;
     }

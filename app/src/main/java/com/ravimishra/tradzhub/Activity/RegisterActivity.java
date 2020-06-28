@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.UserManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import com.ravimishra.tradzhub.Model.AuthModel;
 import com.ravimishra.tradzhub.Model.RegisterModel;
 import com.ravimishra.tradzhub.Model.UserModel;
 import com.ravimishra.tradzhub.R;
@@ -35,14 +38,20 @@ public class RegisterActivity extends AppCompatActivity {
 
     @BindView(R.id.input_name)
     EditText _nameText;
+    @BindView(R.id.input_last_name)
+    EditText _lastName;
+    @BindView(R.id.input_email)
+    EditText _inputEmail;
+    @BindView(R.id.input_mobile)
+    EditText _inputMobile;
     @BindView(R.id.input_address)
     EditText _addressText;
-    @BindView(R.id.input_email)
-    EditText _emailText;
-    @BindView(R.id.input_mobile)
-    EditText _mobileText;
+    @BindView(R.id.input_city)
+    EditText _inputCity;
+    @BindView(R.id.input_zip_code)
+    EditText _inputZip;
     @BindView(R.id.input_password)
-    EditText _passwordText;
+    EditText _inputPassword;
     @BindView(R.id.input_reEnterPassword)
     EditText _reEnterPasswordText;
     @BindView(R.id.btn_signup)
@@ -93,10 +102,13 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.show();
 
         String name = _nameText.getText().toString();
+        String lastName = _nameText.getText().toString();
+        String email = _inputEmail.getText().toString();
+        String mobile = _inputMobile.getText().toString();
         String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
+        String city = _inputCity.getText().toString();
+        String zipCode = _inputZip.getText().toString();
+        String password = _inputPassword.getText().toString();
         String reEnterPassword = _reEnterPasswordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
@@ -132,10 +144,13 @@ public class RegisterActivity extends AppCompatActivity {
         boolean valid = true;
 
         String name = _nameText.getText().toString();
+        String lastName = _nameText.getText().toString();
+        String email = _inputEmail.getText().toString();
+        String mobile = _inputMobile.getText().toString();
         String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
+        String city = _inputCity.getText().toString();
+        String zipCode = _inputZip.getText().toString();
+        String password = _inputPassword.getText().toString();
         String reEnterPassword = _reEnterPasswordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
@@ -145,6 +160,9 @@ public class RegisterActivity extends AppCompatActivity {
             _nameText.setError(null);
         }
 
+        if (zipCode.isEmpty() || zipCode.length() < 6 || zipCode.length() > 8 ){
+            _inputZip.setError("Enter valid zip code");
+        }
         if (address.isEmpty()) {
             _addressText.setError("Enter Valid Address");
             valid = false;
@@ -154,24 +172,24 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            _inputEmail.setError("enter a valid email address");
             valid = false;
         } else {
-            _emailText.setError(null);
+            _inputEmail.setError(null);
         }
 
         if (mobile.isEmpty() || mobile.length() != 10) {
-            _mobileText.setError("Enter Valid Mobile Number");
+            _inputMobile.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
-            _mobileText.setError(null);
+            _inputMobile.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+            _inputPassword.setError("between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
-            _passwordText.setError(null);
+            _inputPassword.setError(null);
         }
 
         if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
@@ -194,20 +212,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         //getting the user values
         //final RadioButton radioSex = (RadioButton) findViewById(radioGender.getCheckedRadioButtonId());
-
-        String name = _nameText.getText().toString().trim();
-        String email = _emailText.getText().toString().trim();
-        String password = _passwordText.getText().toString().trim();
-        String rePassword = _reEnterPasswordText.getText().toString().trim();
-        String address = _addressText.getText().toString().trim();
-        String phNumber = _mobileText.getText().toString().trim();
+        String name = _nameText.getText().toString();
+        String lastName = _nameText.getText().toString();
+        String email = _inputEmail.getText().toString();
+        String mobile = _inputMobile.getText().toString();
+        String address = _addressText.getText().toString();
+        String city = _inputCity.getText().toString();
+        String zipCode = _inputZip.getText().toString();
+        String password = _inputPassword.getText().toString();
+        String reEnterPassword = _reEnterPasswordText.getText().toString();
 
         // String gender = radioSex.getText().toString();
 
 
         //building retrofit object
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(APIUrl.BASE_URL)
+                .baseUrl(APIUrl.NEW_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -215,35 +235,54 @@ public class RegisterActivity extends AppCompatActivity {
         APIService service = retrofit.create(APIService.class);
 
         //Defining the user object as we need to pass it with the call
-        UserModel user = new UserModel(name, email, password, rePassword, phNumber, address);
+        //UserModel user = new UserModel(name, email, password, rePassword, phNumber, address);
 
         //defining the call
-        Call<RegisterModel> call = service.createUser(
-                user.getName(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getRePassword(),
-                user.getAddress(),
-                user.getPhNumber()
+        Call<AuthModel> call = service.createUser(
+                1,
+                name,
+                lastName,
+                email,
+                mobile,
+                address,
+                address,
+                city,
+                zipCode,
+                password,
+                "India",
+                "India"
         );
 
         //calling the api
-        call.enqueue(new Callback<RegisterModel>() {
+        call.enqueue(new Callback<AuthModel>() {
             @Override
-            public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
+            public void onResponse(Call<AuthModel> call, Response<AuthModel> response) {
                 //hiding progress dialog
                 progressDialog.dismiss();
-                Log.v("successRegister", response.body().getMessage());
-                //displaying the message from the response as toast
-                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                AuthModel authModel = response.body();
+                Log.v("successRegister", authModel.data.get(0).token);
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("email",email);
+                editor.putString("password",password);
+                editor.putString("token",authModel.data.get(0).token);
+                editor.apply();
+
+                SharedPreferences preferences2 = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
+                String email1 = preferences2.getString("email", "");
+                if(!email1.equalsIgnoreCase("")) {
+                    Log.v("email_tag",email1);
+                }
+
+                Intent i = new Intent(RegisterActivity.this, MainPage.class);
+                startActivity(i);
             }
 
             @Override
-            public void onFailure(Call<RegisterModel> call, Throwable t) {
+            public void onFailure(Call<AuthModel> call, Throwable t) {
                 progressDialog.dismiss();
-                Log.v("failRegister", t.getMessage());
+                Log.v("failRegister", "failed to sign up"+t.getMessage());
 
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

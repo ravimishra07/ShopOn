@@ -6,8 +6,10 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.ravimishra.tradzhub.Adapter.MainTabStoreAdapter;
+import com.ravimishra.tradzhub.Adapter.ProductDetailAdapter;
 import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel;
+import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,7 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     List<TabRecyclerViewModel> tabRecyclerViewModel = new ArrayList<>();
+    private TradzHubProductModel responseData;
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private ImageView backImageBtn;
@@ -41,6 +44,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         // Get Image ftom bundle
         Bundle extras = getIntent().getExtras();
         String titleText = extras.getString("title");
+        responseData = (TradzHubProductModel) extras.getSerializable("PRODUCT");
         setContentView(R.layout.activity_item_detail);
         toolbar = findViewById(R.id.toolbar);
         toolbarTitle = findViewById(R.id.toolbar_title);
@@ -71,16 +75,10 @@ public class ItemDetailActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        MainTabStoreAdapter adapter = new MainTabStoreAdapter(this, tabRecyclerViewModel);
+        ProductDetailAdapter adapter = new ProductDetailAdapter(this, responseData.data);
         recyclerView.setAdapter(adapter);
-        tabRecyclerViewModel.clear();
+       // tabRecyclerViewModel.clear();
 
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("iPhone 8", "199", "(20%off)", "4.1", "img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Macbook Air", "499", "(20%off)", "4.1", "img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Men's Shirt", "49", "(20%off)", "4.1", "img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Women's Top", "99", "(20%off)", "4.1", "img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Whirlpool Washing Machine", "149", "(20%off)", "4.1", "img1"));
-        tabRecyclerViewModel.add(new TabRecyclerViewModel("Womens's Jacket", "499", "(20%off)", "4.1", "img1"));
 
     }
 }

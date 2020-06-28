@@ -38,6 +38,7 @@ import com.ravimishra.tradzhub.R;
 import com.ravimishra.tradzhub.api.APIService;
 import com.ravimishra.tradzhub.api.APIUrl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -144,6 +145,7 @@ public class HomeFragment extends Fragment {
         newArrivalBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "New Arrivals");
+            i.putExtra("PRODUCT", latestModel);
             swipeTimer.cancel();
             startActivity(i);
 
@@ -152,14 +154,17 @@ public class HomeFragment extends Fragment {
         popularBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "Popular");
+            i.putExtra("PRODUCT", popularModel);
             swipeTimer.cancel();
-
             startActivity(i);
         });
 
         featuredBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "Featured");
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("PRODUCT", featuredModel);
+            i.putExtras(bundle);
             swipeTimer.cancel();
 
             startActivity(i);

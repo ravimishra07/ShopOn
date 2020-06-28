@@ -1,8 +1,11 @@
 package com.ravimishra.tradzhub.Activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,8 +23,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ravimishra.tradzhub.Adapter.BannerAddapter;
+import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
 import java.util.ArrayList;
@@ -31,11 +36,11 @@ public class ProductActivity extends AppCompatActivity {
     LinearLayout Layout_bars;
     MyViewPagerAdapter myvpAdapter;
     Drawable banner2, banner3, banner4;
-
+    TextView productName,productPrice,productDescription;
     NestedScrollView scrollView;
     LinearLayout bottomLL;
     ProgressBar progressBar;
-
+    TradzHubProductModel.ResponseData responseData;
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -62,8 +67,12 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent i = getIntent();
+         responseData = (TradzHubProductModel.ResponseData) i.getSerializableExtra("PRODUCT");
         viewPager = findViewById(R.id.viewPager);
         Layout_bars = findViewById(R.id.layoutBars);
+
 
         banner2 = getResources().getDrawable(R.drawable.pf1);
         banner3 = getResources().getDrawable(R.drawable.pf2);
@@ -76,6 +85,14 @@ public class ProductActivity extends AppCompatActivity {
         bottomLL = findViewById(R.id.bottomLL);
         progressBar = findViewById(R.id.progressbar);
         scrollView = findViewById(R.id.scrollView);
+
+        productName = findViewById(R.id.productName);
+        productPrice = findViewById(R.id.productPrice);
+        productDescription = findViewById(R.id.productDescription);
+
+        productName.setText(responseData.title);
+        productPrice.setText("$ "+responseData.salePrice);
+        productDescription.setText(responseData.description);
 
         myvpAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myvpAdapter);
@@ -146,7 +163,13 @@ public class ProductActivity extends AppCompatActivity {
             inflater = (LayoutInflater) getSystemService(ProductActivity.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.pager_item, container, false);
             ImageView img = view.findViewById(R.id.productImage);
-            img.setImageDrawable(topBannerList.get(position));
+
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.place_holder_image)
+                    .error(R.drawable.place_holder_image);
+            Glide.with(ProductActivity.this).load(responseData.productImage).apply(options).into(img);
+          //  img.setImageDrawable(topBannerList.get(position));
             container.addView(view);
             return view;
         }

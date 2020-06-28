@@ -4,20 +4,36 @@ public class UserModel {
 
     private int id;
     private String name;
+    private String lastName;
+
     private String email;
     private String password;
+    private String city;
+    private String zip;
+
     private String rePassword;
     private String phNumber;
     private String address;
 
-
-    public UserModel(String name, String email, String password, String rePassword, String phNumber, String address) {
+    public UserModel(int id, String name, String lastName, String email, String password, String city, String zip, String rePassword, String phNumber, String address) {
+        this.id = id;
         this.name = name;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.city = city;
+        this.zip = zip;
         this.rePassword = rePassword;
         this.phNumber = phNumber;
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,6 +42,14 @@ public class UserModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -42,6 +66,22 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public String getRePassword() {
