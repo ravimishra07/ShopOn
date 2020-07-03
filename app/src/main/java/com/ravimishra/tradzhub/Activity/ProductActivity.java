@@ -3,18 +3,6 @@ package com.ravimishra.tradzhub.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,15 +11,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.ravimishra.tradzhub.Adapter.BannerAddapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
 import java.util.ArrayList;
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
     TextView[] bottomBars;
     LinearLayout Layout_bars;
     MyViewPagerAdapter myvpAdapter;
@@ -41,6 +38,9 @@ public class ProductActivity extends AppCompatActivity {
     LinearLayout bottomLL;
     ProgressBar progressBar;
     TradzHubProductModel.ResponseData responseData;
+    LinearLayout tvBuyNow;
+    CategoryModel.ResponseData catResponseData;
+    int value = 0;
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -69,10 +69,12 @@ public class ProductActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent i = getIntent();
-         responseData = (TradzHubProductModel.ResponseData) i.getSerializableExtra("PRODUCT");
+
+
         viewPager = findViewById(R.id.viewPager);
         Layout_bars = findViewById(R.id.layoutBars);
-
+        tvBuyNow = findViewById(R.id.tvBuyNow);
+        tvBuyNow.setOnClickListener(this);
 
         banner2 = getResources().getDrawable(R.drawable.pf1);
         banner3 = getResources().getDrawable(R.drawable.pf2);
@@ -89,15 +91,20 @@ public class ProductActivity extends AppCompatActivity {
         productName = findViewById(R.id.productName);
         productPrice = findViewById(R.id.productPrice);
         productDescription = findViewById(R.id.productDescription);
+        Bundle extras = getIntent().getExtras();
+        value = extras.getInt("FROM");
+        if (value == 1) {
+            responseData = (TradzHubProductModel.ResponseData) i.getSerializableExtra("PRODUCT");
+            productName.setText(responseData.title);
+            productPrice.setText("$ " + responseData.salePrice);
+            productDescription.setText(responseData.description);
 
-        productName.setText(responseData.title);
-        productPrice.setText("$ "+responseData.salePrice);
-        productDescription.setText(responseData.description);
+        }
 
         myvpAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myvpAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-        ColoredBars(0);
+        ColoredBars(1);
         showLoader();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -138,7 +145,6 @@ public class ProductActivity extends AppCompatActivity {
                             bottomLL.setVisibility(View.VISIBLE);
                         }
                     });
-                    ;
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -152,6 +158,14 @@ public class ProductActivity extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvBuyNow:
+
+        }
+    }
+
     public class MyViewPagerAdapter extends PagerAdapter {
         private LayoutInflater inflater;
 
@@ -163,12 +177,13 @@ public class ProductActivity extends AppCompatActivity {
             inflater = (LayoutInflater) getSystemService(ProductActivity.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.pager_item, container, false);
             ImageView img = view.findViewById(R.id.productImage);
-
-            RequestOptions options = new RequestOptions()
-                    .centerCrop()
-                    .placeholder(R.drawable.place_holder_image)
-                    .error(R.drawable.place_holder_image);
-            Glide.with(ProductActivity.this).load(responseData.productImage).apply(options).into(img);
+            if (value == 1) {
+                RequestOptions options = new RequestOptions()
+                        .centerCrop()
+                        .placeholder(R.drawable.place_holder_image)
+                        .error(R.drawable.place_holder_image);
+                Glide.with(ProductActivity.this).load(responseData.productImage).apply(options).into(img);
+            }
           //  img.setImageDrawable(topBannerList.get(position));
             container.addView(view);
             return view;

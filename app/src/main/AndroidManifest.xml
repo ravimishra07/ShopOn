@@ -3,13 +3,29 @@
     package="com.ravimishra.tradzhub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
-        android:usesCleartextTraffic="true"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.PayementActivity"></activity>
+        <activity
+            android:name=".Activity.AddAddressActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activity.ManageAddressActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activity.AllStoresActivity" />
+        <activity android:name=".Activity.ProductDetailActivity" />
+        <activity
+            android:name=".Activity.ResetPassword"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.ForgotPassword"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -33,9 +49,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.FirstActivity"
-            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity
             android:name=".Activity.ItemDetailActivity"
             android:label="Products"

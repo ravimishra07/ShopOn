@@ -3,12 +3,6 @@ package com.ravimishra.tradzhub.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,29 +10,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ravimishra.tradzhub.Activity.ItemDetailActivity;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
-import com.ravimishra.tradzhub.Activity.StoreActivity;
 import com.ravimishra.tradzhub.Adapter.BannerAddapter;
 import com.ravimishra.tradzhub.Adapter.OnEAdpater;
 import com.ravimishra.tradzhub.Adapter.StoreAdapter;
 import com.ravimishra.tradzhub.Adapter.TabAdapter;
 import com.ravimishra.tradzhub.Adapter.TopMenuAdapter;
 import com.ravimishra.tradzhub.Model.CategoryModel;
-import com.ravimishra.tradzhub.Model.NewProductModel;
 import com.ravimishra.tradzhub.Model.ProductModel;
-import com.ravimishra.tradzhub.Model.RegisterModel;
+import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.Model.TopMenuModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
-import com.ravimishra.tradzhub.Model.UserModel;
 import com.ravimishra.tradzhub.R;
 import com.ravimishra.tradzhub.api.APIService;
 import com.ravimishra.tradzhub.api.APIUrl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -74,10 +68,9 @@ public class HomeFragment extends Fragment {
 
     private CategoryModel topMenu;
     private TradzHubProductModel popularModel;
-
     private TradzHubProductModel featuredModel;
     private TradzHubProductModel latestModel;
-    private TradzHubProductModel recentlyViewedModel;
+    private StoreModel storeModel;
 
     // recylverview 1
     private List<ProductModel> productModel = new ArrayList<>();
@@ -116,13 +109,17 @@ public class HomeFragment extends Fragment {
         featuredBtn = view.findViewById(R.id.featuredViewAllBtn);
         storeBtn = view.findViewById(R.id.storeBtn);
 
+        newArrivalBtn.setEnabled(false);
+        popularBtn.setEnabled(false);
+        featuredBtn.setEnabled(false);
+
+
         // initialize the button and sets click listeners
         setUpButtons();
         storeRecyclerView = view.findViewById(R.id.storeRecyclerView);
         viewP = view.findViewById(R.id.viewPager);
 
         setUpanner();
-
         tabs = view.findViewById(R.id.tabLayout);
         viewPager2 = view.findViewById(R.id.viewpager2);
         setupViewPager(viewPager2);
@@ -146,15 +143,20 @@ public class HomeFragment extends Fragment {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "New Arrivals");
             i.putExtra("PRODUCT", latestModel);
+            i.putExtra("FROM", 0);
+            i.putExtra("CATEGORY_ID", -1);
             swipeTimer.cancel();
             startActivity(i);
-
         });
 
         popularBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "Popular");
             i.putExtra("PRODUCT", popularModel);
+            i.putExtra("FROM", 0);
+            i.putExtra("CATEGORY_ID", -1);
+
+
             swipeTimer.cancel();
             startActivity(i);
         });
@@ -162,6 +164,10 @@ public class HomeFragment extends Fragment {
         featuredBtn.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ItemDetailActivity.class);
             i.putExtra("title", "Featured");
+            i.putExtra("FROM", 0);
+            i.putExtra("CATEGORY_ID", -1);
+
+
             Bundle bundle = new Bundle();
             bundle.putSerializable("PRODUCT", featuredModel);
             i.putExtras(bundle);
@@ -170,11 +176,11 @@ public class HomeFragment extends Fragment {
             startActivity(i);
         });
         storeBtn.setOnClickListener(v -> {
-            Intent i = new Intent(getActivity(), StoreActivity.class);
-            i.putExtra("type", 2);
-            swipeTimer.cancel();
-
-            startActivity(i);
+//            Intent i = new Intent(getActivity(), StoreActivity.class);
+//            i.putExtra("type", 2);
+//            swipeTimer.cancel();
+//
+//            startActivity(i);
         });
         popularRecyclerView.setOnClickListener(v -> {
             Intent i = new Intent(getActivity(), ProductActivity.class);
@@ -212,30 +218,26 @@ public class HomeFragment extends Fragment {
 
         /** defining the latest product api call */
         Call<TradzHubProductModel>callFeaturedProducts = service.getFeaturedProducts(
-                1,
-                1,
-                63
+                1
         );
 
         /** defining the latest product api call */
         Call<TradzHubProductModel>callLatestProducts = service.getLatestProducts(
-                1,
-                1,
-                63
+                1
         );
 
         /** defining the latest product api call */
         Call<TradzHubProductModel>callRecentlyViewedProducts = service.getRecentlyViewedProducts(
-                1,
-                1,
-                63
+                1
         );
 
         /** defining mostly viewed(popular) product api call */
         Call<TradzHubProductModel>callMostlyViewedproducts = service.getMostlyViewedProducts(
-                1,
-                1,
-                63
+                1
+        );
+
+        Call<StoreModel> callStoreApi = service.getStores(
+                1
         );
 
 
@@ -268,14 +270,13 @@ public class HomeFragment extends Fragment {
                 recylerView3.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 OnEAdpater adapter3 = new OnEAdpater(getActivity(), featuredModel.data);
                 recylerView3.setAdapter(adapter3);
+                featuredBtn.setEnabled(true);
                 featuredProgressBar.setVisibility(View.GONE);
-
             }
 
             @Override
             public void onFailure(Call<TradzHubProductModel> call, Throwable t) {
                 Log.v("TAG_API", "Some error occured callFeaturedProducts");
-
             }
         });
 
@@ -287,8 +288,8 @@ public class HomeFragment extends Fragment {
                 recylerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 OnEAdpater adapter2 = new OnEAdpater(getActivity(), latestModel.data);
                 recylerView2.setAdapter(adapter2);
+                newArrivalBtn.setEnabled(true);
                 pbNewArrivals.setVisibility(View.GONE);
-
             }
 
             @Override
@@ -307,6 +308,7 @@ public class HomeFragment extends Fragment {
 
                 OnEAdpater onEAdpater = new OnEAdpater(getActivity(), popularModel.data);
                 popularRecyclerView.setAdapter(onEAdpater);
+                popularBtn.setEnabled(true);
                 popularProgressbar.setVisibility(View.GONE);
 
             }
@@ -317,18 +319,29 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        callStoreApi.enqueue(new Callback<StoreModel>() {
+            @Override
+            public void onResponse(Call<StoreModel> call, Response<StoreModel> response) {
+                storeModel = response.body();
+
+                storeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                StoreAdapter storeAdapter = new StoreAdapter(getContext(), storeModel.data);
+                storeRecyclerView.setAdapter(storeAdapter);
+                pbPopularStories.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<StoreModel> call, Throwable t) {
+                Log.v("TAG_API", "Some error occured callStoreApi");
+
+            }
+        });
     }
 
     private void inisilizerecycler() {
 
         Log.d(TAG, "inisilizerecycler: ");
 
-        storeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
-
-        StoreAdapter storeAdapter = new StoreAdapter(getActivity());
-        storeRecyclerView.setAdapter(storeAdapter);
     }
 
     @Override

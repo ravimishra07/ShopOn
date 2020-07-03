@@ -1,12 +1,9 @@
 package com.ravimishra.tradzhub.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -14,16 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ravimishra.tradzhub.Model.AuthModel;
-import com.ravimishra.tradzhub.Model.RegisterModel;
-import com.ravimishra.tradzhub.Model.UserModel;
 import com.ravimishra.tradzhub.R;
+import com.ravimishra.tradzhub.Utils.Constants;
 import com.ravimishra.tradzhub.api.APIService;
 import com.ravimishra.tradzhub.api.APIUrl;
-
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,8 +63,8 @@ public class RegisterActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup();
-                // userSignUp();
+                // signup();
+                userSignUp();
             }
         });
 
@@ -93,7 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        _signupButton.setEnabled(false);
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainPage.this);
+//        String name = preferences.getString(Constants.SHARED_EMAIL, "");        _signupButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this,
                 R.style.AppTheme);
@@ -204,7 +200,12 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void userSignUp() {
+        Log.d(TAG, "Signup");
 
+        if (!validate()) {
+            onSignupFailed();
+            return;
+        }
         //defining a progress dialog to show while signing up
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Signing Up...");
@@ -213,7 +214,7 @@ public class RegisterActivity extends AppCompatActivity {
         //getting the user values
         //final RadioButton radioSex = (RadioButton) findViewById(radioGender.getCheckedRadioButtonId());
         String name = _nameText.getText().toString();
-        String lastName = _nameText.getText().toString();
+        String lastName = _lastName.getText().toString();
         String email = _inputEmail.getText().toString();
         String mobile = _inputMobile.getText().toString();
         String address = _addressText.getText().toString();
@@ -260,12 +261,17 @@ public class RegisterActivity extends AppCompatActivity {
                 //hiding progress dialog
                 progressDialog.dismiss();
                 AuthModel authModel = response.body();
+                if (response.body().status == "0") {
+                    _inputEmail.setError("Email already exist");
+                    return;
+                }
                 Log.v("successRegister", authModel.data.get(0).token);
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("email",email);
-                editor.putString("password",password);
-                editor.putString("token",authModel.data.get(0).token);
+                editor.putString(Constants.SHARED_EMAIL, email);
+                editor.putString(Constants.SHARED_USERNAME, name);
+                editor.putString(Constants.SHARED_PASSWORD, password);
+                editor.putString(Constants.SHARED_TOKEN, authModel.data.get(0).token);
                 editor.apply();
 
                 SharedPreferences preferences2 = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);

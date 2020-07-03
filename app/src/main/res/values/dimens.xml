@@ -21,4 +21,5 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="heart_size">32dp</dimen>
     <dimen name="half_heart_size">16dp</dimen>
+    <dimen name="recyclerview_height">250dp</dimen>
 </resources>

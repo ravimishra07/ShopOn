@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -18,11 +17,11 @@
         android:id="@+id/svSideMenu"
         android:layout_width="@dimen/_220sdp"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/rectangle_white"
         android:choiceMode="singleChoice"
         android:dividerHeight="@dimen/_2sdp"
-        android:scrollbars="none"
-        android:layout_gravity="start"
-        android:background="@drawable/rectangle_white">
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,52 +32,43 @@
                 android:id="@+id/rlUser"
                 android:layout_width="match_parent"
 
-                android:layout_height="@dimen/_120sdp"
-                android:background="@drawable/rectangle_gradient_pink"
+                android:layout_height="@dimen/_60sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/rectangle_gradient_pink"
                 android:gravity="center_vertical">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ivPic"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_60sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:src="@drawable/man"
-                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/tvName"
+                    style="@style/TradzHubThemeFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Guest User"
+
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_below="@+id/ivPic"
-                    style="@style/TradzHubThemeFont"
-                    android:textStyle="bold"
+                    android:text="Guest User"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp"
-                    android:textColor="@color/white" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvEmail"
+                    android:id="@+id/tvLogin"
+                    style="@style/TradzHubThemeFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rajesh@gmail.com"
-                    android:layout_marginLeft="@dimen/_15sdp"
-                    android:textStyle="bold"
                     android:layout_below="@+id/tvName"
-                    style="@style/TradzHubThemeFont"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:text="Login here"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_9sdp"
-                    android:visibility="gone"
-                    android:textColor="@color/white" />
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_below="@+id/rlUser">
+                android:layout_below="@+id/rlUser"
+                android:orientation="vertical">
 
                 <!--Home-->
                 <RelativeLayout
@@ -90,290 +80,105 @@
                     <ImageView
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:src="@drawable/ic_home" />
 
                     <TextView
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Home"
-                        android:paddingLeft="@dimen/_45sdp"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
                         android:gravity="center_vertical"
-                        android:textColor="@color/bluee"
+                        android:paddingLeft="@dimen/_45sdp"
                         android:singleLine="true"
-                        style="@style/TradzHubThemeFont"
+                        android:text="Home"
+                        android:textColor="@color/black"
 
-                        android:layout_centerVertical="true" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </RelativeLayout>
 
 
                 <!--Shop categories-->
                 <RelativeLayout
+                    android:id="@+id/rlShopCategories"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:id="@+id/rlShopCategories"
                     android:layout_marginTop="@dimen/_2sdp">
 
                     <ImageView
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:src="@drawable/ic_category" />
 
                     <TextView
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/_45sdp"
-                        android:text="Shop Categories"
-                        android:textSize="@dimen/_12sdp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/bluee"
-                        android:singleLine="true"
-                        style="@style/TradzHubThemeFont"
-
-                        android:layout_centerVertical="true" />
-
-                    <ImageView
-                        android:layout_width="@dimen/_15sdp"
-                        android:layout_height="@dimen/_15sdp"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/storeCatArrow"
-                        android:layout_marginRight="@dimen/_15sdp"
-                        android:src="@drawable/arrowback" />
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/_45sdp"
+                        android:singleLine="true"
+                        android:text="Shop Categories"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
 
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
 
-                    android:id="@+id/shopCatLinearLayout"
-                    android:paddingLeft="@dimen/_20sdp">
-
-                    <!--  Category 1-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 1"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                    <!--                    Category 2-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 2"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                    <!--  Category 3-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 3"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                    <!--  Category 4-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 4"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                    <!--  Category 5-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 5"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                    <!--  Category 6-->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_marginTop="@dimen/_2sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_15sdp"
-                            android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:src="@drawable/ic_circle" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Category 6"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
-
-                            android:layout_centerVertical="true" />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
                 <!--Stores-->
 
                 <RelativeLayout
+                    android:id="@+id/rlStore"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:id="@+id/rlStore"
                     android:layout_marginTop="@dimen/_2sdp">
 
                     <ImageView
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:src="@drawable/filter" />
 
                     <TextView
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/_45sdp"
-                        android:text="Stores"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
                         android:gravity="center_vertical"
-                        android:textColor="@color/bluee"
+                        android:paddingLeft="@dimen/_45sdp"
                         android:singleLine="true"
-                        style="@style/TradzHubThemeFont"
+                        android:text="Stores"
+                        android:textColor="@color/black"
 
-                        android:layout_centerVertical="true" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <ImageView
+                        android:id="@+id/storeArrow"
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
-                        android:id="@+id/storeArrow"
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/_15sdp"
                         android:src="@drawable/arrowback" />
 
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/storeLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
-                    android:id="@+id/storeLinearLayout"
-                    android:paddingLeft="@dimen/_20sdp">
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:visibility="gone">
 
                     <!--  Category 1-->
                     <RelativeLayout
@@ -384,22 +189,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Store 1"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Store 1"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -412,22 +217,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Store 2"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Store 2"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -440,22 +245,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Store 3"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Store 3"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -468,22 +273,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Store 4"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Store 4"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -496,22 +301,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Store 5"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Store 5"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -524,22 +329,22 @@
                         <ImageView
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
-                            android:layout_centerVertical="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:src="@drawable/ic_circle" />
 
                         <TextView
+                            style="@style/TradzHubThemeFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Category 6"
-                            android:paddingLeft="@dimen/_40sdp"
-                            android:textSize="@dimen/_10sdp"
+                            android:layout_centerVertical="true"
                             android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/_40sdp"
+                            android:text="Category 6"
                             android:textColor="@color/black"
-                            style="@style/TradzHubThemeFont"
 
-                            android:layout_centerVertical="true" />
+                            android:textSize="@dimen/_10sdp" />
 
                     </RelativeLayout>
 
@@ -550,9 +355,9 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightGrey"
                     android:layout_marginLeft="@dimen/_2sdp"
-                    android:layout_marginRight="@dimen/_2sdp" />
+                    android:layout_marginRight="@dimen/_2sdp"
+                    android:background="@color/lightGrey" />
                 <!--Loans-->
                 <RelativeLayout
                     android:id="@+id/rlAboutUs"
@@ -563,23 +368,23 @@
                     <ImageView
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:src="@drawable/ic_user" />
 
                     <TextView
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/_45sdp"
-                        android:text="About Us"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
                         android:gravity="center_vertical"
-                        android:textColor="@color/bluee"
+                        android:paddingLeft="@dimen/_45sdp"
                         android:singleLine="true"
-                        style="@style/TradzHubThemeFont"
+                        android:text="About Us"
+                        android:textColor="@color/black"
 
-                        android:layout_centerVertical="true" />
+                        android:textSize="@dimen/_12sdp" />
 
                 </RelativeLayout>
 
@@ -594,23 +399,23 @@
                     <ImageView
                         android:layout_width="@dimen/_22sdp"
                         android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/_15sdp"
                         android:src="@drawable/ic_share" />
 
                     <TextView
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/_45sdp"
-                        android:text="Share"
-                        android:textSize="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
                         android:gravity="center_vertical"
-                        android:textColor="@color/bluee"
+                        android:paddingLeft="@dimen/_45sdp"
                         android:singleLine="true"
-                        style="@style/TradzHubThemeFont"
+                        android:text="Share"
+                        android:textColor="@color/black"
 
-                        android:layout_centerVertical="true" />
+                        android:textSize="@dimen/_12sdp" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

@@ -23,31 +23,40 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="Guest User"
-                    android:layout_marginRight="@dimen/_50sdp"
-                    android:id="@+id/name"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp"
-                    style="@style/TradzHubThemeFont"
 
-                    android:layout_toLeftOf="@+id/ivSearch"
+                    android:id="@+id/AppName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_height="wrap_content" />
+                    android:fontFamily="@font/poppinextrabold"
+                    android:text="TradzHub"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
 
                 <ImageView
                     android:id="@+id/ivCart"
                     android:layout_width="@dimen/_17sdp"
-                    android:layout_alignParentRight="true"
                     android:layout_height="@dimen/_17sdp"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:tint="@color/white"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_toLeftOf="@+id/ivWishlist"
                     android:backgroundTint="@color/white"
-                    app:srcCompat="@drawable/cartt"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/heart_cart_icon"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <ImageView
+                    android:id="@+id/ivWishlist"
+                    android:layout_width="@dimen/_17sdp"
+                    android:layout_height="@dimen/_17sdp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:backgroundTint="@color/white"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/while_heart"
                     tools:ignore="VectorDrawableCompat" />
 
 

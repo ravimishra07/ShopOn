@@ -2,9 +2,10 @@ package com.ravimishra.tradzhub.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CategoryModel {
+public class CategoryModel implements Serializable {
 
     @SerializedName("status")
     public Integer status;
@@ -20,7 +21,7 @@ public class CategoryModel {
     @SerializedName("data")
     public List<ResponseData> data = null;
 
-    public class ResponseData {
+    public class ResponseData implements Serializable {
 
 
         @SerializedName("category_name")
@@ -28,6 +29,8 @@ public class CategoryModel {
 
         @SerializedName("cat_image")
         public String getCategoryImage;
+        @SerializedName("category_id")
+        public String categoryID;
 
     }
 

@@ -2,7 +2,6 @@ package com.ravimishra.tradzhub.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
-import com.ravimishra.tradzhub.Model.NewProductModel;
-import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
-import java.io.Serializable;
 import java.util.List;
 
 
@@ -61,6 +57,7 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
             Intent i = new Intent(context, ProductActivity.class);
            // i.putExtra("PRODUCT", (Parcelable) productModel);
             i.putExtra("PRODUCT",  model);
+            i.putExtra("FROM", 1);
             context.startActivity(i);
         });
 

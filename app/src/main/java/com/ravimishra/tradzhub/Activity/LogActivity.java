@@ -1,7 +1,5 @@
 package com.ravimishra.tradzhub.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ravimishra.tradzhub.Model.AuthModel;
 import com.ravimishra.tradzhub.R;
+import com.ravimishra.tradzhub.Utils.Constants;
 import com.ravimishra.tradzhub.api.APIService;
 import com.ravimishra.tradzhub.api.APIUrl;
 
@@ -40,13 +40,14 @@ public class LogActivity extends AppCompatActivity {
     Button _loginButton;
     @BindView(R.id.link_signup)
     TextView _signupLink;
+    TextView tvForgotPassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         ButterKnife.bind(this);
-
+        tvForgotPassword = findViewById(R.id.tvForgotPassword);
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -55,6 +56,14 @@ public class LogActivity extends AppCompatActivity {
             }
         });
 
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LogActivity.this, "click is working", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LogActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
         _signupLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -115,18 +124,27 @@ public class LogActivity extends AppCompatActivity {
                 //hiding progress dialog
                 progressDialog.dismiss();
                 AuthModel authModel = response.body();
+                if (response.body().status == "0") {
+                    _emailText.setError("email or password is incorrect");
+                    return;
+                }
                 Log.v("successLogin", authModel.data.get(0).token);
+                String username = authModel.data.get(0).username;
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LogActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("email",email);
-                editor.putString("password",password);
-                editor.putString("token",authModel.data.get(0).token);
+
+                editor.putString(Constants.SHARED_EMAIL, email);
+                editor.putString(Constants.SHARED_USERNAME, username);
+
+                editor.putString(Constants.SHARED_PASSWORD, password);
+                editor.putString(Constants.SHARED_TOKEN, authModel.data.get(0).token);
                 editor.apply();
 
                 SharedPreferences preferences2 = PreferenceManager.getDefaultSharedPreferences(LogActivity.this);
-                String email1 = preferences2.getString("email", "");
-                if(!email1.equalsIgnoreCase("")) {
-                    Log.v("email_tag",email1);
+                String user_name = preferences2.getString(Constants.SHARED_USERNAME, "");
+
+                if (!user_name.equalsIgnoreCase("")) {
+                    Log.v("email_tag", user_name);
                 }
                 Intent i = new Intent(LogActivity.this, MainPage.class);
                 startActivity(i);
@@ -135,22 +153,10 @@ public class LogActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<AuthModel> call, Throwable t) {
                 progressDialog.dismiss();
-                Log.v("failLogin", "failed to sign up"+t.getMessage());
+                Log.v("failLogin", "failed to sign up" + t.getMessage());
 
             }
         });
-
-       /* new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
-                */
-
     }
 
 

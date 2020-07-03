@@ -1,40 +1,32 @@
 package com.ravimishra.tradzhub.Activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
-import com.ravimishra.tradzhub.Adapter.MainTabStoreAdapter;
 import com.ravimishra.tradzhub.Adapter.TabAdapter;
-import com.ravimishra.tradzhub.Adapter.TabRecyclerViewAdapter;
-import com.ravimishra.tradzhub.Fragment.BestSellingFragment;
-import com.ravimishra.tradzhub.Fragment.JustInFragment;
 import com.ravimishra.tradzhub.Fragment.StoreFollowersFragment;
 import com.ravimishra.tradzhub.Fragment.StoreProductFragment;
 import com.ravimishra.tradzhub.Fragment.StoreReviewFragment;
+import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel;
+import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,15 +42,16 @@ public class StoreActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     FrameLayout frameLayout;
     ProgressBar progressBar;
+    StoreModel.ResponseData responseData;
+    TradzHubProductModel productResponseData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get Image ftom bundle
-        Bundle extras = getIntent().getExtras();
-        int value = extras.getInt("type");
+        Intent i = getIntent();
+        responseData = (StoreModel.ResponseData) i.getSerializableExtra("STORE");
 
         setContentView(R.layout.activity_store);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,31 +59,35 @@ public class StoreActivity extends AppCompatActivity {
 
         collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
         ImageView toolbarImageView = findViewById(R.id.toolbarImage);
-        Drawable banner2 = getResources().getDrawable(R.drawable.banner2);
+        collapsingToolbarLayout.setTitle(responseData.storeName);
 
-        Drawable banner3 = getResources().getDrawable(R.drawable.banner3);
-        Drawable banner4 = getResources().getDrawable(R.drawable.banner4);
         backImageBtn = findViewById(R.id.backImageBtn);
 
         frameLayout = findViewById(R.id.mainFrame);
         progressBar = findViewById(R.id.progressbar);
         appBarLayout = findViewById(R.id.app_bar);
 
-        if (value == 1) {
-            //bundle.putString("type", "3");
-            toolbarImageView.setImageDrawable(banner2);
-
-        } else if (value == 2) {
-            toolbarImageView.setImageDrawable(banner3);
-
-        } else if (value == 3) {
-            toolbarImageView.setImageDrawable(banner4);
-        } else {
-            toolbarImageView.setImageDrawable(banner3);
-        }
+//        if (value == 1) {
+//            //bundle.putString("type", "3");
+//            toolbarImageView.setImageDrawable(banner2);
+//
+//        } else if (value == 2) {
+//            toolbarImageView.setImageDrawable(banner3);
+//
+//        } else if (value == 3) {
+//            toolbarImageView.setImageDrawable(banner4);
+//        } else {
+//            toolbarImageView.setImageDrawable(banner3);
+//        }
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.place_holder_image)
+                .error(R.drawable.place_holder_image);
+        Glide.with(this).load(responseData.storeImage).apply(options).into(toolbarImageView);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
+        toolbar.setTitle(responseData.storeName);
 
         backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +106,10 @@ public class StoreActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
 
+        int store_id = Integer.parseInt(responseData.storeID);
 
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
-        StoreProductFragment storeProductFragment = new StoreProductFragment();
+        StoreProductFragment storeProductFragment = new StoreProductFragment(store_id);
         storeProductFragment.setArguments(bundle);
 
         adapter.addFragment(storeProductFragment, "Store Product");
@@ -139,7 +137,6 @@ public class StoreActivity extends AppCompatActivity {
                             tabs.setVisibility(View.VISIBLE);
                         }
                     });
-                    ;
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

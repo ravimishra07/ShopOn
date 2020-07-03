@@ -427,6 +427,7 @@
                 app:cardElevation="@dimen/_2sdp">
 
                 <LinearLayout
+                    android:id="@+id/tvBuyNow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"

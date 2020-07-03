@@ -18,6 +18,8 @@ public class AuthModel {
 
         @SerializedName("token")
         public String token;
+        @SerializedName("username")
+        public String username;
 
     }
 }

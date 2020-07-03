@@ -76,15 +76,28 @@
                     android:textColor="@color/white" />
 
                 <TextView
+                    android:id="@+id/tvForgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="right"
+                    android:text="Forgot password?"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dip"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/link_signup"
+                    style="@style/TradzHubThemeFont"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
                     android:text="No account yet? Create one"
-                    style="@style/TradzHubThemeFont"
 
-                    android:textSize="16dip" />
+                    android:textSize="18dip" />
 
                 <RelativeLayout
                     android:id="@+id/rlOrSection"
@@ -100,11 +113,11 @@
 
                     <TextView
                         android:id="@+id/orText"
+                        style="@style/TradzHubThemeFont"
                         android:layout_width="@dimen/_32sdp"
                         android:layout_height="@dimen/_32sdp"
                         android:layout_centerInParent="true"
                         android:gravity="center"
-                        style="@style/TradzHubThemeFont"
 
                         android:text="OR" />
 
@@ -146,8 +159,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center_vertical"
                                 android:background="@color/colorAccent"
+                                android:gravity="center_vertical"
 
                                 android:orientation="horizontal">
 
@@ -157,12 +170,12 @@
                                     android:src="@drawable/smallgoogle_icon" />
 
                                 <TextView
+                                    style="@style/TradzHubThemeFont"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_28sdp"
                                     android:layout_marginLeft="@dimen/_2sdp"
                                     android:gravity="center"
                                     android:text="Login with Google"
-                                    style="@style/TradzHubThemeFont"
 
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_10sdp"
@@ -184,9 +197,9 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:background="#3b5998"
                                 android:gravity="center"
                                 android:orientation="horizontal"
-                                android:background="#3b5998"
 
                                 android:weightSum="2">
 
@@ -196,11 +209,11 @@
                                     android:src="@drawable/fb_small_icon" />
 
                                 <TextView
+                                    style="@style/TradzHubThemeFont"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_28sdp"
                                     android:layout_marginLeft="@dimen/_2sdp"
                                     android:gravity="center"
-                                    style="@style/TradzHubThemeFont"
 
                                     android:text="Login with Google"
                                     android:textColor="@color/white"
