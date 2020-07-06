@@ -2,65 +2,59 @@ package com.ravimishra.tradzhub.Adapter;
 
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class BannerAddapter extends PagerAdapter {
 
-    private ArrayList<Integer> images;
+    private List<String> imagesurls;
     private LayoutInflater inflater;
     private Context context;
 
-    public BannerAddapter(Context context, ArrayList<Integer> images) {
-
+    public BannerAddapter(Context context, List<String> imagesurls) {
         this.context = context;
-
-        this.images = images;
-
+        this.imagesurls = imagesurls;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-
         container.removeView((View) object);
     }
 
     @Override
     public int getCount() {
-        return images.size();
+        return imagesurls.size();
     }
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
 
-        int img = images.get(position);
+        String imgUrl = imagesurls.get(position);
         View myImageLayout = inflater.inflate(R.layout.bannerlayout, view, false);
-
-        final ImageView myImage = (ImageView) myImageLayout.findViewById(R.id.img_banner);
-
-        myImage.setImageResource(img);
-        // myImage.setScaleType(ImageView.ScaleType.FIT_XY);
-
+        final ImageView myImage = myImageLayout.findViewById(R.id.img_banner);
+        RequestOptions options = new RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.place_holder_image)
+                .error(R.drawable.place_holder_image);
+        Glide.with(context).load(imgUrl).apply(options).into(myImage);
         view.addView(myImageLayout);
-
-
         return myImageLayout;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-
         return view.equals(o);
     }
 

@@ -1,6 +1,8 @@
 package com.ravimishra.tradzhub.api;
 
+import com.ravimishra.tradzhub.Model.AddressModel;
 import com.ravimishra.tradzhub.Model.AuthModel;
+import com.ravimishra.tradzhub.Model.BannerImageModel;
 import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
@@ -163,4 +165,42 @@ public interface APIService {
             @Field("getallproductbystore") int getStoresProducts,
             @Field("store_id") int storeID
     );
+
+    /**
+     * get banner images
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<BannerImageModel> getBannerImages(
+            @Field("sliderbtn") int bannerID);
+
+    /**
+     * add user address in database
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<AuthModel> addUserAddress(
+            @Field("addressbtn") int addressKey,
+            @Field("user_id") String token,
+
+            @Field("ship_name") String name,
+            @Field("ship_email") String email,
+            @Field("ship_phone") String phone,
+            @Field("ship_address") String address,
+            @Field("ship_city") String city,
+            @Field("ship_pincode") String zip,
+            @Field("ship_country") String country,
+            @Field("ship_state") String state
+    );
+
+    /**
+     * get all address of user
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<AddressModel> getAllAddress(
+            @Field("getaddress") int getAddress,
+            @Field("user_id") String userId
+    );
+
 }

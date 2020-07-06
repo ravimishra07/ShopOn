@@ -1,8 +1,11 @@
 package com.ravimishra.tradzhub.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,28 +23,30 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
-
-import java.util.ArrayList;
+import com.ravimishra.tradzhub.Utils.Constants;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView[] bottomBars;
-    LinearLayout Layout_bars;
-    MyViewPagerAdapter myvpAdapter;
-    Drawable banner2, banner3, banner4;
-    TextView productName,productPrice,productDescription;
-    NestedScrollView scrollView;
-    LinearLayout bottomLL;
-    ProgressBar progressBar;
-    TradzHubProductModel.ResponseData responseData;
-    LinearLayout tvBuyNow;
-    CategoryModel.ResponseData catResponseData;
-    int value = 0;
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+    public static final String DATABASE_NAME = "cartdatabase";
+    SQLiteDatabase mDatabase;
+
+    private TextView[] bottomBars;
+    private ImageView backImage;
+    private LinearLayout Layout_bars, llAddToCart, llBuyNow;
+    private MyViewPagerAdapter myvpAdapter;
+    private Drawable banner2, banner3, banner4;
+    private TextView tvProductName, tvProductPrice, tvProductDescription, tvInStock, tvOutStock, tvOrignalPrice, tvOffPrice, tvShippingCharges;
+    private NestedScrollView scrollView;
+    private LinearLayout bottomLL;
+    private ProgressBar progressBar;
+    private TradzHubProductModel.ResponseData responseData;
+    private LinearLayout tvBuyNow;
+    private CategoryModel.ResponseData catResponseData;
+
+    private int value = 0;
+    private ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
@@ -57,9 +62,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         }
     };
-    private int[] banner = {R.drawable.pf1, R.drawable.pf2, R.drawable.pf3};
     private ViewPager viewPager;
-    private ArrayList<Drawable> topBannerList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,37 +71,35 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent i = getIntent();
-
-
         viewPager = findViewById(R.id.viewPager);
         Layout_bars = findViewById(R.id.layoutBars);
         tvBuyNow = findViewById(R.id.tvBuyNow);
+        tvOrignalPrice = findViewById(R.id.productOrignalPrice);
+
+        tvOffPrice = findViewById(R.id.tvOffPrice);
+        tvInStock = findViewById(R.id.tvInstock);
+        tvOutStock = findViewById(R.id.tvOutstock);
+        tvShippingCharges = findViewById(R.id.tvShippingCharges);
+        tvOffPrice = findViewById(R.id.tvOffPrice);
+        llBuyNow = findViewById(R.id.llBuyNow);
+        llAddToCart = findViewById(R.id.llAddToCart);
+        backImage = findViewById(R.id.back);
+        llBuyNow.setOnClickListener(this);
+        llAddToCart.setOnClickListener(this);
+        backImage.setOnClickListener(this);
         tvBuyNow.setOnClickListener(this);
-
-        banner2 = getResources().getDrawable(R.drawable.pf1);
-        banner3 = getResources().getDrawable(R.drawable.pf2);
-        banner4 = getResources().getDrawable(R.drawable.pf3);
-
-        topBannerList.add(banner2);
-        topBannerList.add(banner3);
-        topBannerList.add(banner4);
 
         bottomLL = findViewById(R.id.bottomLL);
         progressBar = findViewById(R.id.progressbar);
         scrollView = findViewById(R.id.scrollView);
 
-        productName = findViewById(R.id.productName);
-        productPrice = findViewById(R.id.productPrice);
-        productDescription = findViewById(R.id.productDescription);
+        tvProductName = findViewById(R.id.productName);
+        tvProductPrice = findViewById(R.id.productPrice);
+        tvProductDescription = findViewById(R.id.productDescription);
         Bundle extras = getIntent().getExtras();
         value = extras.getInt("FROM");
         if (value == 1) {
-            responseData = (TradzHubProductModel.ResponseData) i.getSerializableExtra("PRODUCT");
-            productName.setText(responseData.title);
-            productPrice.setText("$ " + responseData.salePrice);
-            productDescription.setText(responseData.description);
-
+            setData();
         }
 
         myvpAdapter = new MyViewPagerAdapter();
@@ -106,9 +107,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
         ColoredBars(1);
         showLoader();
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+
     }
 
     private void ColoredBars(int thisScreen) {
@@ -154,6 +153,32 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         myThread.start();
     }
 
+    private void setData() {
+        Intent i = getIntent();
+        responseData = (TradzHubProductModel.ResponseData) i.getSerializableExtra("PRODUCT");
+        int stockValue = Integer.parseInt(responseData.currentStock);
+        float purchasedValue = Float.parseFloat(responseData.purchasePrice);
+        float saleValue = Float.parseFloat(responseData.salePrice);
+        float percentOff = (1 - (purchasedValue / saleValue)) * 100;
+        int percentAbsolutePrice = (int) percentOff;
+
+        tvProductName.setText(responseData.title);
+        tvProductPrice.setText("$ " + responseData.purchasePrice);
+        tvProductDescription.setText(responseData.description);
+        tvOrignalPrice.setText("$ " + responseData.salePrice);
+        tvOffPrice.setText(percentAbsolutePrice + "% off");
+        tvShippingCharges.setText("$ " + responseData.shippingCost);
+
+
+        if (stockValue <= 1) {
+            tvInStock.setVisibility(View.GONE);
+            tvOutStock.setVisibility(View.VISIBLE);
+        } else {
+            tvOutStock.setVisibility(View.GONE);
+            tvInStock.setVisibility(View.VISIBLE);
+        }
+    }
+
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }
@@ -161,9 +186,26 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tvBuyNow:
+            case R.id.back:
+                finish();
+                break;
+            case R.id.llAddToCart:
+                addItemToCart();
+                break;
 
         }
+    }
+
+    private void addItemToCart() {
+        String cartItem;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        cartItem = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        SharedPreferences.Editor editor = preferences.edit();
+        cartItem = cartItem + "," + responseData.productID;
+        editor.putString(Constants.SHARED_CART_ITEM, cartItem);
+        editor.apply();
+
+
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -184,7 +226,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                         .error(R.drawable.place_holder_image);
                 Glide.with(ProductActivity.this).load(responseData.productImage).apply(options).into(img);
             }
-          //  img.setImageDrawable(topBannerList.get(position));
+            //  img.setImageDrawable(topBannerList.get(position));
             container.addView(view);
             return view;
         }
@@ -205,5 +247,4 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             return v == object;
         }
     }
-
 }

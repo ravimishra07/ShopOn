@@ -24,8 +24,8 @@ import com.ravimishra.tradzhub.Adapter.OnEAdpater;
 import com.ravimishra.tradzhub.Adapter.StoreAdapter;
 import com.ravimishra.tradzhub.Adapter.TabAdapter;
 import com.ravimishra.tradzhub.Adapter.TopMenuAdapter;
+import com.ravimishra.tradzhub.Model.BannerImageModel;
 import com.ravimishra.tradzhub.Model.CategoryModel;
-import com.ravimishra.tradzhub.Model.ProductModel;
 import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.Model.TopMenuModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
@@ -49,37 +49,26 @@ public class HomeFragment extends Fragment {
     private static int currentPage = 0;
     private ArrayList<Integer> topBannerList = new ArrayList<>();
     private static final String TAG = "HomeFragment";
-
     private Button popularBtn, featuredBtn, newArrivalBtn, storeBtn;
-    //RelaytiveLayout
 
     private RecyclerView topMenuRecyclerView, popularRecyclerView, recylerView2, recylerView3, storeRecyclerView;
     //ViewPager
     private ViewPager viewP;
     private TabLayout tabs;
     private ViewPager viewPager2;
-    ProgressBar progressBar,featuredProgressBar,popularProgressbar,pbNewArrivals, pbPopularStories;
+    ProgressBar progressBar, featuredProgressBar, popularProgressbar, pbNewArrivals, pbPopularStories, pbBanner;
     private  TopMenuModel topMenuModel;
 
     Timer swipeTimer;
     private int[] banner = {R.drawable.banner4, R.drawable.banner3, R.drawable.banner2, R.drawable.banner1, R.drawable.banner2, R.drawable.banner3, R.drawable.banner4, R.drawable.banner1};
 
-    private List<TopMenuModel> topModel = new ArrayList<>();
-
     private CategoryModel topMenu;
+    private BannerImageModel imageModel;
     private TradzHubProductModel popularModel;
     private TradzHubProductModel featuredModel;
     private TradzHubProductModel latestModel;
     private StoreModel storeModel;
-
-    // recylverview 1
-    private List<ProductModel> productModel = new ArrayList<>();
-
-    // recylverview 2
-    private List<ProductModel> productModel2 = new ArrayList<>();
-
-    // recylverview 3
-    private List<ProductModel> productModel3 = new ArrayList<>();
+    private List<String> bannerImageArray = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,12 +80,8 @@ public class HomeFragment extends Fragment {
         featuredProgressBar = view.findViewById(R.id.pbFeaturedProducts);
         popularProgressbar = view.findViewById(R.id.pbPopularProducts);
         pbPopularStories = view.findViewById(R.id.pbPopularStores);
+        pbBanner = view.findViewById(R.id.pbBanner);
 
-        topBannerList.clear();
-
-        topBannerList.add(banner[0]);
-        topBannerList.add(banner[1]);
-        topBannerList.add(banner[2]);
         ApiCall();
         popularRecyclerView = view.findViewById(R.id.popularRecyclerView);
         topMenuRecyclerView = view.findViewById(R.id.topMenuRecylerView);
@@ -119,23 +104,21 @@ public class HomeFragment extends Fragment {
         storeRecyclerView = view.findViewById(R.id.storeRecyclerView);
         viewP = view.findViewById(R.id.viewPager);
 
-        setUpanner();
         tabs = view.findViewById(R.id.tabLayout);
         viewPager2 = view.findViewById(R.id.viewpager2);
         setupViewPager(viewPager2);
         tabs.setupWithViewPager(viewPager2);
-        inisilizerecycler();
 
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    void setupViewPager(ViewPager viewPager) {
         TabAdapter adapter = new TabAdapter(getFragmentManager());
         adapter.addFragment(new JustInFragment(), "Just In");
 
         adapter.addFragment(new BestSellingFragment(), "Best Selling");
         adapter.addFragment(new FlashDealFragment(), "Flash Sale");
-        viewPager2.setAdapter(adapter);
+        viewPager.setAdapter(adapter);
     }
 
     public void setUpButtons() {
@@ -216,6 +199,11 @@ public class HomeFragment extends Fragment {
                 1
         );
 
+        /** calling  api to get banner images*/
+        Call<BannerImageModel> callBannerImgApi = service.getBannerImages(
+                1
+        );
+
         /** defining the latest product api call */
         Call<TradzHubProductModel>callFeaturedProducts = service.getFeaturedProducts(
                 1
@@ -258,6 +246,26 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<CategoryModel> call, Throwable t) {
+                Log.v("TAG_API", "Some error occured callCategoryModel");
+            }
+        });
+
+        //calling the api
+        callBannerImgApi.enqueue(new Callback<BannerImageModel>() {
+            @Override
+            public void onResponse(Call<BannerImageModel> call, Response<BannerImageModel> response) {
+
+                Log.v("TAG_API", response.body().data.get(0).slideImage + "msg");
+                int bannerSize = response.body().data.size();
+                for (int i = 0; i <= (bannerSize - 1); i++) {
+                    bannerImageArray.add(response.body().data.get(i).slideImage);
+                }
+                setUpanner();
+                pbBanner.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<BannerImageModel> call, Throwable t) {
                 Log.v("TAG_API", "Some error occured callCategoryModel");
             }
         });
@@ -305,18 +313,15 @@ public class HomeFragment extends Fragment {
                 Log.v("TAG_API", response.body() + "call mostly viewed api");
                 popularModel = response.body();
                 popularRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
                 OnEAdpater onEAdpater = new OnEAdpater(getActivity(), popularModel.data);
                 popularRecyclerView.setAdapter(onEAdpater);
                 popularBtn.setEnabled(true);
                 popularProgressbar.setVisibility(View.GONE);
-
             }
 
             @Override
             public void onFailure(Call<TradzHubProductModel> call, Throwable t) {
                 Log.v("TAG_API", "Some error occured callMostlyViewedproducts");
-
             }
         });
         callStoreApi.enqueue(new Callback<StoreModel>() {
@@ -337,34 +342,21 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-    private void inisilizerecycler() {
-
-        Log.d(TAG, "inisilizerecycler: ");
-
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-
     }
 
     private void setUpanner() {
 
-        viewP.setAdapter(new BannerAddapter(getActivity(), topBannerList));
-
-        final float density = getResources().getDisplayMetrics().density;
-
+        viewP.setAdapter(new BannerAddapter(getActivity(), bannerImageArray));
         final Handler handler = new Handler();
         final Runnable Update = () -> {
-
-            if (currentPage == topBannerList.size()) {
+            if (currentPage == bannerImageArray.size()) {
                 currentPage = 0;
             }
             viewP.setCurrentItem(currentPage++, true);
         };
-
         swipeTimer = new Timer();
         swipeTimer.schedule(new TimerTask() {
 
@@ -374,71 +366,5 @@ public class HomeFragment extends Fragment {
             }
         }, 3000, 3000);
 
-
     }
 }
-//                if(currentPage==0){
-//                    viewP.setCurrentItem(0, true);
-//                }else if(currentPage==1){
-//                    viewP.setCurrentItem(1, true);
-//                }else {
-//
-//                    viewP.setCurrentItem(2, true);
-//                    currentPage=0;
-//                }
-/*
-
-    private int circle[] = {R.drawable.first,R.drawable.second,R.drawable.third,R.drawable.forth,R.drawable.fifth,R.drawable.sixth
-            ,R.drawable.seventh};
-
-    private int forth[] = {R.drawable.pf1,R.drawable.pf2,R.drawable.pf3,R.drawable.pf4,R.drawable.pf5,R.drawable.pf6
-            ,R.drawable.pf1,R.drawable.pf2};
-
-    private int thirdset[] = {R.drawable.thirdone,R.drawable.thirdtwo,R.drawable.thirdthree,R.drawable.thirdfor,R.drawable.thirdfif,
-            R.drawable.thirdsix,R.drawable.thirdseven,R.drawable.thirdeight};
-
-        private int five[] = {R.drawable.one1,R.drawable.one2,R.drawable.one3,R.drawable.one4,R.drawable.one5,R.drawable.one6
-            ,R.drawable.one7,R.drawable.one8};
- */
-
-
-
-   /*
-        topModel.add(new TopMenuModel("img1", "Deals"));
-
-
-        topModel.add(new TopMenuModel("img1", "Electronics"));
-        topModel.add(new TopMenuModel("img1", "Men"));
-       topModel.add(new TopMenuModel("img1", "Cricket kit"));
-        topModel.add(new TopMenuModel("img1", "Women"));
-       topModel.add(new TopMenuModel("img1", "Appliance"));
-
-
-
-        // RV1
-        productModel.add(new ProductModel("Macbook air", 1299, "img1"));
-        productModel.add(new ProductModel("Nikon D5612", 399, "img2"));
-        productModel.add(new ProductModel("iPhone 11", 599, "img3"));
-        productModel.add(new ProductModel("Men's casual shirt", 29, "img14"));
-        productModel.add(new ProductModel("Macbook air", 1299, "img1"));
-        productModel.add(new ProductModel("Nikon D5612", 399, "img2"));
-        productModel.add(new ProductModel("iPhone 11", 599, "img3"));
-        productModel.add(new ProductModel("Men's casual shirt", 29, "img14"));
-
-        //RV2
-        productModel2.add(new ProductModel("Men's shirt", 21, "img1"));
-        productModel2.add(new ProductModel("Men's jeans black", 15, "img2"));
-        productModel2.add(new ProductModel("Mi LED smart TV", 499, "img3"));
-        productModel2.add(new ProductModel("Women's black top", 29, "img14"));
-        productModel2.add(new ProductModel("Men's shirt", 21, "img1"));
-        productModel2.add(new ProductModel("Men's jeans black", 15, "img2"));
-        productModel2.add(new ProductModel("Mi LED smart TV", 499, "img3"));
-        productModel2.add(new ProductModel("Women's black top", 29, "img14"));
-
-        //RV2
-        productModel3.add(new ProductModel("Mi LED smart TV", 499, "img3"));
-        productModel3.add(new ProductModel("Women's black top", 29, "img14"));
-        productModel3.add(new ProductModel("Men's shirt", 21, "img1"));
-        productModel3.add(new ProductModel("Men's jeans black", 15, "img2"));
-        productModel3.add(new ProductModel("Mi LED smart TV", 499, "img3"));
-*/

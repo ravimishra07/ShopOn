@@ -90,12 +90,12 @@
             android:background="@color/grey" />
 
         <EditText
-            android:id="@+id/etAddress1"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
-            android:hint="Address 1" />
+            android:hint="Email" />
 
         <View
             android:layout_width="match_parent"
@@ -103,12 +103,12 @@
             android:background="@color/grey" />
 
         <EditText
-            android:id="@+id/etAddress2"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
-            android:hint="Address 2"
+            android:hint="Address "
 
             />
 
@@ -202,6 +202,21 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
             android:background="@color/grey" />
+
+        <ProgressBar
+            android:id="@+id/progresbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:max="100"
+            android:minWidth="250dp"
+            android:minHeight="50dp"
+            android:progress="1"
+            android:visibility="gone"
+
+            />
     </LinearLayout>
 
 

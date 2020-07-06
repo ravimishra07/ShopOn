@@ -18,9 +18,9 @@ import java.util.List;
 
 public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.viewHolder> {
     private Context context;
-    private List<AddressModel> addressModels;
+    private List<AddressModel.ResponseData> addressModels;
 
-    public AddressAdapter(Context context, List<AddressModel> addressModels) {
+    public AddressAdapter(Context context, List<AddressModel.ResponseData> addressModels) {
         this.context = context;
         this.addressModels = addressModels;
     }
@@ -34,10 +34,11 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.viewHold
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        final AddressModel addressModel = addressModels.get(position);
-        holder.tvAddress.setText(addressModel.getAddress());
-        holder.tvName.setText(addressModel.getUsername());
-        holder.tvPhoneNumber.setText(addressModel.getPhoneNumber());
+        final AddressModel.ResponseData addressModel = addressModels.get(position);
+        String completeAddress = addressModel.userAddress + ", " + addressModel.userCity + ", " + addressModel.shipState + ", " + addressModel.userCountry;
+        holder.tvAddress.setText(completeAddress);
+        holder.tvName.setText(addressModel.nameOfUserAtAddress);
+        holder.tvPhoneNumber.setText(addressModel.userPhoneNumber);
     }
 
     @Override

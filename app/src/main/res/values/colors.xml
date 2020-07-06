@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#23334d</color>
     <color name="colorPrimaryDark">#23334d</color>
-    <color name="colorAccent">#FB0073</color>
+    <color name="colorAccent">#424242</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#97918E</color>
@@ -65,6 +65,9 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="solid_light_color">#fffff0</color>
+    <color name="solid_dark">#00000f</color>
+
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>

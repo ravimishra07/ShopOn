@@ -1,66 +1,39 @@
 package com.ravimishra.tradzhub.Model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class AddressModel {
-    String id;
-    String username;
-    String address;
-    String city;
-    String pinCode;
-    String phoneNumber;
+    @SerializedName("status")
+    public String status;
+    @SerializedName("message")
+    public String mesage;
 
-    public AddressModel(String username, String address, String city, String pinCode, String phoneNumber) {
-        this.username = username;
-        this.address = address;
-        this.city = city;
-        this.pinCode = pinCode;
-        this.phoneNumber = phoneNumber;
-    }
+    @SerializedName("data")
+    public List<AddressModel.ResponseData> data = null;
 
-    public String getId() {
-        return id;
-    }
+    public class ResponseData {
 
-    public void setId(String id) {
-        this.id = id;
-    }
+        @SerializedName("ship_name")
+        public String nameOfUserAtAddress;
+        @SerializedName("ship_email")
+        public String userEmail;
 
-    public String getUsername() {
-        return username;
-    }
+        @SerializedName("ship_phone")
+        public String userPhoneNumber;
+        @SerializedName("ship_address")
+        public String userAddress;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+        @SerializedName("ship_country")
+        public String userCountry;
+        @SerializedName("ship_state")
+        public String shipState;
 
-    public String getAddress() {
-        return address;
-    }
+        @SerializedName("ship_city")
+        public String userCity;
+        @SerializedName("ship_pincode")
+        public String userPinCode;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPinCode() {
-        return pinCode;
-    }
-
-    public void setPinCode(String pinCode) {
-        this.pinCode = pinCode;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }

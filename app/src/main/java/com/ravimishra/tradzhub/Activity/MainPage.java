@@ -58,6 +58,7 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
     String loginText = "Login Here";
     private DrawerLayout drawer;
     private CategoryModel sideMenuModel;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,26 +242,27 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
 
     private void setUpFragment() {
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragment = new HomeFragment();
+        fragmentManager = getSupportFragmentManager();
+        Fragment fragment = new HomeFragment();
+
         fragmentManager.popBackStack(fragment.toString(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tx = fragmentManager.beginTransaction();
         tx.replace(R.id.container, fragment).addToBackStack(fragment.toString());
         tx.commit();
         //====to clear unused memory==
-        System.gc();
+        // System.gc();
     }
 
     private void setUpCatFragment() {
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragment = new ShowAllCategoryFragment();
+        fragmentManager = getSupportFragmentManager();
+        Fragment fragment = new ShowAllCategoryFragment();
         fragmentManager.popBackStack(fragment.toString(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction tx = fragmentManager.beginTransaction();
         tx.replace(R.id.container, fragment).addToBackStack(fragment.toString());
         tx.commit();
         //====to clear unused memory==
-        System.gc();
+        //System.gc();
     }
 
     @Override
@@ -269,7 +271,8 @@ public class MainPage extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.rlHome:
                 drawer.closeDrawer(GravityCompat.START);
-                setUpFragment();
+                finish();
+                startActivity(getIntent());
                 break;
 
             case R.id.rlShopCategories:

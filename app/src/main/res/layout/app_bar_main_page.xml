@@ -34,21 +34,20 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
 
-
                 <ImageView
-                    android:id="@+id/ivCart"
+                    android:id="@+id/ivWishlist"
                     android:layout_width="@dimen/_17sdp"
                     android:layout_height="@dimen/_17sdp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:layout_toLeftOf="@+id/ivWishlist"
+                    android:layout_toLeftOf="@+id/ivCart"
                     android:backgroundTint="@color/white"
                     android:tint="@color/white"
-                    app:srcCompat="@drawable/heart_cart_icon"
+                    app:srcCompat="@drawable/while_heart"
                     tools:ignore="VectorDrawableCompat" />
 
                 <ImageView
-                    android:id="@+id/ivWishlist"
+                    android:id="@+id/ivCart"
                     android:layout_width="@dimen/_17sdp"
                     android:layout_height="@dimen/_17sdp"
                     android:layout_alignParentRight="true"
@@ -56,10 +55,8 @@
                     android:layout_marginRight="@dimen/_15sdp"
                     android:backgroundTint="@color/white"
                     android:tint="@color/white"
-                    app:srcCompat="@drawable/while_heart"
+                    app:srcCompat="@drawable/heart_cart_icon"
                     tools:ignore="VectorDrawableCompat" />
-
-
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:maxLines="3"
+                android:maxLines="4"
                 android:text="8/75, Vikas Nagar, near power house, Lohiya Nagar, Lucnkow"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />

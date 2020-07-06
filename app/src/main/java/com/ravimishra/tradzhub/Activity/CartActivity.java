@@ -1,19 +1,17 @@
 package com.ravimishra.tradzhub.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-
-import com.ravimishra.tradzhub.Adapter.MainTabStoreAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.ravimishra.tradzhub.Adapter.ProductivityDetailAdapter;
 import com.ravimishra.tradzhub.Model.ProductDetailModel;
 import com.ravimishra.tradzhub.R;
@@ -21,9 +19,10 @@ import com.ravimishra.tradzhub.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    List<ProductDetailModel> productDetailModels = new ArrayList<>();
+public class CartActivity extends AppCompatActivity implements View.OnClickListener {
+    private RecyclerView recyclerView;
+    private Button addAddressBtn;
+    private List<ProductDetailModel> productDetailModels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,9 @@ public class CartActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         FloatingActionButton fab = findViewById(R.id.fab);
         recyclerView = findViewById(R.id.recyclerView);
+        addAddressBtn = findViewById(R.id.addAddressbtn);
+        addAddressBtn.setOnClickListener(this);
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -50,4 +52,12 @@ public class CartActivity extends AppCompatActivity {
                 .setAction("Action", null).show());
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.addAddressbtn:
+                Intent intent = new Intent(CartActivity.this, AddAddressActivity.class);
+                startActivity(intent);
+        }
+    }
 }
