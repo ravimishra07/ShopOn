@@ -33,7 +33,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     SQLiteDatabase mDatabase;
 
     private TextView[] bottomBars;
-    private ImageView backImage;
+    private ImageView backImage, wishListBtn, cartImage;
     private LinearLayout Layout_bars, llAddToCart, llBuyNow;
     private MyViewPagerAdapter myvpAdapter;
     private Drawable banner2, banner3, banner4;
@@ -84,6 +84,11 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         llBuyNow = findViewById(R.id.llBuyNow);
         llAddToCart = findViewById(R.id.llAddToCart);
         backImage = findViewById(R.id.back);
+        cartImage = findViewById(R.id.cart);
+        wishListBtn = findViewById(R.id.ivWishlist);
+
+        cartImage.setOnClickListener(this);
+        wishListBtn.setOnClickListener(this);
         llBuyNow.setOnClickListener(this);
         llAddToCart.setOnClickListener(this);
         backImage.setOnClickListener(this);
@@ -98,9 +103,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         tvProductDescription = findViewById(R.id.productDescription);
         Bundle extras = getIntent().getExtras();
         value = extras.getInt("FROM");
-        if (value == 1) {
+        // if (value == 1) {
             setData();
-        }
+        //  }
 
         myvpAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myvpAdapter);
@@ -192,7 +197,14 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.llAddToCart:
                 addItemToCart();
                 break;
-
+            case R.id.cart:
+                Intent intent = new Intent(ProductActivity.this, CartActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ivWishlist:
+                Intent intent1 = new Intent(ProductActivity.this, WishlistActivtry.class);
+                startActivity(intent1);
+                break;
         }
     }
 
@@ -219,13 +231,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             inflater = (LayoutInflater) getSystemService(ProductActivity.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.pager_item, container, false);
             ImageView img = view.findViewById(R.id.productImage);
-            if (value == 1) {
+//            if (value == 1) {
                 RequestOptions options = new RequestOptions()
                         .centerCrop()
                         .placeholder(R.drawable.place_holder_image)
                         .error(R.drawable.place_holder_image);
                 Glide.with(ProductActivity.this).load(responseData.productImage).apply(options).into(img);
-            }
+//            }
             //  img.setImageDrawable(topBannerList.get(position));
             container.addView(view);
             return view;

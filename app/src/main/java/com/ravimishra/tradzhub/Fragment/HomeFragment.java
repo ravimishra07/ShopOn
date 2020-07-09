@@ -98,7 +98,6 @@ public class HomeFragment extends Fragment {
         popularBtn.setEnabled(false);
         featuredBtn.setEnabled(false);
 
-
         // initialize the button and sets click listeners
         setUpButtons();
         storeRecyclerView = view.findViewById(R.id.storeRecyclerView);
@@ -324,6 +323,8 @@ public class HomeFragment extends Fragment {
                 Log.v("TAG_API", "Some error occured callMostlyViewedproducts");
             }
         });
+
+
         callStoreApi.enqueue(new Callback<StoreModel>() {
             @Override
             public void onResponse(Call<StoreModel> call, Response<StoreModel> response) {

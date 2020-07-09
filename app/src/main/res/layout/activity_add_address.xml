@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-
         <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -28,7 +27,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/_6sdp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -61,7 +59,10 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
                     android:background="@color/colorPrimary"
-                    android:text="save"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
                     android:textColor="@color/white" />
             </RelativeLayout>
 
@@ -82,12 +83,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
-            android:hint="Full name" />
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Full name"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/edit_text_form" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -95,12 +99,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
-            android:hint="Email" />
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Email"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/edit_text_form" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <EditText
             android:id="@+id/etAddress"
@@ -109,13 +116,15 @@
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
             android:hint="Address "
-
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/edit_text_form"
             />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,12 +140,15 @@
                 android:layout_margin="@dimen/_6sdp"
                 android:layout_weight="1"
                 android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/edit_text_form"
                 android:hint="Country" />
 
             <View
                 android:layout_width="@dimen/_1sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:background="@color/grey" />
+                android:layout_height="@dimen/_34sdp"
+                android:background="@color/lightgray" />
 
             <EditText
                 android:id="@+id/etState"
@@ -145,14 +157,17 @@
                 android:layout_margin="@dimen/_6sdp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="State" />
+                android:fontFamily="@font/poppins_regular"
+                android:hint="State"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/edit_text_form" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -167,12 +182,15 @@
                 android:layout_margin="@dimen/_6sdp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="City" />
+                android:fontFamily="@font/poppins_regular"
+                android:hint="City"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/edit_text_form" />
 
             <View
                 android:layout_width="@dimen/_1sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:background="@color/grey" />
+                android:layout_height="@dimen/_34sdp"
+                android:background="@color/lightgray" />
 
             <EditText
                 android:id="@+id/etZip"
@@ -181,14 +199,17 @@
                 android:layout_margin="@dimen/_6sdp"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="ZIP" />
+                android:fontFamily="@font/poppins_regular"
+                android:hint="ZIP"
+                android:padding="@dimen/_3sdp"
+                android:textSize="@dimen/edit_text_form" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <EditText
             android:id="@+id/etPhoneNumber"
@@ -196,12 +217,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_6sdp"
             android:background="@null"
-            android:hint="Phone number" />
+            android:fontFamily="@font/poppins_regular"
+            android:hint="Phone number"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/edit_text_form" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/grey" />
+            android:background="@color/lightgray" />
 
         <ProgressBar
             android:id="@+id/progresbar"

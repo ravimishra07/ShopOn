@@ -234,4 +234,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="logout">Logout</string>
+    <string name="login_text">Login Here</string>
+    <string name="guest">Guest user</string>
 </resources>

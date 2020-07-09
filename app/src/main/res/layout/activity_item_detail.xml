@@ -33,10 +33,11 @@
 
                     <ImageView
                         android:id="@+id/back"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/back"
+                        android:padding="@dimen/_6sdp"
                         android:tint="@color/white" />
 
                     <TextView
@@ -45,33 +46,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginLeft="@dimen/_6sdp"
                         android:text="Product"
                         android:textColor="#fff"
                         android:textSize="18dp"
-
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/searchImg"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginRight="6dp"
                     android:layout_toLeftOf="@+id/cart"
+                    android:padding="@dimen/_6sdp"
                     android:src="@drawable/search"
                     android:tint="@color/white" />
 
                 <ImageView
                     android:id="@+id/cart"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
-                    android:src="@drawable/cartt"
+                    android:padding="@dimen/_6sdp"
+                    android:src="@drawable/cart_market"
                     android:tint="@color/white" />
             </RelativeLayout>
 

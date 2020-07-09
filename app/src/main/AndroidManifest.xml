@@ -11,21 +11,21 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activity.StoreListActivity"></activity>
+
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_AXtJiPK3oRVSCs" />
 
         <activity
             android:name=".Activity.PayementActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activity.AddAddressActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.AllAddressActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.AllStoresActivity" />
         <activity android:name=".Activity.ProductDetailActivity" />
         <activity

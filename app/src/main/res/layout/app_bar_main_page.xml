@@ -23,7 +23,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-
                     android:id="@+id/AppName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -36,26 +35,29 @@
 
                 <ImageView
                     android:id="@+id/ivWishlist"
-                    android:layout_width="@dimen/_17sdp"
-                    android:layout_height="@dimen/_17sdp"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginRight="@dimen/_2sdp"
+
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/_15sdp"
+                    android:padding="@dimen/_6sdp"
                     android:layout_toLeftOf="@+id/ivCart"
                     android:backgroundTint="@color/white"
                     android:tint="@color/white"
-                    app:srcCompat="@drawable/while_heart"
+                    app:srcCompat="@drawable/heart"
                     tools:ignore="VectorDrawableCompat" />
 
                 <ImageView
                     android:id="@+id/ivCart"
-                    android:layout_width="@dimen/_17sdp"
-                    android:layout_height="@dimen/_17sdp"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:padding="@dimen/_6sdp"
                     android:layout_marginRight="@dimen/_15sdp"
                     android:backgroundTint="@color/white"
                     android:tint="@color/white"
-                    app:srcCompat="@drawable/heart_cart_icon"
+                    app:srcCompat="@drawable/cart_market"
                     tools:ignore="VectorDrawableCompat" />
             </RelativeLayout>
 

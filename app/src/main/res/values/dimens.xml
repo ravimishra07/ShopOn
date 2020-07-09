@@ -23,4 +23,5 @@
     <dimen name="half_heart_size">16dp</dimen>
     <dimen name="recyclerview_height">250dp</dimen>
     <dimen name="cardview_margin">2dp</dimen>
+    <dimen name="edit_text_form">16dp</dimen>
 </resources>

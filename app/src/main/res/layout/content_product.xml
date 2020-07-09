@@ -50,11 +50,11 @@
 
                         <ImageView
                             android:id="@+id/back"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="@dimen/_32sdp"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_12sdp"
-
+                            android:layout_marginLeft="@dimen/_6sdp"
+                            android:padding="@dimen/_6sdp"
                             android:src="@drawable/back"
                             android:tint="@color/white" />
 
@@ -75,22 +75,24 @@
 
                     <ImageView
                         android:id="@+id/ivWishlist"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="12dp"
+                        android:layout_marginRight="@dimen/_4sdp"
                         android:layout_toLeftOf="@+id/cart"
-                        android:src="@drawable/while_heart"
+                        android:padding="@dimen/_6sdp"
+                        android:src="@drawable/heart"
                         android:tint="@color/white" />
 
                     <ImageView
                         android:id="@+id/cart"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="12dp"
-                        android:src="@drawable/cartt"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:padding="@dimen/_6sdp"
+                        android:src="@drawable/cart_market"
                         android:tint="@color/white" />
                 </RelativeLayout>
 
@@ -363,32 +365,6 @@
                             android:alpha="0.3"
                             android:background="@color/grey" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_32sdp"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/_12sdp"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:src="@drawable/ic_star"
-                                android:tint="@color/colorPrimary" />
-
-                            <TextView
-                                style="@style/TradzHubThemeFont"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_2sdp"
-                                android:text="Group Gift"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
                     </LinearLayout>
 
                     <View
@@ -430,6 +406,32 @@
                             android:layout_marginBottom="@dimen/_12sdp"
                             android:text="@string/demo_text"
                             android:textSize="@dimen/_12sdp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_32sdp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/_12sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
+                                android:src="@drawable/ic_star"
+                                android:tint="@color/colorPrimary" />
+
+                            <TextView
+                                style="@style/TradzHubThemeFont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:text="Group Gift"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>

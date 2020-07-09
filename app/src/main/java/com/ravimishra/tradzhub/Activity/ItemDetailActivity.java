@@ -40,7 +40,8 @@ public class ItemDetailActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private ImageView backImageBtn;
     private TextView toolbarTitle;
-    //  private int categoryID = 1;
+    private ImageView cartImage;
+    //private int categoryID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         toolbarTitle.setText(titleText);
         setSupportActionBar(toolbar);
         backImageBtn = findViewById(R.id.back);
+        cartImage = findViewById(R.id.cart);
+
         int fromActivity = extras.getInt("FROM");
         if (fromActivity == 1) {
             String cat_id = extras.getString("CATEGORY_ID");
@@ -88,14 +91,19 @@ public class ItemDetailActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainPage.class);
             startActivity(i);
         });
+        cartImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ItemDetailActivity.this, CartActivity.class);
+                startActivity(i);
+            }
+        });
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         ProductDetailAdapter adapter = new ProductDetailAdapter(this, responseData.data);
         recyclerView.setAdapter(adapter);
-        // tabRecyclerViewModel.clear();
-
     }
 
     private void callApiForCategory(int categoryID) {

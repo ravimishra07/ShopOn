@@ -2,6 +2,7 @@ package com.ravimishra.tradzhub.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
-import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
@@ -24,7 +24,7 @@ import java.util.Random;
 public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdapter.viewholder> {
 
     private Context context;
-    int mList[];
+    int[] mList;
     int[] imageArray = new int[6];
 
     List<TradzHubProductModel.ResponseData> menuModel;
@@ -63,11 +63,14 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
                 .error(R.drawable.place_holder_image);
         Glide.with(context).load(model.productImage).apply(options).into(holder.productImage);
         holder.itemView.setOnClickListener(v -> {
+            Log.v("PRODUCT_TAG", "");
+
             Intent i = new Intent(context, ProductActivity.class);
+            i.putExtra("PRODUCT", model);
+
             context.startActivity(i);
         });
     }
-
 
     @Override
     public int getItemCount() {
