@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/_130sdp"
-    android:layout_height="@dimen/_200sdp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
@@ -22,7 +21,7 @@
             <ImageView
                 android:id="@+id/productImage"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_160sdp"
+                android:layout_height="@dimen/_120sdp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -30,44 +29,44 @@
 
             <TextView
                 android:id="@+id/productName"
+                style="@style/TradzHubThemeFont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Product"
-                android:textSize="@dimen/_12sdp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                style="@style/TradzHubThemeFont"
+                android:layout_marginLeft="@dimen/_8sdp"
                 android:maxLines="1"
-                android:layout_marginLeft="@dimen/_8sdp" />
+                android:text="Product"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_8sdp"
                 android:orientation="horizontal"
-                android:weightSum="2"
-
-                android:layout_marginLeft="@dimen/_8sdp">
+                android:layout_marginTop="-5dp"
+                android:weightSum="2">
 
                 <TextView
 
+                    style="@style/TradzHubThemeFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.85"
+                    android:text="$"
                     android:textColor="@color/black"
-                    style="@style/TradzHubThemeFont"
-
-                    android:text="$" />
+                    android:textSize="@dimen/_9sdp" />
 
                 <TextView
                     android:id="@+id/productPrice"
+                    style="@style/TradzHubThemeFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.15"
-                    android:text="99.99"
                     android:maxLines="1"
-
+                    android:text="99.99"
                     android:textColor="@color/black"
-                    style="@style/TradzHubThemeFont" />
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 

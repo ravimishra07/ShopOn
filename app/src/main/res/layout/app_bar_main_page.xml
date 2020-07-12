@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
+            app:contentInsetStart="0dp"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay">
 
             <RelativeLayout
@@ -37,12 +38,11 @@
                     android:id="@+id/ivWishlist"
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_32sdp"
-                    android:layout_marginRight="@dimen/_2sdp"
-
                     android:layout_centerVertical="true"
-                    android:padding="@dimen/_6sdp"
+                    android:layout_marginRight="@dimen/_2sdp"
                     android:layout_toLeftOf="@+id/ivCart"
                     android:backgroundTint="@color/white"
+                    android:padding="@dimen/standard_icon_padding"
                     android:tint="@color/white"
                     app:srcCompat="@drawable/heart"
                     tools:ignore="VectorDrawableCompat" />
@@ -53,9 +53,9 @@
                     android:layout_height="@dimen/_32sdp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:padding="@dimen/_6sdp"
                     android:layout_marginRight="@dimen/_15sdp"
                     android:backgroundTint="@color/white"
+                    android:padding="@dimen/standard_icon_padding"
                     android:tint="@color/white"
                     app:srcCompat="@drawable/cart_market"
                     tools:ignore="VectorDrawableCompat" />

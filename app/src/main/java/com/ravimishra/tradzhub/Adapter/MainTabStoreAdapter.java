@@ -58,9 +58,7 @@ public class MainTabStoreAdapter extends RecyclerView.Adapter<MainTabStoreAdapte
             i.putExtra("PRODUCT", model);
             context.startActivity(i);
         });
-
     }
-
     @Override
     public int getItemCount() {
         return productModel.size();

@@ -41,9 +41,13 @@ public class WelcomeActivity extends AppCompatActivity {
         // Checking for first time launch - before calling setContentView()
         prefManager = new PreferenceManager(this);
         SharedPreferences preferences = android.preference.PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Constants.SHARED_CART_ITEM, "0");
-        editor.apply();
+        String cartString = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        if (cartString == "0" || cartString == "") {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(Constants.SHARED_CART_ITEM, "0");
+            editor.apply();
+        }
+
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();

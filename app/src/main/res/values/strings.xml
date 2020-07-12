@@ -237,4 +237,5 @@
     <string name="logout">Logout</string>
     <string name="login_text">Login Here</string>
     <string name="guest">Guest user</string>
+    <string name="view_all_btn_text">View All</string>
 </resources>

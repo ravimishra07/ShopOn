@@ -55,6 +55,7 @@ public class ItemDetailActivity extends AppCompatActivity {
         toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(titleText);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("");
         backImageBtn = findViewById(R.id.back);
         cartImage = findViewById(R.id.cart);
 

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -27,6 +28,9 @@ import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 import com.ravimishra.tradzhub.Utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String DATABASE_NAME = "cartdatabase";
@@ -123,7 +127,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         Layout_bars.removeAllViews();
         for (int i = 0; i < bottomBars.length; i++) {
             bottomBars[i] = new TextView(this);
-            bottomBars[i].setTextSize(50);
+            bottomBars[i].setTextSize(40);
             bottomBars[i].setText(Html.fromHtml("&#8226;"));
             Layout_bars.addView(bottomBars[i]);
             bottomBars[i].setTextColor(colorsInactive[thisScreen]);
@@ -214,10 +218,21 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         cartItem = preferences.getString(Constants.SHARED_CART_ITEM, "");
         SharedPreferences.Editor editor = preferences.edit();
         cartItem = cartItem + "," + responseData.productID;
+        cartItem = cartItem.replace(",,", ",");
         editor.putString(Constants.SHARED_CART_ITEM, cartItem);
         editor.apply();
+        String cartString = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        String[] cartArray = cartString.split(",");
+        List<Integer> cartItemArray = new ArrayList<>();
 
-
+        for (int i = 0; i < cartArray.length; i++) {
+            int item = Integer.parseInt(cartArray[i]);
+            if (!cartItemArray.contains(item)) {
+                cartItemArray.add(item);
+            }
+        }
+        Toast.makeText(this, "Item added to cart!", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Added to cart "+cartString+ "converted string"+cartItemArray, Toast.LENGTH_SHORT).show();
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
@@ -259,4 +274,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
             return v == object;
         }
     }
+
+
 }

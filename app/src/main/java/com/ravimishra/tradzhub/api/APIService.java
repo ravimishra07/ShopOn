@@ -203,4 +203,34 @@ public interface APIService {
             @Field("user_id") String userId
     );
 
+    /**
+     * get cart item detail by passing product id
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<TradzHubProductModel> getItemByProductID(
+            @Field("singleproductbtn") int getProduct,
+            @Field("product_id") int productId
+    );
+
+    /**
+     * save item to widhlist
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<AuthModel> saveItemToWishlist(
+            @Field("wishlistbtn") int getProduct,
+            @Field("user_id") int userid,
+            @Field("product_id") int productId
+    );
+
+    /**
+     * save item to widhlist
+     */
+    @FormUrlEncoded
+    @POST("function.php")
+    Call<TradzHubProductModel> getWishlistData(
+            @Field("getwishlistbtn") int getProduct,
+            @Field("user_id") int userid
+    );
 }

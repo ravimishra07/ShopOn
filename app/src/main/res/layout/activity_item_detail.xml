@@ -17,6 +17,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            app:contentInsetStart="0dp"
+
             android:background="@color/colorPrimary"
             android:orientation="vertical">
 
@@ -37,7 +39,7 @@
                         android:layout_height="@dimen/_32sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/back"
-                        android:padding="@dimen/_6sdp"
+                        android:padding="@dimen/_8sdp"
                         android:tint="@color/white" />
 
                     <TextView
@@ -49,8 +51,7 @@
                         android:layout_marginLeft="@dimen/_6sdp"
                         android:text="Product"
                         android:textColor="#fff"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textSize="18dp" />
 
                 </LinearLayout>
 
@@ -59,9 +60,9 @@
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginRight="1dp"
                     android:layout_toLeftOf="@+id/cart"
-                    android:padding="@dimen/_6sdp"
+                    android:padding="@dimen/_8sdp"
                     android:src="@drawable/search"
                     android:tint="@color/white" />
 
@@ -72,7 +73,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="12dp"
-                    android:padding="@dimen/_6sdp"
+                    android:padding="@dimen/_8sdp"
                     android:src="@drawable/cart_market"
                     android:tint="@color/white" />
             </RelativeLayout>

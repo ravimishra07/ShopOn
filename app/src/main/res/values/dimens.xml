@@ -7,11 +7,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="product_item_height">360dp</dimen>
+    <dimen name="product_item_height">320dp</dimen>
 
     <dimen name="tab_half_radius">21dp</dimen>
     <dimen name="tab_height">42dp</dimen>
-
 
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
@@ -19,9 +18,18 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
-    <dimen name="heart_size">32dp</dimen>
+    <dimen name="heart_size">26dp</dimen>
     <dimen name="half_heart_size">16dp</dimen>
     <dimen name="recyclerview_height">250dp</dimen>
     <dimen name="cardview_margin">2dp</dimen>
     <dimen name="edit_text_form">16dp</dimen>
+    <dimen name="title_heading_size">14.00sp</dimen>
+    <dimen name="price_size">12.00sp</dimen>
+    <dimen name="main_heading_size">14sp</dimen>
+    <dimen name="viewall_btn_width">60sp</dimen>
+    <dimen name="standard_margin">4dp</dimen>
+    <dimen name="standard_icon_size">36dp</dimen>
+    <dimen name="standard_icon_padding">9dp</dimen>
+    <dimen name="view_all_text_size">12sp</dimen>
+
 </resources>

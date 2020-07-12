@@ -10,7 +10,7 @@
         android:id="@+id/tab"
         android:layout_marginTop="@dimen/_40sdp"
         android:background="@color/colorPrimary"
-        android:layout_height="@dimen/_50sdp">
+        android:layout_height="@dimen/_45sdp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,13 +36,12 @@
                     android:layout_marginLeft="0dp"
                     android:background="@null"
                     android:layout_toRightOf="@+id/ivmac"
-                    android:fontFamily="@string/font_family_light"
-                    android:hint="Search Your Item here"
+                    android:fontFamily="@font/poppins_light"
+                    android:hint="I am looking for..."
                     android:padding="@dimen/_5sdp"
                     style="@style/TradzHubThemeFont"
-
+                    android:textSize="@dimen/_10sdp"
                     android:textColorHint="@color/colorPrimary"
-                    android:layout_toLeftOf="@+id/ivSearch"
                     android:textColor="@color/black" />
 
 

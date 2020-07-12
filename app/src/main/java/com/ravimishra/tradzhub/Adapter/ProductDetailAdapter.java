@@ -14,22 +14,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.like.LikeButton;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
+import com.ravimishra.tradzhub.Model.AuthModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
+import com.ravimishra.tradzhub.api.APIService;
+import com.ravimishra.tradzhub.api.APIUrl;
 
 import java.util.List;
-import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdapter.viewholder> {
 
-    private Context context;
     int[] mList;
     int[] imageArray = new int[6];
-
     List<TradzHubProductModel.ResponseData> menuModel;
+    private Context context;
 
-    public ProductDetailAdapter(Context context,  List<TradzHubProductModel.ResponseData> menuModel) {
+    public ProductDetailAdapter(Context context, List<TradzHubProductModel.ResponseData> menuModel) {
         this.context = context;
         this.menuModel = menuModel;
     }
@@ -38,12 +46,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     @Override
     public ProductDetailAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
-        imageArray[0] = R.drawable.pf1;
-        imageArray[1] = R.drawable.pf2;
-        imageArray[2] = R.drawable.pf3;
-        imageArray[3] = R.drawable.pf4;
-        imageArray[4] = R.drawable.pf1;
-        imageArray[5] = R.drawable.pf2;
+
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_store_row, parent, false);
         return new ProductDetailAdapter.viewholder(itemView);
@@ -52,7 +55,9 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
         final TradzHubProductModel.ResponseData model = menuModel.get(position);
-        Random rand = new Random();
+        int productId = Integer.parseInt(model.productID);
+        //int userid = Integer.parseInt(model);
+
         // holder.img.setImageResource(imageArray[position]);
         holder.productName.setText(model.title);
         holder.productPrice.setText(model.salePrice);
@@ -70,6 +75,19 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
 
             context.startActivity(i);
         });
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // addDataToWishlist()
+                // holder.likeButton.setEnabled(false);
+//                if (holder.likeButton.isLiked()) {
+//                    holder.likeButton.setLiked(false);
+//                } else {
+//                    holder.likeButton.setLiked(true);
+//                }
+            }
+        });
+
     }
 
     @Override
@@ -77,10 +95,43 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
         return menuModel.size();
     }
 
+    public void addDataToWishlist(int productId, int userId) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIUrl.NEW_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //Defining retrofit api service
+        APIService service = retrofit.create(APIService.class);
+        //Defining the user object as we need to pass it with the call
+
+        /** defining the category api call */
+        Call<AuthModel> callProductByCat = service.saveItemToWishlist(
+                1,
+                userId,
+                productId
+        );
+        callProductByCat.enqueue(new Callback<AuthModel>() {
+            @Override
+            public void onResponse(Call<AuthModel> call, Response<AuthModel> response) {
+                Log.v("TAG_API", response.body() + "callFeaturedProducts api");
+                String responseData = response.body().status;
+                Log.v("WISHLIST_TAG", "status" + responseData);
+            }
+
+            @Override
+            public void onFailure(Call<AuthModel> call, Throwable t) {
+                Log.v("TAG_API", "Some error occured callFeaturedProducts");
+            }
+        });
+
+    }
+
     class viewholder extends RecyclerView.ViewHolder {
 
         ImageView productImage;
-        TextView productName,productPrice;
+        TextView productName, productPrice;
+        LikeButton likeButton;
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +139,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
             productImage = itemView.findViewById(R.id.productImage);
             productName = itemView.findViewById(R.id.productName);
             productPrice = itemView.findViewById(R.id.productPrice);
+            likeButton = itemView.findViewById(R.id.likeButton);
 
         }
     }

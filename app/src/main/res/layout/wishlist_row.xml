@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12sp"
+    android:layout_margin="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_12sdp"
     android:elevation="@dimen/_4sdp"
     android:orientation="vertical"
-    app:cardCornerRadius="@dimen/_2sdp"
-    android:layout_margin="@dimen/_4sdp">
+    app:cardCornerRadius="@dimen/_2sdp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,62 +18,410 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:padding="@dimen/_12sdp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/store5" />
 
         <TextView
             android:id="@+id/itemName"
+            style="@style/TradzHubThemeFont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
             android:layout_toRightOf="@id/cartImage"
             android:maxLines="2"
+            android:padding="@dimen/standard_margin"
+
             android:text="Iphone 8(64gb) Triple Camera 8gb ram"
-            style="@style/TradzHubThemeFont"
-
             android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp" />
-
-        <TextView
-            android:id="@id/productPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/itemName"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_toRightOf="@+id/cartImage"
-            android:text="$ 799"
-            style="@style/TradzHubThemeFont"
-
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp" />
-
-        <TextView
-            android:id="@+id/productInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/productPrice"
-            android:layout_toRightOf="@+id/cartImage"
-            android:text="Ram: 8GB"
-            style="@style/TradzHubThemeFont"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="14sp" />
 
         <View
+            android:id="@+id/separator1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@+id/itemName"
+            android:layout_toRightOf="@+id/cartImage"
+
+            android:background="@color/lightgray" />
+
+        <RelativeLayout
+            android:id="@+id/rlPriceMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator1"
+            android:layout_toRightOf="@+id/cartImage">
+
+            <TextView
+
+                android:id="@+id/tvPriceHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="Price"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+
+                />
+
+            <RelativeLayout
+                android:id="@+id/rlProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_toRightOf="@+id/tvPriceHeading"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/productOrignalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:text="$ 120.00"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_alignStart="@+id/productOrignalPrice"
+                    android:layout_alignEnd="@+id/productOrignalPrice"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_toRightOf="@+id/rlProductPrice"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="$ 100.00"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/separator2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@+id/rlPriceMain"
+            android:layout_toRightOf="@+id/cartImage"
+            android:background="@color/lightgray" />
+
+        <RelativeLayout
+            android:id="@+id/rlDiscount"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator2"
+            android:layout_toRightOf="@+id/cartImage">
+
+            <TextView
+                android:id="@+id/tvDiscountHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="Discount"
+                android:textColor="@color/black"
+
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDiscountPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_toRightOf="@+id/tvDiscountHeading"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="$ 20.00"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_toRightOf="@+id/tvDiscountPrice"
+                android:background="@color/colorAccent"
+                android:foregroundGravity="center"
+                android:padding="@dimen/_3sdp"
+                app:cardCornerRadius="@dimen/_30sdp">
+
+                <TextView
+                    android:id="@+id/tvOffPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/colorAccent"
+                    android:gravity="center_horizontal"
+                    android:text="30% off"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/separator3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@+id/rlDiscount"
+            android:layout_toRightOf="@+id/cartImage"
+            android:background="@color/lightgray" />
+
+        <RelativeLayout
+            android:id="@+id/rl5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator3"
+            android:layout_toRightOf="@+id/rl4">
+
+            <TextView
+                android:id="@+id/tvAvailability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="Availability"
+                android:textColor="@color/black"
+
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAvailabilityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_toRightOf="@+id/tvAvailability"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/_3sdp"
+                android:text="In Stock"
+                android:textColor="@color/green"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/removeItemImage"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_remove"
+                android:tint="@color/black"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl4"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_below="@id/cartImage"
+            android:layout_marginBottom="@dimen/_5sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_toLeftOf="@+id/cartCount"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/minusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:padding="6sp"
+                    android:src="@drawable/icon_minus" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/cartCount"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/cartCount"
+                android:gravity="center"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/plusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6sp"
+                    android:src="@drawable/icon_plus" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/lightGrey"
-            android:layout_below="@+id/cartImage" />
+            android:layout_below="@+id/rl4"
+            android:background="@color/lightgray" />
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/wishlistbtns"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:text="Remove"
-            android:layout_below="@+id/cartImage"
+            android:layout_height="30dp"
+            android:layout_below="@+id/separator"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
             android:gravity="center"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
-            style="@style/TradzHubThemeFont"
 
-            android:textSize="@dimen/_16sdp" />
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="2"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_toLeftOf="@+id/tvAddToCart"
+                            android:padding="@dimen/_1sdp"
+                            android:tint="@color/black"
+                            app:srcCompat="@drawable/cart_market" />
+
+                        <TextView
+                            android:id="@+id/tvAddToCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_light"
+                            android:gravity="center_vertical"
+                            android:text="Add to cart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/lightgray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="2"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_toLeftOf="@+id/tvAddToCart"
+                            android:padding="@dimen/_1sdp"
+                            android:tint="@color/black"
+                            app:srcCompat="@drawable/bin" />
+
+                        <TextView
+                            android:id="@+id/tvremove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_light"
+                            android:gravity="center_vertical"
+                            android:text="Remove"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/wishlistbtns"
+            android:background="@color/lightgray" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

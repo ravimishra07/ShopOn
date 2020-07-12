@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,9 +12,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:gravity="center"
-
             android:weightSum="2">
 
             <LinearLayout
@@ -29,7 +27,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
                     android:layout_weight="2"
-                    android:background="@color/colorPrimary"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -43,7 +40,9 @@
                             android:layout_height="22dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="@dimen/_6sdp"
-                            app:srcCompat="@drawable/ic_sort_white" />
+                            android:padding="@dimen/_1sdp"
+                            android:tint="@color/black"
+                            app:srcCompat="@drawable/sort" />
                     </LinearLayout>
 
                     <TextView
@@ -51,30 +50,30 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/_6sdp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins_light"
                         android:gravity="center_vertical"
                         android:text="Sort"
-                        style="@style/TradzHubThemeFont"
-
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
+
             </LinearLayout>
 
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@color/lightgray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-
-
-                >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="2dp"
                     android:layout_weight="2"
-                    android:background="@color/colorAccent"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -84,11 +83,13 @@
                         android:gravity="right">
 
                         <ImageView
-                            android:layout_width="22dp"
+                            android:layout_width="20dp"
                             android:layout_height="22dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="@dimen/_6sdp"
-                            app:srcCompat="@drawable/ic_filter_white" />
+                            android:padding="@dimen/_1sdp"
+
+                            android:src="@drawable/filter" />
                     </LinearLayout>
 
                     <TextView
@@ -96,17 +97,21 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/_6sdp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins_light"
                         android:gravity="center_vertical"
                         android:text="Filter"
-                        android:textColor="@color/white"
-                        style="@style/TradzHubThemeFont"
-
-                        android:textStyle="bold" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
             </LinearLayout>
 
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -114,4 +119,17 @@
             android:layout_height="@dimen/_420sdp"
             android:layout_marginTop="@dimen/_4sdp" />
     </LinearLayout>
+
 </FrameLayout>
+
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressbar"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:indeterminate="true"-->
+    <!--android:max="100"-->
+    <!--android:minWidth="250dp"-->
+    <!--android:minHeight="50dp"-->
+    <!--android:progress="1" />-->
