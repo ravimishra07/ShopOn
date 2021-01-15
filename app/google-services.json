@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "688791305232",
+    "firebase_url": "https://tradzhub-58133-default-rtdb.firebaseio.com",
+    "project_id": "tradzhub-58133",
+    "storage_bucket": "tradzhub-58133.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688791305232:android:47ac19c3491ef971eb1e95",
+        "android_client_info": {
+          "package_name": "com.ravimishra.tradzhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688791305232-brf1rqdu4puaqsrh2nsog4r1g7jci1m2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgNPQGEyEXvx50n1tklFL26cFnMme2FC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688791305232-brf1rqdu4puaqsrh2nsog4r1g7jci1m2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

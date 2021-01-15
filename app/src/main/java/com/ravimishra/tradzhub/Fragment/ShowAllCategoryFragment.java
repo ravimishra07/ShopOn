@@ -43,7 +43,7 @@ public class ShowAllCategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_show_all_category, container, false);
         catRecyclerView = view.findViewById(R.id.allCategoryRecyclerview);
         progressbar = view.findViewById(R.id.progresbar);
-        callApiForCategories();
+       // callApiForCategories();
         return view;
     }
 

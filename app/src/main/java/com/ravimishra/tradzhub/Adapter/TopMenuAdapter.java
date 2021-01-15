@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.Activity.ItemDetailActivity;
+import com.ravimishra.tradzhub.Model.Category;
 import com.ravimishra.tradzhub.Model.CategoryModel;
 import com.ravimishra.tradzhub.R;
 
@@ -24,9 +25,9 @@ import java.util.List;
 public class TopMenuAdapter extends RecyclerView.Adapter<TopMenuAdapter.viewholder> {
 
     private Context context;
-    List<CategoryModel.ResponseData> menuModel;
+    List<Category> menuModel;
 
-    public TopMenuAdapter(Context context,  List<CategoryModel.ResponseData> menuModel) {
+    public TopMenuAdapter(Context context,  List<Category> menuModel) {
         this.context = context;
         this.menuModel = menuModel;
     }
@@ -42,22 +43,22 @@ public class TopMenuAdapter extends RecyclerView.Adapter<TopMenuAdapter.viewhold
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        final CategoryModel.ResponseData model = menuModel.get(position);
+        final Category model = menuModel.get(position);
 
-        holder.topMenuText.setText(model.categoryName);
-        Log.v("cat_id", "cat id " + model.categoryID);
+        holder.topMenuText.setText(model.getName());
+        Log.v("cat_id", "cat id " + model.getId());
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image);
 
-        Glide.with(context).load(model.getCategoryImage).apply(options).into(holder.img);
+        Glide.with(context).load(model.getImgUrl()).apply(options).into(holder.img);
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, ItemDetailActivity.class);
-            i.putExtra("title", model.categoryName);
+            i.putExtra("title", model.getName());
 //            i.putExtra("PRODUCT", latestModel);
             i.putExtra("FROM", 1);
-            i.putExtra("CATEGORY_ID", model.categoryID);
+            i.putExtra("CATEGORY_ID", model.getId());
             //model.categoryID
             context.startActivity(i);
         });

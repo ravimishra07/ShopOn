@@ -49,7 +49,7 @@ public class StoreProductFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_store_product, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-        getStoreProducts(storeID);
+       // getStoreProducts(storeID);
         return view;
     }
 

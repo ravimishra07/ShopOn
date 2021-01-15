@@ -58,7 +58,7 @@ public class JustInFragment extends Fragment {
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        callApi();
+       // callApi();
 
         return view;
     }

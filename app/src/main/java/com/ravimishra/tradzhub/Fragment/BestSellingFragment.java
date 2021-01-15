@@ -52,7 +52,7 @@ public class BestSellingFragment extends Fragment {
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        callApi();
+       // callApi();
         // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         /*
         TabRecyclerViewAdapter adapter = new TabRecyclerViewAdapter(getActivity(), tabRecyclerViewModel);
