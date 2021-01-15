@@ -268,10 +268,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.v("successRegister", authModel.data.get(0).token);
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString(Constants.SHARED_EMAIL, email);
-                editor.putString(Constants.SHARED_USERNAME, name);
-                editor.putString(Constants.SHARED_PASSWORD, password);
-                editor.putString(Constants.SHARED_TOKEN, authModel.data.get(0).token);
+                editor.putString(Constants.INSTANCE.getSHARED_EMAIL(), email);
+                editor.putString(Constants.INSTANCE.getSHARED_USERNAME(), name);
+                editor.putString(Constants.INSTANCE.getSHARED_PASSWORD(), password);
+                editor.putString("token", authModel.data.get(0).token);
                 editor.apply();
 
                 SharedPreferences preferences2 = PreferenceManager.getDefaultSharedPreferences(RegisterActivity.this);

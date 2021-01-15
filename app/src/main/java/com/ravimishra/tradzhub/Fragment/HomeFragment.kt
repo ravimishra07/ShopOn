@@ -24,6 +24,7 @@ import com.ravimishra.tradzhub.Activity.StoreActivity
 import com.ravimishra.tradzhub.Adapter.*
 import com.ravimishra.tradzhub.Model.*
 import com.ravimishra.tradzhub.R
+import com.ravimishra.tradzhub.Utils.Constants
 import com.ravimishra.tradzhub.api.APIService
 import com.ravimishra.tradzhub.api.APIUrl
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -176,6 +177,8 @@ class HomeFragment : Fragment() {
     private fun setUpData() {
         setUpBanner()
         setCategoryData()
+        setUpPopularProducts()
+        setUpNewArrival()
     }
 
     private fun setCategoryData(){
@@ -206,7 +209,7 @@ class HomeFragment : Fragment() {
     }
     private fun  setUpBanner() {
 
-        val database = FirebaseDatabase.getInstance("https://tradzhub-58133-default-rtdb.firebaseio.com")
+        val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
         val myRef = database.getReference("banner")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -242,7 +245,70 @@ class HomeFragment : Fragment() {
         })
 
     }
-    
+    private fun setUpPopularProducts(){
+
+        val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
+        val myRef = database.getReference("product").child("popular")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val productArray: MutableList<Product> = ArrayList()
+                for (ds in dataSnapshot.children) {
+                    val id = ds.child("id").getValue(Long::class.java)!!
+                    val name = ds.child("name").getValue(String::class.java)!!
+                    val imgUrl = ds.child("img_url").getValue(String()::class.java)!!
+                    val price = ds.child("price").getValue(Int::class.java)!!
+                    val discount = ds.child("discount").getValue(Int::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl)
+                    productArray.add(product)
+                }
+                popularRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                val onEAdpater = OnEAdpater(activity, productArray)
+                popularRecyclerView!!.adapter = onEAdpater
+                root?.popularViewAllBtn?.isEnabled = true
+                popularProgressbar!!.visibility = View.GONE
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+    }
+    private fun setUpNewArrival(){
+
+        val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
+        val myRef = database.getReference("product").child("new")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val productArray: MutableList<Product> = ArrayList()
+                for (ds in dataSnapshot.children) {
+                    val id = ds.child("id").getValue(Long::class.java)!!
+                    val name = ds.child("name").getValue(String::class.java)!!
+                    val imgUrl = ds.child("img_url").getValue(String()::class.java)!!
+                    val price = ds.child("price").getValue(Int::class.java)!!
+                    val discount = ds.child("discount").getValue(Int::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl)
+                    productArray.add(product)
+                }
+                recylerView2!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                val onEAdpater = OnEAdpater(activity, productArray)
+                recylerView2!!.adapter = onEAdpater
+                root?.newArrivalViewAllBtn?.isEnabled = true
+                popularProgressbar!!.visibility = View.GONE
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+    }
 /*
     private fun ApiCall() {
         //building retrofit object

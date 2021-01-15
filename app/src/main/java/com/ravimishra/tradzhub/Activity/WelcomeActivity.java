@@ -41,10 +41,10 @@ public class WelcomeActivity extends AppCompatActivity {
         // Checking for first time launch - before calling setContentView()
         prefManager = new PreferenceManager(this);
         SharedPreferences preferences = android.preference.PreferenceManager.getDefaultSharedPreferences(this);
-        String cartString = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        String cartString = preferences.getString(Constants.INSTANCE.getSHARED_CART_ITEM(), "");
         if (cartString == "0" || cartString == "") {
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(Constants.SHARED_CART_ITEM, "0");
+            editor.putString(Constants.INSTANCE.getSHARED_CART_ITEM(), "0");
             editor.apply();
         }
 

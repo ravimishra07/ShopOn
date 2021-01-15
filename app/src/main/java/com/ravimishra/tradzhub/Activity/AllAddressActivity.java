@@ -68,7 +68,7 @@ public class AllAddressActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String token = preferences.getString(Constants.SHARED_TOKEN, "");
+        String token = preferences.getString("token", "");
 
         //Defining retrofit api service
         APIService service = retrofit.create(APIService.class);

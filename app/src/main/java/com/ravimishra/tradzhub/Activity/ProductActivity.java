@@ -215,13 +215,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void addItemToCart() {
         String cartItem;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        cartItem = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        cartItem = preferences.getString(Constants.INSTANCE.getSHARED_CART_ITEM(), "");
         SharedPreferences.Editor editor = preferences.edit();
         cartItem = cartItem + "," + responseData.productID;
         cartItem = cartItem.replace(",,", ",");
-        editor.putString(Constants.SHARED_CART_ITEM, cartItem);
+        editor.putString(Constants.INSTANCE.getSHARED_CART_ITEM(), cartItem);
         editor.apply();
-        String cartString = preferences.getString(Constants.SHARED_CART_ITEM, "");
+        String cartString = preferences.getString(Constants.INSTANCE.getSHARED_CART_ITEM(), "");
         String[] cartArray = cartString.split(",");
         List<Integer> cartItemArray = new ArrayList<>();
 

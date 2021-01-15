@@ -109,15 +109,15 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.viewho
                 int productId = Integer.parseInt(modelData.productID);
                 String cartItem;
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-                cartItem = preferences.getString(Constants.SHARED_CART_ITEM, "");
+                cartItem = preferences.getString(Constants.INSTANCE.getSHARED_CART_ITEM(), "");
                 SharedPreferences.Editor editor = preferences.edit();
 
-                String cartString = preferences.getString(Constants.SHARED_CART_ITEM, "");
+                String cartString = preferences.getString(Constants.INSTANCE.getSHARED_CART_ITEM(), "");
                 String updatedCart = cartString.replace(modelData.productID, "");
                 String updatedCartString = updatedCart.replace(",,", ",");
                 String lastItem = updatedCartString.substring(updatedCartString.length() - 1);
 
-                editor.putString(Constants.SHARED_CART_ITEM, updatedCartString);
+                editor.putString(Constants.INSTANCE.getSHARED_CART_ITEM(), updatedCartString);
                 editor.apply();
                 Toast.makeText(context, "Item removed", Toast.LENGTH_SHORT).show();
                 ((Activity) context).finish();

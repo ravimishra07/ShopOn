@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
+import com.ravimishra.tradzhub.Model.Product;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 
@@ -24,9 +25,9 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
 
     private Context context;
     int[] mList;
-    List<TradzHubProductModel.ResponseData> productModel;
+    List<Product> productModel;
 
-    public OnEAdpater(Context context, List<TradzHubProductModel.ResponseData> productModel) {
+    public OnEAdpater(Context context, List<Product> productModel) {
         this.context = context;
         this.productModel = productModel;
     }
@@ -43,20 +44,20 @@ public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        final TradzHubProductModel.ResponseData model = productModel.get(position);
+         Product model = productModel.get(position);
 
-        holder.productName.setText(model.title);
-        holder.productPice.setText(model.salePrice);
+        holder.productName.setText(model.getName());
+        holder.productPice.setText(model.getPrice()+"");
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image);
-        Glide.with(context).load(model.productImage).apply(options).into(holder.img);
+        Glide.with(context).load(model.getImgUrl()).apply(options).into(holder.img);
 
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, ProductActivity.class);
            // i.putExtra("PRODUCT", (Parcelable) productModel);
-            i.putExtra("PRODUCT",  model);
+            i.putExtra("PRODUCT", model);
             i.putExtra("FROM", 1);
             context.startActivity(i);
         });

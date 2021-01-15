@@ -67,7 +67,7 @@ public class AddAddressActivity extends AppCompatActivity {
         String state = etState.getText().toString().trim();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String token = preferences.getString(Constants.SHARED_TOKEN, "");
+        String token = preferences.getString("token", "");
 
         //building retrofit object
         Retrofit retrofit = new Retrofit.Builder()

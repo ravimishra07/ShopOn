@@ -35,9 +35,9 @@ public class FirstActivity extends AppCompatActivity {
         animateLogo(800f, 0f, logoTv);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(FirstActivity.this);
-        String email = preferences.getString(Constants.SHARED_EMAIL, "");
-        String password = preferences.getString(Constants.SHARED_PASSWORD, "");
-        String token = preferences.getString(Constants.SHARED_TOKEN, "");
+        String email = preferences.getString(Constants.INSTANCE.getSHARED_EMAIL(), "");
+        String password = preferences.getString(Constants.INSTANCE.getSHARED_PASSWORD(), "");
+        String token = preferences.getString("token", "");
         if (email != null && password != null && token != null && !email.equalsIgnoreCase("")
                 && !password.equalsIgnoreCase("") && !token.equalsIgnoreCase("")) {
 

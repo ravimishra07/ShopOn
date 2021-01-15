@@ -97,7 +97,7 @@ class LogActivity : AppCompatActivity() {
                 editor.putString(Constants.SHARED_EMAIL, email)
                 editor.putString(Constants.SHARED_USERNAME, username)
                 editor.putString(Constants.SHARED_PASSWORD, password)
-                editor.putString(Constants.SHARED_TOKEN, authModel.data[0].token)
+                editor.putString("token", authModel.data[0].token)
                 editor.apply()
                 val preferences2 = PreferenceManager.getDefaultSharedPreferences(this@LogActivity)
                 val user_name = preferences2.getString(Constants.SHARED_USERNAME, "")
