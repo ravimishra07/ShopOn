@@ -17,6 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.like.LikeButton;
 import com.ravimishra.tradzhub.Activity.ProductActivity;
 import com.ravimishra.tradzhub.Model.AuthModel;
+import com.ravimishra.tradzhub.Model.Product;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
 import com.ravimishra.tradzhub.R;
 import com.ravimishra.tradzhub.api.APIService;
@@ -32,12 +33,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdapter.viewholder> {
 
-    int[] mList;
-    int[] imageArray = new int[6];
-    List<TradzHubProductModel.ResponseData> menuModel;
+    List<Product> menuModel;
     private Context context;
 
-    public ProductDetailAdapter(Context context, List<TradzHubProductModel.ResponseData> menuModel) {
+    public ProductDetailAdapter(Context context, List<Product> menuModel) {
         this.context = context;
         this.menuModel = menuModel;
     }
@@ -47,32 +46,25 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     public ProductDetailAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
 
-
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_store_row, parent, false);
         return new ProductDetailAdapter.viewholder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        final TradzHubProductModel.ResponseData model = menuModel.get(position);
-        int productId = Integer.parseInt(model.productID);
-        //int userid = Integer.parseInt(model);
+        final Product model = menuModel.get(position);
 
-        // holder.img.setImageResource(imageArray[position]);
-        holder.productName.setText(model.title);
-        holder.productPrice.setText(model.salePrice);
+        holder.productName.setText(model.getName());
+        holder.productPrice.setText(model.getPrice()+"");
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image);
-        Glide.with(context).load(model.productImage).apply(options).into(holder.productImage);
+        Glide.with(context).load(model.getImgUrl()).apply(options).into(holder.productImage);
         holder.itemView.setOnClickListener(v -> {
-            Log.v("PRODUCT_TAG", "");
-
             Intent i = new Intent(context, ProductActivity.class);
             i.putExtra("PRODUCT", model);
-
             context.startActivity(i);
         });
         holder.likeButton.setOnClickListener(new View.OnClickListener() {

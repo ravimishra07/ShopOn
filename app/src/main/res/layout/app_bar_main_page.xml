@@ -30,7 +30,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:fontFamily="@font/poppinextrabold"
-                    android:text="TradzHub"
+                    android:text="ShopOn"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
 

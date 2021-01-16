@@ -179,6 +179,7 @@ class HomeFragment : Fragment() {
         setCategoryData()
         setUpPopularProducts()
         setUpNewArrival()
+        setFeaturedProduct()
     }
 
     private fun setCategoryData(){
@@ -299,7 +300,39 @@ class HomeFragment : Fragment() {
                 val onEAdpater = OnEAdpater(activity, productArray)
                 recylerView2!!.adapter = onEAdpater
                 root?.newArrivalViewAllBtn?.isEnabled = true
-                popularProgressbar!!.visibility = View.GONE
+                pbNewArrivals!!.visibility = View.GONE
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+    }
+    private  fun setFeaturedProduct(){
+
+        val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
+        val myRef = database.getReference("product").child("featured")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val productArray: MutableList<Product> = ArrayList()
+                for (ds in dataSnapshot.children) {
+                    val id = ds.child("id").getValue(Long::class.java)!!
+                    val name = ds.child("name").getValue(String::class.java)!!
+                    val imgUrl = ds.child("img_url").getValue(String()::class.java)!!
+                    val price = ds.child("price").getValue(Int::class.java)!!
+                    val discount = ds.child("discount").getValue(Int::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl)
+                    productArray.add(product)
+                }
+                recylerView3!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                val onEAdpater = OnEAdpater(activity, productArray)
+                recylerView3!!.adapter = onEAdpater
+                root?.newArrivalViewAllBtn?.isEnabled = true
+                featuredProgressBar!!.visibility = View.GONE
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -33,7 +33,7 @@
         android:layout_marginTop="@dimen/_60sdp"
         android:fontFamily="@font/poppins_light"
         android:gravity="center"
-        android:text="Powered by Softwagon"
+        android:text="Shopping Cart App"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_16sdp"
         android:textStyle="bold" />

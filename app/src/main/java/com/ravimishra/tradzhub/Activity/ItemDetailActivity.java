@@ -103,8 +103,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        ProductDetailAdapter adapter = new ProductDetailAdapter(this, responseData.data);
-        recyclerView.setAdapter(adapter);
+//        ProductDetailAdapter adapter = new ProductDetailAdapter(this, responseData.data);
+//        recyclerView.setAdapter(adapter);
     }
 
     private void callApiForCategory(int categoryID) {
@@ -138,8 +138,8 @@ public class ItemDetailActivity extends AppCompatActivity {
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(ItemDetailActivity.this, 2, LinearLayoutManager.VERTICAL, false);
                 recyclerView.setLayoutManager(gridLayoutManager);
 
-                ProductDetailAdapter adapter = new ProductDetailAdapter(ItemDetailActivity.this, responseData.data);
-                recyclerView.setAdapter(adapter);
+//                ProductDetailAdapter adapter = new ProductDetailAdapter(ItemDetailActivity.this, responseData.data);
+//                recyclerView.setAdapter(adapter);
             }
 
             @Override
