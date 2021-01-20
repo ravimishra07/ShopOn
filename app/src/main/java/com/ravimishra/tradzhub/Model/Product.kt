@@ -7,5 +7,6 @@ data class Product(
         var name: String,
         var price: Int,
         var discount: Int,
-        var imgUrl: String
+        var imgUrl: String,
+        var desc: String
 ):Serializable

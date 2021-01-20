@@ -35,7 +35,7 @@ class FlashDealFragment  //  priva root:
         root = inflater.inflate(R.layout.fragment_flash_desl, container, false)
         recyclerView = root?.findViewById(R.id.recyclerView)
         setData()
-        return view
+        return root
     }
 
     private fun setData() {
@@ -52,7 +52,9 @@ class FlashDealFragment  //  priva root:
                     val imgUrl = ds.child("img_url").getValue(String()::class.java)!!
                     val price = ds.child("price").getValue(Int::class.java)!!
                     val discount = ds.child("discount").getValue(Int::class.java)!!
-                    val product = Product(id, name, price, discount, imgUrl)
+                    val desc = ds.child("desc").getValue(String()::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl,desc)
                     productArray.add(product)
                 }
                 val gridLayoutManager = GridLayoutManager(activity, 2, LinearLayoutManager.VERTICAL, false)
