@@ -180,6 +180,7 @@ class HomeFragment : Fragment() {
         setUpPopularProducts()
         setUpNewArrival()
         setFeaturedProduct()
+        setStoreProduct()
     }
 
     private fun setCategoryData(){
@@ -263,7 +264,10 @@ class HomeFragment : Fragment() {
 
                     val desc = ds.child("desc").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc)
+                    val cart = ds.child("cart").getValue(String()::class.java)!!
+                    val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
                     productArray.add(product)
                 }
                 popularRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -297,7 +301,10 @@ class HomeFragment : Fragment() {
 
                     val desc = ds.child("desc").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc)
+                    val cart = ds.child("cart").getValue(String()::class.java)!!
+                    val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
                     productArray.add(product)
                 }
                 recylerView2!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -331,7 +338,10 @@ class HomeFragment : Fragment() {
 
                     val desc = ds.child("desc").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc)
+                    val cart = ds.child("cart").getValue(String()::class.java)!!
+                    val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
+
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
                     productArray.add(product)
                 }
                 recylerView3!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -348,6 +358,40 @@ class HomeFragment : Fragment() {
         })
 
     }
+
+private  fun setStoreProduct(){
+
+    val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
+    val myRef = database.getReference("store")
+    myRef.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+            val storeArray: MutableList<Store> = ArrayList()
+            for (ds in dataSnapshot.children) {
+                val id = ds.child("id").getValue(Long::class.java)!!
+                val name = ds.child("name").getValue(String::class.java)!!
+                val imgUrl = ds.child("imgUrl").getValue(String()::class.java)!!
+                val storeDesc = ds.child("storeDesc").getValue(String()::class.java)!!
+
+
+
+                val store =  Store(id,name,imgUrl,storeDesc)
+                storeArray.add(store)
+            }
+            storeRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            val adapter = StoreAdapter(activity,storeArray)
+            storeRecyclerView!!.adapter = adapter
+            root?.newArrivalViewAllBtn?.isEnabled = true
+            pbPopularStores!!.visibility = View.GONE
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException())
+        }
+    })
+
+}
 /*
     private fun ApiCall() {
         //building retrofit object

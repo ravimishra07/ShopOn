@@ -8,5 +8,7 @@ data class Product(
         var price: Int,
         var discount: Int,
         var imgUrl: String,
-        var desc: String
-):Serializable
+        var desc: String,
+        var wishlist: String,
+        var cart: String
+        ):Serializable

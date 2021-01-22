@@ -22,7 +22,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:background="@color/colorPrimary"
-            android:src="@drawable/logo" />
+            android:src="@drawable/shop_logo" />
     </androidx.cardview.widget.CardView>
 
     <TextView

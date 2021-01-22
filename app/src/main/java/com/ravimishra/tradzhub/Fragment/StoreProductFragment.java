@@ -33,12 +33,12 @@ public class StoreProductFragment extends Fragment {
     RecyclerView recyclerView;
     List<TabRecyclerViewModel> tabRecyclerViewModel = new ArrayList<>();
     TradzHubProductModel productResponseData;
-    int storeID;
+    Long storeID;
     public StoreProductFragment() {
         // Required empty public constructor
     }
 
-    public StoreProductFragment(int storeId) {
+    public StoreProductFragment(Long storeId) {
         storeID = storeId;
     }
 

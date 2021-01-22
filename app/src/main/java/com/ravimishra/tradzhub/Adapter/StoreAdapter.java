@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.ravimishra.tradzhub.Activity.StoreActivity;
+import com.ravimishra.tradzhub.Model.Store;
 import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.R;
 
@@ -24,9 +25,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
     private Context context;
     int[] mList;
     int[] imageArray = new int[6];
-    List<StoreModel.ResponseData> responseData;
+    List<Store> responseData;
 
-    public StoreAdapter(Context context, List<StoreModel.ResponseData> response) {
+    public StoreAdapter(Context context, List<Store> response) {
         this.context = context;
         responseData = response;
 
@@ -43,15 +44,14 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        final StoreModel.ResponseData model = responseData.get(position);
+        final Store model = responseData.get(position);
 
-        holder.img.setImageResource(imageArray[position]);
-        holder.storeName.setText(model.storeName);
+        holder.storeName.setText(model.getName());
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image);
-        Glide.with(context).load(model.storeImage).apply(options).into(holder.img);
+        Glide.with(context).load(model.getImgUrl()).apply(options).into(holder.img);
 /*
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, StoreActivity.class);
@@ -68,7 +68,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> 
 
     @Override
     public int getItemCount() {
-        return 6;
+        return responseData.size();
     }
 
     class viewholder extends RecyclerView.ViewHolder {

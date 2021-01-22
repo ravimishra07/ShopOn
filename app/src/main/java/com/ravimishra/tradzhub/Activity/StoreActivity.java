@@ -23,6 +23,7 @@ import com.ravimishra.tradzhub.Adapter.TabAdapter;
 import com.ravimishra.tradzhub.Fragment.StoreFollowersFragment;
 import com.ravimishra.tradzhub.Fragment.StoreProductFragment;
 import com.ravimishra.tradzhub.Fragment.StoreReviewFragment;
+import com.ravimishra.tradzhub.Model.Store;
 import com.ravimishra.tradzhub.Model.StoreModel;
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel;
 import com.ravimishra.tradzhub.Model.TradzHubProductModel;
@@ -42,7 +43,7 @@ public class StoreActivity extends AppCompatActivity {
     AppBarLayout appBarLayout;
     FrameLayout frameLayout;
     ProgressBar progressBar;
-    StoreModel.ResponseData responseData;
+    Store responseData;
     TradzHubProductModel productResponseData;
 
 
@@ -51,7 +52,7 @@ public class StoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
-        responseData = (StoreModel.ResponseData) i.getSerializableExtra("STORE");
+        responseData = (Store) i.getSerializableExtra("STORE");
 
         setContentView(R.layout.activity_store);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -59,7 +60,7 @@ public class StoreActivity extends AppCompatActivity {
 
         collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
         ImageView toolbarImageView = findViewById(R.id.toolbarImage);
-        collapsingToolbarLayout.setTitle(responseData.storeName);
+        collapsingToolbarLayout.setTitle(responseData.getName());
 
         backImageBtn = findViewById(R.id.backImageBtn);
 
@@ -83,11 +84,11 @@ public class StoreActivity extends AppCompatActivity {
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image);
-        Glide.with(this).load(responseData.storeImage).apply(options).into(toolbarImageView);
+        Glide.with(this).load(responseData.getImgUrl()).apply(options).into(toolbarImageView);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
-        toolbar.setTitle(responseData.storeName);
+        toolbar.setTitle(responseData.getName());
 
         backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +107,10 @@ public class StoreActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
 
-        int store_id = Integer.parseInt(responseData.storeID);
+        Long store_id = responseData.getId();
 
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
-        StoreProductFragment storeProductFragment = new StoreProductFragment(store_id);
+        StoreProductFragment storeProductFragment = new StoreProductFragment(responseData.getId());
         storeProductFragment.setArguments(bundle);
 
         adapter.addFragment(storeProductFragment, "Store Product");
