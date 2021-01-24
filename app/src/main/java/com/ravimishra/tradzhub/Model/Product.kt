@@ -1,5 +1,6 @@
 package com.ravimishra.tradzhub.Model
 
+import com.google.firebase.database.Exclude
 import java.io.Serializable
 
 data class Product(
@@ -10,5 +11,22 @@ data class Product(
         var imgUrl: String,
         var desc: String,
         var wishlist: String,
-        var cart: String
-        ):Serializable
+        var cart: String,
+        var category: String
+        ):Serializable{
+
+        @Exclude
+        fun toMap(): Map<String, Any?> {
+                return mapOf(
+                        "id" to id,
+                        "name" to name,
+                        "price" to price,
+                        "discount" to discount,
+                        "imgUrl" to imgUrl,
+                        "desc" to desc,
+                        "wishlist" to wishlist,
+                        "cart" to cart,
+                        "category" to category
+                )
+        }
+}

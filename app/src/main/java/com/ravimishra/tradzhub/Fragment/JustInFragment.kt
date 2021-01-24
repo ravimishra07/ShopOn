@@ -72,7 +72,8 @@ class JustInFragment : Fragment {
                     val cart = ds.child("cart").getValue(String()::class.java)!!
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
+                    val category = ds.child("category").getValue(String()::class.java)!!
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
                     productArray.add(product)
                 }
                 val gridLayoutManager = GridLayoutManager(activity, 2, LinearLayoutManager.VERTICAL, false)

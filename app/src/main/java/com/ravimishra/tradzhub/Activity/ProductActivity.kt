@@ -4,8 +4,8 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,19 +14,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.ravimishra.tradzhub.Model.Category
 import com.ravimishra.tradzhub.Model.CategoryModel
 import com.ravimishra.tradzhub.Model.Product
 import com.ravimishra.tradzhub.R
-import com.ravimishra.tradzhub.Utils.Constants.SHARED_CART_ITEM
-import kotlinx.android.synthetic.main.activity_store.*
-import kotlinx.android.synthetic.main.cart_rowe_item.*
-import kotlinx.android.synthetic.main.cart_rowe_item.cartImage
 import kotlinx.android.synthetic.main.content_product.*
-import kotlinx.android.synthetic.main.wishlist_row.*
 import java.util.*
 
 class ProductActivity : AppCompatActivity(), View.OnClickListener {
@@ -34,7 +33,8 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
     private var bottomBars: Array<TextView?>? = null
 
     private var Layout_bars: LinearLayout? = null
-   // private var llAddToCart: LinearLayout? = null
+
+    // private var llAddToCart: LinearLayout? = null
     private var myvpAdapter: MyViewPagerAdapter? = null
     private val banner2: Drawable? = null
     private val banner3: Drawable? = null
@@ -63,17 +63,18 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         override fun onPageScrolled(arg0: Int, arg1: Float, arg2: Int) {}
         override fun onPageScrollStateChanged(arg0: Int) {}
     }
-//    private var viewPager: ViewPager? = null
+
+    //    private var viewPager: ViewPager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-       // viewPager = findViewById(R.id.viewPager)
+        // viewPager = findViewById(R.id.viewPager)
 //    stockArray[0] = true
 //    stockArray[1] = false
 
-    Layout_bars = findViewById(R.id.layoutBars)
+        Layout_bars = findViewById(R.id.layoutBars)
         tvOrignalPrice = findViewById(R.id.productOrignalPrice)
         tvOffPrice = findViewById(R.id.tvOffPrice)
         tvInStock = findViewById(R.id.tvInstock)
@@ -93,6 +94,7 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         tvProductName = findViewById(R.id.productName)
         tvProductPrice = findViewById(R.id.productPrice)
         tvProductDescription = findViewById(R.id.productDescription)
+        llAddToCart.setOnClickListener(this)
         val extras = intent.extras
         value = extras!!.getInt("FROM")
         // if (value == 1) {
@@ -147,7 +149,7 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
 
         var orignalPrice = productModel?.price
         var discountPercent = productModel?.discount
-        var discountedPrice = orignalPrice!!*(1-discountPercent!!/100)
+        var discountedPrice = orignalPrice!! * (1 - discountPercent!! / 100)
         tvProductName!!.text = productModel!!.name
         tvProductPrice!!.text = "₹ $discountedPrice"
         tvOrignalPrice!!.text = "$ $orignalPrice"
@@ -156,9 +158,9 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
 //            tvInStock!!.visibility = View.GONE
 //            tvOutStock!!.visibility = View.VISIBLE
 //        } else {
-            tvOutStock!!.visibility = View.GONE
-            tvInStock!!.visibility = View.VISIBLE
-       // }
+        tvOutStock!!.visibility = View.GONE
+        tvInStock!!.visibility = View.VISIBLE
+        // }
     }
 
     private fun getItem(i: Int): Int {
@@ -181,25 +183,68 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addItemToCart() {
-//        var cartItem: String
-//        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-//        cartItem = preferences.getString(SHARED_CART_ITEM, "")
-//        val editor = preferences.edit()
-//        cartItem = cartItem + "," + responseData.productID
-//        cartItem = cartItem.replace(",,", ",")
-//        editor.putString(SHARED_CART_ITEM, cartItem)
-//        editor.apply()
-//        val cartString = preferences.getString(SHARED_CART_ITEM, "")
-//        val cartArray = cartString!!.split(",").toTypedArray()
-//        val cartItemArray: MutableList<Int> = ArrayList()
-//        for (i in cartArray.indices) {
-//            val item = cartArray[i].toInt()
-//            if (!cartItemArray.contains(item)) {
-//                cartItemArray.add(item)
-//            }
-       // }
-        Toast.makeText(this, "Item added to cart!", Toast.LENGTH_SHORT).show()
-        // Toast.makeText(this, "Added to cart "+cartString+ "converted string"+cartItemArray, Toast.LENGTH_SHORT).show();
+        val intent = intent
+        productModel = intent.getSerializableExtra("PRODUCT") as Product
+        val category = productModel?.category
+        if (category != null) {
+            val database = FirebaseDatabase.getInstance("https://tradzhub-58133-default-rtdb.firebaseio.com")
+            val myRef = database.getReference("product")
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (ds in dataSnapshot.children) {
+
+                        for (value in ds.children) {
+                            val productHashMap: HashMap<String, Any> = value.value as HashMap<String, Any>
+                            for (product in productHashMap.keys) {
+                                if (productModel!!.id == productHashMap[product]) {
+                                    val ref = value.ref
+
+                                    ref.child("cart").setValue("1")
+                                    Toast.makeText(applicationContext, "Item added to cart", Toast.LENGTH_SHORT)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("Tag", "Failed to read value.", error.toException())
+                }
+            })
+        }
+    }
+    private fun addItemTOWishList(){
+        val intent = intent
+        productModel = intent.getSerializableExtra("PRODUCT") as Product
+        val category = productModel?.category
+        if (category != null) {
+            val database = FirebaseDatabase.getInstance("https://tradzhub-58133-default-rtdb.firebaseio.com")
+            val myRef = database.getReference("product")
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (ds in dataSnapshot.children) {
+
+                        for (value in ds.children) {
+                            val productHashMap: HashMap<String, Any> = value.value as HashMap<String, Any>
+                            for (product in productHashMap.keys) {
+                                if (productModel!!.id == productHashMap[product]) {
+                                    val ref = value.ref
+
+                                    ref.child("cart").setValue("1")
+                                    Toast.makeText(applicationContext, "Item added to cart", Toast.LENGTH_SHORT)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("Tag", "Failed to read value.", error.toException())
+                }
+            })
+        }
     }
 
     inner class MyViewPagerAdapter : PagerAdapter() {

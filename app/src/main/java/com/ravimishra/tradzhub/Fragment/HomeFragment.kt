@@ -267,7 +267,8 @@ class HomeFragment : Fragment() {
                     val cart = ds.child("cart").getValue(String()::class.java)!!
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
+                    val category = ds.child("category").getValue(String()::class.java)!!
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
                     productArray.add(product)
                 }
                 popularRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -304,7 +305,9 @@ class HomeFragment : Fragment() {
                     val cart = ds.child("cart").getValue(String()::class.java)!!
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
+                    val category = ds.child("category").getValue(String()::class.java)!!
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
+
                     productArray.add(product)
                 }
                 recylerView2!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -341,7 +344,9 @@ class HomeFragment : Fragment() {
                     val cart = ds.child("cart").getValue(String()::class.java)!!
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart)
+                    val category = ds.child("category").getValue(String()::class.java)!!
+                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
+
                     productArray.add(product)
                 }
                 recylerView3!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
