@@ -91,8 +91,8 @@ class WishlistActivtry : AppCompatActivity() {
     fun setUpRecyclerview() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-        val adapter = ProductivityDetailAdapter(this, cartModelArray, 1)
-        recyclerView.adapter = adapter
+//        val adapter = ProductivityDetailAdapter(this, cartModelArray, 1)
+//        recyclerView.adapter = adapter
 
     }
 }
