@@ -33,8 +33,8 @@ class CartActivity : AppCompatActivity(), View.OnClickListener {
     private var cartArrayCount = 0
     private val cartItemArray: MutableList<Int> = ArrayList()
     private val productDetailModels: MutableList<ProductDetailModel> = ArrayList()
-    private var totalPrice = 0.0
-    private var diliveryCharge = 0.0
+    private var totalPrice = 0
+    private var diliveryCharge = 5.0
     private var itemCost = 0.0
     val productArray: MutableList<Product> = ArrayList()
 
@@ -70,10 +70,9 @@ class CartActivity : AppCompatActivity(), View.OnClickListener {
         recyclerView.layoutManager = layoutManager
         val adapter = ProductivityDetailAdapter(this, productArray, 0)
         recyclerView.adapter = adapter
-        cartSummaryView.visibility = View.VISIBLE
-        tvShippingCost.text = diliveryCharge.toString()
-        tvTotalCost.text = itemCost.toString()
-        tvGrandTotal.text = (itemCost + diliveryCharge).toString()
+        tvShippingCost.text = "₹ 50"
+        tvTotalCost.text = "₹ $totalPrice"
+        tvGrandTotal.text = "₹"+(totalPrice + 50).toString()
     }
 
     fun getCartItems() {
@@ -134,6 +133,18 @@ class CartActivity : AppCompatActivity(), View.OnClickListener {
                                     val wishlist = productHashMap["wishlist"] as String
                                     val category = productHashMap["category"] as String
 
+
+                                    var oriPrice = price.toFloat()
+                                    var discPercent = discount.toFloat()
+                                    var discountedPrc: Float = oriPrice!! * (1 - discPercent!! / 100)
+
+                                    var orignalPrice = oriPrice.toInt()
+                                    var discountPercent = discPercent.toInt()
+                                    var discountedPrice = discountedPrc.toInt()
+
+
+
+                                    totalPrice += discountedPrice
                                     val product = Product(id, name, price.toInt(), discount.toInt(), imgUrl, desc, wishlist, cart, category)
                                     productArray.add(product)
 
@@ -148,10 +159,15 @@ class CartActivity : AppCompatActivity(), View.OnClickListener {
                 if (productArray.size == 0) {
                     cartEmptyImg.visibility = View.VISIBLE
                     cartEmptyText.visibility = View.VISIBLE
+                    cartSummaryView.visibility = View.GONE
+
                 } else {
                     cartEmptyImg.visibility = View.GONE
                     cartEmptyText.visibility = View.GONE
+                    cartSummaryView.visibility = View.VISIBLE
+
                 }
+
                 setUpRecyclerview()
             }
 

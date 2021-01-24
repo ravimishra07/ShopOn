@@ -37,10 +37,13 @@ class ProductivityDetailAdapter(private val context: Context, var productModel: 
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image)
         Glide.with(context).load(model.imgUrl).apply(options).into(holder.img)
+        var oriPrice = model?.price.toFloat()
+        var discPercent = model?.discount.toFloat()
+        var discountedPrc : Float = oriPrice!! * (1 - discPercent!! / 100)
 
-        var orignalPrice = model?.price
-        var discountPercent = model?.discount
-        var discountedPrice = orignalPrice!! * (1 - discountPercent!! / 100)
+        var orignalPrice = oriPrice.toInt()
+        var discountPercent = discPercent.toInt()
+        var discountedPrice  = discountedPrc.toInt()
 
 //        val orignalp = modelData.salePrice
 //        val orignalPvalue = orignalp.toFloat()
@@ -56,7 +59,8 @@ class ProductivityDetailAdapter(private val context: Context, var productModel: 
             holder.tvAvailabilityText.text = "Out of stock"
             holder.tvAvailabilityText.setTextColor(context.resources.getColor(R.color.red))
         }
-            holder.tvDiscountPrice.text = "$ $discountedPrice"
+        val priceDiff = orignalPrice - discountedPrice
+            holder.tvDiscountPrice.text = "$ $priceDiff"
             holder.tvOffPrice.visibility = View.VISIBLE
             holder.tvOffPrice.text = "$discountPercent% off"
 
