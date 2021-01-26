@@ -79,6 +79,7 @@
                 android:layout_marginRight="@dimen/_8sdp"
                 android:foregroundGravity="center"
                 app:cardCornerRadius="@dimen/half_heart_size"
+                android:visibility="gone"
                 app:cardElevation="2dp">
 
                 <LinearLayout

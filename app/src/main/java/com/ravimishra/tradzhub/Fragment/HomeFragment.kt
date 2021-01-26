@@ -379,7 +379,7 @@ private  fun setStoreProduct(){
             val adapter = StoreAdapter(activity,storeArray)
             storeRecyclerView!!.adapter = adapter
             root?.newArrivalViewAllBtn?.isEnabled = true
-            pbPopularStores!!.visibility = View.GONE
+            pbPopularStores?.visibility = View.GONE
         }
 
         override fun onCancelled(error: DatabaseError) {

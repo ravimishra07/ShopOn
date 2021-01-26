@@ -1,5 +1,7 @@
 package com.ravimishra.tradzhub.Activity
 
+import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.drawable.Drawable
@@ -9,7 +11,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
@@ -21,14 +25,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.ravimishra.tradzhub.Model.Category
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.ravimishra.tradzhub.Model.CategoryModel
 import com.ravimishra.tradzhub.Model.Product
 import com.ravimishra.tradzhub.R
 import kotlinx.android.synthetic.main.content_product.*
 import java.util.*
 
-class ProductActivity : AppCompatActivity(), View.OnClickListener {
+class ProductActivity : AppCompatActivity(), View.OnClickListener, OnLikeListener {
     var mDatabase: SQLiteDatabase? = null
     private var bottomBars: Array<TextView?>? = null
 
@@ -89,12 +94,17 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         value = extras!!.getInt("FROM")
 
         setData()
+        wishlistBtn.setOnLikeListener(this)
+        llAddToCart.setOnClickListener {
+            addItemToCart()
+        }
 
         myvpAdapter = MyViewPagerAdapter()
         viewPager.adapter = myvpAdapter
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener)
         ColoredBars(1)
         showLoader()
+
     }
 
     private fun ColoredBars(thisScreen: Int) {
@@ -144,13 +154,11 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         tvProductPrice!!.text = "₹ $discountedPrice"
         tvOrignalPrice!!.text = "$ $orignalPrice"
         tvOffPrice?.text = "$discountPercent% off"
-//        if (stockArray.random()) {
-//            tvInStock!!.visibility = View.GONE
-//            tvOutStock!!.visibility = View.VISIBLE
-//        } else {
+
         tvOutStock!!.visibility = View.GONE
         tvInStock!!.visibility = View.VISIBLE
-        // }
+        wishlistBtn.isLiked = productModel?.wishlist != "0"
+
     }
 
     private fun getItem(i: Int): Int {
@@ -158,18 +166,36 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.back -> finish()
-            R.id.llAddToCart -> addItemToCart()
-            R.id.cart -> {
-                val intent = Intent(this@ProductActivity, CartActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.ivWishlist -> {
-                val intent1 = Intent(this@ProductActivity, WishlistActivtry::class.java)
-                startActivity(intent1)
-            }
-        }
+//        when (v.id) {
+//            R.id.back -> finish()
+//            R.id.llAddToCart -> addItemToCart()
+//            R.id.cart -> {
+//                val intent = Intent(this@ProductActivity, CartActivity::class.java)
+//                startActivity(intent)
+//            }
+//            R.id.ivWishlist -> {
+//                val intent1 = Intent(this@ProductActivity, WishlistActivtry::class.java)
+//                startActivity(intent1)
+//            }
+//        }
+    }
+
+    fun goToCart(v: View) {
+        val intent = Intent(this@ProductActivity, CartActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun goToWishList() {
+        val intent = Intent(this@ProductActivity, WishlistActivtry::class.java)
+        startActivity(intent)
+    }
+
+    fun goBack(v: View) {
+        finish()
+    }
+
+    fun addToCart(v: View) {
+       // addItemToCart()
     }
 
     private fun addItemToCart() {
@@ -185,12 +211,27 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
 
                         for (value in ds.children) {
                             val productHashMap: HashMap<String, Any> = value.value as HashMap<String, Any>
-                            for (product in productHashMap.keys) {
-                                if (productModel!!.id == productHashMap[product]) {
-                                    val ref = value.ref
-
+                            if (productModel!!.id == productHashMap["id"]) {
+                                val ref = value.ref
+                                if (productModel!!.cart == "0") {
                                     ref.child("cart").setValue("1")
-                                    Toast.makeText(applicationContext, "Item added to cart", Toast.LENGTH_SHORT)
+                                    showAlert("Item added to cart", "Success")
+
+                                    this@ProductActivity.runOnUiThread {
+                                        Toast.makeText(this@ProductActivity, "Item added to cart", Toast.LENGTH_SHORT)
+                                        return@runOnUiThread
+                                    }
+                                } else {
+                                    showAlert("Item already in cart", "Success")
+
+                                    this@ProductActivity.runOnUiThread {
+                                        Toast.makeText(this@ProductActivity, "Item is already in cart", Toast.LENGTH_SHORT)
+
+
+
+                                        return@runOnUiThread
+
+                                    }
                                 }
                             }
                         }
@@ -204,7 +245,36 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
             })
         }
     }
-    private fun addItemTOWishList(){
+fun showAlert(message: String, title: String){
+    val dialogBuilder = AlertDialog.Builder(this)
+
+    // set message of alert dialog
+    dialogBuilder.setMessage(message)
+            // if the dialog is cancelable
+            .setCancelable(false)
+            // positive button text and action
+            .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
+                dialog.cancel()
+            })
+//            // negative button text and action
+//            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+//                dialog, id -> dialog.cancel()
+//            })
+
+    // create dialog box
+    val alert = dialogBuilder.create()
+    // set title for alert dialog box
+    alert.setTitle(title)
+    // show alert dialog
+    try {
+        alert.show()
+    }
+    catch (e: WindowManager.BadTokenException ) {
+        //use a log message
+        Log.v("ProductActivity",e.toString())
+    }
+}
+    private fun addItemTOWishList() {
         val intent = intent
         productModel = intent.getSerializableExtra("PRODUCT") as Product
         val category = productModel?.category
@@ -220,9 +290,21 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
                             for (product in productHashMap.keys) {
                                 if (productModel!!.id == productHashMap[product]) {
                                     val ref = value.ref
+                                    if (productModel!!.wishlist == "0") {
+                                        runOnUiThread {
+                                            Toast.makeText(this@ProductActivity, "item added to wishlist", Toast.LENGTH_SHORT).show()
 
-                                    ref.child("cart").setValue("1")
-                                    Toast.makeText(applicationContext, "Item added to cart", Toast.LENGTH_SHORT)
+                                        }
+
+                                        ref.child("wishlist").setValue("1")
+                                    } else {
+                                        runOnUiThread {
+                                            Toast.makeText(this@ProductActivity, "item removed from to wishlist", Toast.LENGTH_SHORT).show()
+                                        }
+                                        ref.child("cart").setValue("0")
+                                    }
+
+
                                 }
                             }
                         }
@@ -271,5 +353,17 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         const val DATABASE_NAME = "cartdatabase"
+    }
+
+    override fun liked(likeButton: LikeButton?) {
+        if (wishlistBtn == likeButton) {
+            addItemTOWishList()
+        }
+    }
+
+    override fun unLiked(likeButton: LikeButton?) {
+        if (wishlistBtn == likeButton) {
+            addItemTOWishList()
+        }
     }
 }

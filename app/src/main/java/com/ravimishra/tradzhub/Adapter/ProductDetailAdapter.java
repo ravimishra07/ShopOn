@@ -71,7 +71,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
             @Override
             public void onClick(View v) {
                 // addDataToWishlist()
-               //  holder.likeButton.setEnabled(false);
+                //  holder.likeButton.setEnabled(false);
                 if (holder.likeButton.isLiked()) {
                     holder.likeButton.setLiked(false);
                 } else {
@@ -136,4 +136,3 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
         }
     }
 }
-

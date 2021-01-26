@@ -1,8 +1,6 @@
 package com.ravimishra.tradzhub.Fragment
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,14 +18,7 @@ import com.ravimishra.tradzhub.Model.TabRecyclerViewModel
 import com.ravimishra.tradzhub.Model.TradzHubProductModel
 import com.ravimishra.tradzhub.R
 import com.ravimishra.tradzhub.Utils.Constants
-import com.ravimishra.tradzhub.api.APIService
-import com.ravimishra.tradzhub.api.APIUrl
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 class BestSellingFragment : Fragment() {

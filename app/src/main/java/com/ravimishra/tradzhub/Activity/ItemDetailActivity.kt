@@ -1,11 +1,9 @@
 package com.ravimishra.tradzhub.Activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.ravimishra.tradzhub.Model.TabRecyclerViewModel
 import com.ravimishra.tradzhub.Model.TradzHubProductModel
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import android.widget.TextView
 import android.os.Bundle
 import com.ravimishra.tradzhub.R
 import com.google.android.material.snackbar.Snackbar
@@ -19,10 +17,6 @@ import com.google.firebase.database.ValueEventListener
 import com.ravimishra.tradzhub.Adapter.ProductDetailAdapter
 import com.ravimishra.tradzhub.Model.Product
 import com.ravimishra.tradzhub.Utils.Constants
-import retrofit2.Retrofit
-import com.ravimishra.tradzhub.api.APIUrl
-import retrofit2.converter.gson.GsonConverterFactory
-import com.ravimishra.tradzhub.api.APIService
 import kotlinx.android.synthetic.main.activity_item_detail.*
 import kotlinx.android.synthetic.main.content_item_detail.*
 
@@ -52,7 +46,14 @@ class ItemDetailActivity : AppCompatActivity() {
         toolbar?.title = ""
 
         val category = extras.getString("category")
+
         category?.let { setData(it) }
+        cart.setOnClickListener{
+            goToCart()
+        }
+        back.setOnClickListener{
+            goBack()
+        }
 
     }
     private fun setData(category: String) {
@@ -90,7 +91,17 @@ class ItemDetailActivity : AppCompatActivity() {
         })
 
     }
-
+    fun goToCart(){
+        val intent = Intent(this@ItemDetailActivity, CartActivity::class.java)
+        startActivity(intent)
+    }
+    fun goToWishList(){
+        val intent = Intent(this@ItemDetailActivity, WishlistActivtry::class.java)
+        startActivity(intent)
+    }
+    fun goBack(){
+        finish()
+    }
     private fun addFabButton() {
         fab!!.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

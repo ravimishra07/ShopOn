@@ -56,6 +56,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/_6sdp"
                             android:src="@drawable/back"
+                            android:onClick="goBack"
                             android:tint="@color/white" />
 
                         <TextView
@@ -94,6 +95,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/_6sdp"
                         android:src="@drawable/cart_market"
+                        android:onClick="goToCart"
                         android:tint="@color/white" />
                 </RelativeLayout>
 
@@ -148,7 +150,7 @@
                                 android:gravity="center">
 
                                 <com.like.LikeButton
-                                    android:id="@+id/star_button"
+                                    android:id="@+id/wishlistBtn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     app:anim_scale_factor="1.5"
@@ -574,8 +576,7 @@ android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:onClick="addItemToCart"
+                android:onClick="addToCart"
                 android:foreground="?android:attr/selectableItemBackground">
 
                 <LinearLayout

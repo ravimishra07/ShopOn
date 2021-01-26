@@ -53,12 +53,28 @@ public class TopMenuAdapter extends RecyclerView.Adapter<TopMenuAdapter.viewhold
                 .error(R.drawable.place_holder_image);
 
         Glide.with(context).load(model.getImgUrl()).apply(options).into(holder.img);
+        int catId = (int) model.getId();
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, ItemDetailActivity.class);
             i.putExtra("title", model.getName());
-//            i.putExtra("PRODUCT", latestModel);
-            i.putExtra("FROM", 1);
-            i.putExtra("CATEGORY_ID", model.getId());
+            switch (catId){
+                case 901:
+                    i.putExtra("category", "appliance");
+                    break;
+                case 902:
+                    i.putExtra("category", "electronics");
+                    break;
+                case 903:
+                    i.putExtra("category", "fashion");
+                    break;
+                case 904:
+                    i.putExtra("category", "grocery");
+                    break;
+                case 905:
+                    i.putExtra("category", "sports");
+                    break;
+            }
+
             //model.categoryID
             context.startActivity(i);
         });
