@@ -66,17 +66,11 @@ class HomeFragment : Fragment() {
     private lateinit var popularModel: TradzHubProductModel
     private lateinit var featuredModel: TradzHubProductModel
     private lateinit var latestModel: TradzHubProductModel
-//    private  var newArrivalViewAllBtn: Button? = null
-//    private  var popularViewAllBtn: Button? = null
-//    private  var featuredViewAllBtn: Button? = null
-
 
     private val bannerImageArray: MutableList<String> = ArrayList()
     private var root: View? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        // Inflate the layout for this fragment
-      //  val view = inflater.inflate(R.layout.fragment_home, container, false)
         root = inflater.inflate(R.layout.fragment_home, container, false)
 
         progressBar = root?.findViewById(R.id.pbTopMenur)
@@ -100,9 +94,6 @@ class HomeFragment : Fragment() {
         root?.newArrivalViewAllBtn?.isEnabled = false
         root?.popularViewAllBtn?.isEnabled = false
         root?.featuredViewAllBtn?.isEnabled = false
-
-
-        // initialize the button and sets click listeners
         setUpButtons()
         storeRecyclerView =  root?.findViewById(R.id.storeRecyclerView)
         //root?.tabLayout =  root?.findViewById(R.id.storeRecyclerView)
