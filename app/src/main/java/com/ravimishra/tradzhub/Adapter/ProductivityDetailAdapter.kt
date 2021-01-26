@@ -17,9 +17,9 @@ import com.ravimishra.tradzhub.Model.TradzHubProductModel
 import com.ravimishra.tradzhub.R
 import com.ravimishra.tradzhub.Utils.Constants.SHARED_CART_ITEM
 
-class ProductivityDetailAdapter(private val context: Context, var productModel: List<Product>, type: Int) : RecyclerView.Adapter<ProductivityDetailAdapter.viewholder>() {
-    private val type = 0
+class ProductivityDetailAdapter(private val context: Context, var productModel: List<Product>, val type: Int) : RecyclerView.Adapter<ProductivityDetailAdapter.viewholder>() {
     private val inStockOptions = arrayOf(0,1,2)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
         val itemView: View
         if (type == 0) {

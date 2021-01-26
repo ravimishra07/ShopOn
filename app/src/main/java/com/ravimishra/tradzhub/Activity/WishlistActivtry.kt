@@ -6,13 +6,20 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.ravimishra.tradzhub.Adapter.ProductivityDetailAdapter
+import com.ravimishra.tradzhub.Model.Product
 import com.ravimishra.tradzhub.Model.ProductDetailModel
 import com.ravimishra.tradzhub.Model.TradzHubProductModel
 import com.ravimishra.tradzhub.R
 import com.ravimishra.tradzhub.api.APIService
 import com.ravimishra.tradzhub.api.APIUrl
+import kotlinx.android.synthetic.main.content_cart.*
 import kotlinx.android.synthetic.main.content_wishlist_activtry.*
+import kotlinx.android.synthetic.main.content_wishlist_activtry.recyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +36,7 @@ class WishlistActivtry : AppCompatActivity() {
     private var totalPrice = 0.0
     private var diliveryCharge = 0.0
     private var itemCost = 0.0
+    val productArray: MutableList<Product> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +47,8 @@ class WishlistActivtry : AppCompatActivity() {
         wishlistBack.setOnClickListener {
             finish()
         }
-        callCartItemAPI(1)
+        //  callCartItemAPI(1)
+        getWishListItems()
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
 
@@ -54,6 +63,77 @@ class WishlistActivtry : AppCompatActivity() {
 //            Snackbar.make(view!!, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()
 //        }
+    }
+
+    fun getWishListItems() {
+
+        val database = FirebaseDatabase.getInstance("https://tradzhub-58133-default-rtdb.firebaseio.com")
+        val myRef = database.getReference("product")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (ds in dataSnapshot.children) {
+
+                    for (value in ds.children) {
+                        val productHashMap: HashMap<String, Any> = value.value as HashMap<String, Any>
+                        for (product in productHashMap.keys) {
+                            if (product == "wishlist") {
+                                if (productHashMap[product] == "1") {
+                                    val id = productHashMap["id"] as Long
+                                    val name = productHashMap["name"] as String
+                                    val imgUrl = productHashMap["img_url"] as String
+                                    val price = productHashMap["price"] as Long
+
+                                    val discount = productHashMap["discount"] as Long
+                                    val desc = productHashMap["desc"] as String
+                                    val cart = productHashMap["cart"] as String
+                                    val wishlist = productHashMap["wishlist"] as String
+                                    val category = productHashMap["category"] as String
+
+
+                                    var oriPrice = price.toFloat()
+                                    var discPercent = discount.toFloat()
+                                    var discountedPrc: Float = oriPrice!! * (1 - discPercent!! / 100)
+
+                                    var orignalPrice = oriPrice.toInt()
+                                    var discountPercent = discPercent.toInt()
+                                    var discountedPrice = discountedPrc.toInt()
+
+
+
+                                    totalPrice += discountedPrice
+                                    val product = Product(id, name, price.toInt(), discount.toInt(), imgUrl, desc, wishlist, cart, category)
+                                    productArray.add(product)
+
+                                }
+
+                                //   Toast.makeText(applicationContext, "Item added to cart", Toast.LENGTH_SHORT)
+                            }
+                        }
+                    }
+                }
+                wishListProgressbar.visibility = View.GONE
+//                cartProgressbar.visibility = View.GONE
+//                if (productArray.size == 0) {
+//                    cartEmptyImg.visibility = View.VISIBLE
+//                    cartEmptyText.visibility = View.VISIBLE
+//                    cartSummaryView.visibility = View.GONE
+//
+//                } else {
+//                    cartEmptyImg.visibility = View.GONE
+//                    cartEmptyText.visibility = View.GONE
+//                    cartSummaryView.visibility = View.VISIBLE
+//
+//                }
+
+                setUpRecyclerview()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("Tag", "Failed to read value.", error.toException())
+            }
+        })
+
     }
 
     fun callCartItemAPI(productId: Int) {
@@ -91,8 +171,8 @@ class WishlistActivtry : AppCompatActivity() {
     fun setUpRecyclerview() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
-//        val adapter = ProductivityDetailAdapter(this, cartModelArray, 1)
-//        recyclerView.adapter = adapter
+        val adapter = ProductivityDetailAdapter(this, productArray, 1)
+        recyclerView.adapter = adapter
 
     }
 }

@@ -70,9 +70,6 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_product)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        // viewPager = findViewById(R.id.viewPager)
-//    stockArray[0] = true
-//    stockArray[1] = false
 
         Layout_bars = findViewById(R.id.layoutBars)
         tvOrignalPrice = findViewById(R.id.productOrignalPrice)
@@ -81,13 +78,6 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         tvOutStock = findViewById(R.id.tvOutstock)
         tvShippingCharges = findViewById(R.id.tvShippingCharges)
         tvOffPrice = findViewById(R.id.tvOffPrice)
-
-//        cartImage.setOnClickListener(this)
-//        wishlistbtns.setOnClickListener(this)
-//        llBuyNow.setOnClickListener(this)
-//        llAddToCart.setOnClickListener(this)
-//        backImageBtn.setOnClickListener(this)
-//        tvBuyNow.setOnClickListener(this)
         bottomLL = findViewById(R.id.bottomLL)
         progressBar = findViewById(R.id.progressbar)
         scrollView = findViewById(R.id.scrollView)
@@ -97,9 +87,9 @@ class ProductActivity : AppCompatActivity(), View.OnClickListener {
         llAddToCart.setOnClickListener(this)
         val extras = intent.extras
         value = extras!!.getInt("FROM")
-        // if (value == 1) {
+
         setData()
-        //  }
+
         myvpAdapter = MyViewPagerAdapter()
         viewPager.adapter = myvpAdapter
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener)

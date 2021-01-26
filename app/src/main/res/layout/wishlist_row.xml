@@ -241,6 +241,8 @@
             android:id="@+id/rl4"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_24sdp"
+            android:visibility="invisible"
+
             android:layout_below="@id/cartImage"
             android:layout_marginBottom="@dimen/_5sdp">
 

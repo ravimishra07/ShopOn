@@ -126,29 +126,21 @@ class HomeFragment : Fragment() {
         root?.newArrivalViewAllBtn?.setOnClickListener { v: View? ->
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "New Arrivals")
-            i.putExtra("PRODUCT", latestModel)
-            i.putExtra("FROM", 0)
-            i.putExtra("CATEGORY_ID", -1)
+            i.putExtra("category", "new")
             swipeTimer!!.cancel()
             startActivity(i)
         }
         root?.popularViewAllBtn?.setOnClickListener {
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "Popular")
-            i.putExtra("PRODUCT", popularModel)
-            i.putExtra("FROM", 0)
-            i.putExtra("CATEGORY_ID", -1)
+            i.putExtra("category", "popular")
             swipeTimer!!.cancel()
             startActivity(i)
         }
         root?.featuredViewAllBtn?.setOnClickListener { v: View? ->
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "Featured")
-            i.putExtra("FROM", 0)
-            i.putExtra("CATEGORY_ID", -1)
-            val bundle = Bundle()
-            bundle.putSerializable("PRODUCT", featuredModel)
-            i.putExtras(bundle)
+            i.putExtra("category", "featured")
             swipeTimer!!.cancel()
             startActivity(i)
         }
