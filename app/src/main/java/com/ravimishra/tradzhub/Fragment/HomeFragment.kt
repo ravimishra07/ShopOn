@@ -361,8 +361,6 @@ private  fun setStoreProduct(){
                 val imgUrl = ds.child("imgUrl").getValue(String()::class.java)!!
                 val storeDesc = ds.child("storeDesc").getValue(String()::class.java)!!
 
-
-
                 val store =  Store(id,name,imgUrl,storeDesc)
                 storeArray.add(store)
             }
