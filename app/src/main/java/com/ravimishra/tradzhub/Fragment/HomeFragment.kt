@@ -181,7 +181,7 @@ class HomeFragment : Fragment() {
                     catModel.add(cat)
                 }
                 topMenuRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                val topMenuAdapter = TopMenuAdapter(context, catModel)
+                val topMenuAdapter = context?.let { TopMenuAdapter(it, catModel) }
                 topMenuRecyclerView!!.adapter = topMenuAdapter
                 progressBar!!.visibility = View.GONE
             }

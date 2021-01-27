@@ -2,6 +2,7 @@ package com.ravimishra.tradzhub.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,26 +15,26 @@ import com.ravimishra.tradzhub.Activity.ItemDetailActivity
 import com.ravimishra.tradzhub.Model.Category
 import com.ravimishra.tradzhub.R
 
-class AllCategoryAdapter(private val context: Context, private val menuModel: List<Category>) : RecyclerView.Adapter<AllCategoryAdapter.viewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+class TopMenuAdapter(private val context: Context, var menuModel: List<Category>) : RecyclerView.Adapter<TopMenuAdapter.viewholder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
         val itemView: View
-        itemView = LayoutInflater.from(parent.context).inflate(R.layout.category_row, parent, false)
-        return viewHolder(itemView)
+        itemView = LayoutInflater.from(parent.context).inflate(R.layout.top_menu_row, parent, false)
+        return viewholder(itemView)
     }
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        val model = menuModel.get(position)
-
+    override fun onBindViewHolder(holder: viewholder, position: Int) {
+        val (id, name, ImgUrl) = menuModel[position]
+        holder.topMenuText.text = name
+        Log.v("cat_id", "cat id $id")
         val options = RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image)
-        Glide.with(context).load(model.ImgUrl).apply(options).into(holder.categoryImage)
-        holder.categoryName.text = model.name
-        val catId = model.id.toInt()
+        Glide.with(context).load(ImgUrl).apply(options).into(holder.img)
+        val catId = id.toInt()
         holder.itemView.setOnClickListener { v: View? ->
             val i = Intent(context, ItemDetailActivity::class.java)
-            i.putExtra("title", model.name)
+            i.putExtra("title", name)
             when (catId) {
                 901 -> i.putExtra("category", "appliance")
                 902 -> i.putExtra("category", "electronics")
@@ -51,13 +52,13 @@ class AllCategoryAdapter(private val context: Context, private val menuModel: Li
         return menuModel.size
     }
 
-    inner class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var categoryName: TextView
-        var categoryImage: ImageView
+    inner class viewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var img: ImageView
+        var topMenuText: TextView
 
         init {
-            categoryName = itemView.findViewById(R.id.catName)
-            categoryImage = itemView.findViewById(R.id.catImage)
+            img = itemView.findViewById(R.id.topMenuImage)
+            topMenuText = itemView.findViewById(R.id.topMenuName)
         }
     }
 }

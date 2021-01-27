@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -37,6 +38,7 @@ class ShowAllCategoryFragment : Fragment() {
         catRecyclerView = view.findViewById(R.id.allCategoryRecyclerview)
         progressbar = view.findViewById(R.id.progresbar)
         // callApiForCategories();
+        setCategoryData()
         return view
     }
     private fun setCategoryData(){
@@ -53,8 +55,9 @@ class ShowAllCategoryFragment : Fragment() {
                     val cat = Category(id, name, imgUrl)
                     catModel.add(cat)
                 }
+                val gridLayoutManager = GridLayoutManager(activity, 2, LinearLayoutManager.VERTICAL, false)
 
-                catRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+                catRecyclerView!!.layoutManager = gridLayoutManager
                 val showAllCategoryFragment = context?.let { AllCategoryAdapter(it, catModel) }
                 catRecyclerView!!.adapter = showAllCategoryFragment
                 progressbar!!.visibility = View.GONE

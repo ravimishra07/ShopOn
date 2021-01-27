@@ -13,15 +13,26 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.ravimishra.tradzhub.Adapter.SideMenuAdapter
+import com.ravimishra.tradzhub.Adapter.StoreAdapter
 import com.ravimishra.tradzhub.Fragment.HomeFragment
 import com.ravimishra.tradzhub.Fragment.ShowAllCategoryFragment
 import com.ravimishra.tradzhub.Model.CategoryModel
+import com.ravimishra.tradzhub.Model.Store
 import com.ravimishra.tradzhub.R
 import com.ravimishra.tradzhub.Utils.Constants
 import kotlinx.android.synthetic.main.activity_main_page.*
 import kotlinx.android.synthetic.main.app_bar_main_page.*
 import kotlinx.android.synthetic.main.content_main_page.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.util.ArrayList
 
 class MainPage : AppCompatActivity(), View.OnClickListener {
 
@@ -68,6 +79,7 @@ class MainPage : AppCompatActivity(), View.OnClickListener {
         setUpFragment()
         showLoader()
         tvLogin!!.setOnClickListener(this)
+        setStoreProduct()
     }
 
     override fun onBackPressed() {
@@ -159,6 +171,37 @@ class MainPage : AppCompatActivity(), View.OnClickListener {
                 startActivity(i2)
             }
         }
+    }
+    private  fun setStoreProduct(){
+
+        val database = FirebaseDatabase.getInstance(Constants.BASE_FIREBASE_URL)
+        val myRef = database.getReference("store")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                val storeArray: MutableList<Store> = ArrayList()
+                for (ds in dataSnapshot.children) {
+                    val id = ds.child("id").getValue(Long::class.java)!!
+                    val name = ds.child("name").getValue(String::class.java)!!
+                    val imgUrl = ds.child("imgUrl").getValue(String()::class.java)!!
+                    val storeDesc = ds.child("storeDesc").getValue(String()::class.java)!!
+
+                    val store =  Store(id,name,imgUrl,storeDesc)
+                    storeArray.add(store)
+                }
+                storeListRecyclerView?.layoutManager = LinearLayoutManager(this@MainPage, LinearLayoutManager.VERTICAL, false)
+                val adapter = SideMenuAdapter(this@MainPage,storeArray)
+                storeListRecyclerView?.adapter = adapter
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w("HomeFragment", "Failed to read value.", error.toException())
+            }
+        })
+
     }
 
     companion object {
