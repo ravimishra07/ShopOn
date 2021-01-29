@@ -18,9 +18,9 @@ import java.util.List;
 
 public class BannerAddapter extends PagerAdapter {
 
-    private List<String> imagesurls;
-    private LayoutInflater inflater;
-    private Context context;
+    private final List<String> imagesurls;
+    private final LayoutInflater inflater;
+    private final Context context;
 
     public BannerAddapter(Context context, List<String> imagesurls) {
         this.context = context;

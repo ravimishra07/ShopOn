@@ -17,8 +17,8 @@ import com.ravimishra.tradzhub.R;
 import java.util.List;
 
 public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.viewHolder> {
-    private Context context;
-    private List<AddressModel.ResponseData> addressModels;
+    private final Context context;
+    private final List<AddressModel.ResponseData> addressModels;
 
     public AddressAdapter(Context context, List<AddressModel.ResponseData> addressModels) {
         this.context = context;

@@ -37,9 +37,9 @@ class ProductivityDetailAdapter(private val context: Context, var productModel: 
                 .placeholder(R.drawable.place_holder_image)
                 .error(R.drawable.place_holder_image)
         Glide.with(context).load(model.imgUrl).apply(options).into(holder.img)
-        var oriPrice = model?.price.toFloat()
-        var discPercent = model?.discount.toFloat()
-        var discountedPrc : Float = oriPrice!! * (1 - discPercent!! / 100)
+        var oriPrice = model.price.toFloat()
+        var discPercent = model.discount.toFloat()
+        var discountedPrc : Float = oriPrice * (1 - discPercent / 100)
 
         var orignalPrice = oriPrice.toInt()
         var discountPercent = discPercent.toInt()

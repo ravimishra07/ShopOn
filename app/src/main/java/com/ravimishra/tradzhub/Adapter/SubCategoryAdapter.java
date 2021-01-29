@@ -20,7 +20,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
     int[] mList;
     int[] imageArray = new int[6];
     List<CategoryModel.ResponseData> menuModel;
-    private Context context;
+    private final Context context;
 
     public SubCategoryAdapter(Context context, List<CategoryModel.ResponseData> menuModel) {
         this.context = context;

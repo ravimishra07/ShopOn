@@ -69,7 +69,7 @@ class MainPage : AppCompatActivity(), View.OnClickListener {
         } else {
             tvLogin.text = getString(R.string.login_text)
             tvName.text = getString(R.string.guest)
-            Toast.makeText(this, username, Toast.LENGTH_SHORT).show()
+         //   Toast.makeText(this, "Welcom", Toast.LENGTH_SHORT).show()
         }
 
         val toggle = ActionBarDrawerToggle(

@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class RegisterModel {
     @SerializedName("error")
-    private Boolean error;
+    private final Boolean error;
 
     @SerializedName("message")
-    private String message;
+    private final String message;
 
     @SerializedName("user")
     private UserModel user;

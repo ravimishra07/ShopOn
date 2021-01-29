@@ -6,32 +6,12 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#97918E</color>
-    <color name="greyText">#868484</color>
     <color name="lightGrey">#E2DEDE</color>
-    <color name="light">#FAF8F8</color>
     <color name="darkGrey">#494949</color>
     <color name="red">#F12B2D</color>
     <color name="redd">#FC5F60</color>
-    <color name="transparent">#8e030303</color>
-    <color name="blackTransparent">#99070707</color>
     <color name="green">#007031</color>
-    <color name="lightGreen">#06A230</color>
-    <color name="underweight">#ffe145</color>
-    <color name="yellow">#EDF6CC44</color>
-    <color name="greyNew">#707070</color>
-    <color name="orange">#FF9800</color>
-    <color name="blue">#DCF1EF</color>
-    <color name="bluee">#515DAD</color>
-    <color name="lightblack">#333333</color>
     <color name="lightgray">#e7e7e7</color>
-    <color name="lightGreenNew">#00FF43</color>
-    <color name="lightgrayy">#FDFBFB</color>
-    <color name="startColor">#FB0073</color>
-    <color name="centerColor">#C3FB0073</color>
-    <color name="endCOlor">#4F052C</color>
-    <color name="lightgreen">#82C185</color>
-    <color name="lightred">#FAE0E4</color>
-    <color name="ligt">#ECECEC</color>
 
     <array name="dot_on_page_not_active">
         <item>@color/colorPrimary</item>
@@ -65,8 +45,6 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
-    <color name="solid_light_color">#fffff0</color>
-    <color name="solid_dark">#00000f</color>
 
 
     <array name="array_dot_active">

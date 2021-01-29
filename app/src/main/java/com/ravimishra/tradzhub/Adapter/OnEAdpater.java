@@ -23,7 +23,7 @@ import java.util.List;
 
 public class OnEAdpater extends RecyclerView.Adapter<OnEAdpater.viewholder> {
 
-    private Context context;
+    private final Context context;
     int[] mList;
     List<Product> productModel;
 

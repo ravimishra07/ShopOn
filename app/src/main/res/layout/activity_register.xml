@@ -192,7 +192,6 @@
                     android:textSize="16dip" />
 
                 <RelativeLayout
-                    android:id="@+id/rlOrSection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -298,7 +297,7 @@
                                 <ImageView
                                     android:layout_width="@dimen/_24sdp"
                                     android:layout_height="@dimen/_24sdp"
-                                    android:src="@drawable/fb_small_icon" />
+                                    android:src="@drawable/fb_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"

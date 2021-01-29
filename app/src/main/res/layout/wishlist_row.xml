@@ -191,7 +191,6 @@
             android:background="@color/lightgray" />
 
         <RelativeLayout
-            android:id="@+id/rl5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/separator3"
@@ -400,7 +399,6 @@
                             app:srcCompat="@drawable/bin" />
 
                         <TextView
-                            android:id="@+id/tvremove"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_3sdp"

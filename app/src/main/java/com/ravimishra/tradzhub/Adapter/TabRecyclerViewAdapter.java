@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TabRecyclerViewAdapter extends RecyclerView.Adapter<TabRecyclerViewAdapter.viewholder> {
 
-    private Context context;
+    private final Context context;
     int[] mList;
     int[] imageArray = new int[9];
     List<TabRecyclerViewModel> productModel;

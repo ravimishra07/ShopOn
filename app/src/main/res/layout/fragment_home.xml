@@ -23,13 +23,11 @@
                 android:background="@drawable/background">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
                     android:layout_width="wrap_content"
                     android:layout_height="78dp"
                     android:layout_gravity="center">
 
                     <RelativeLayout
-                        android:id="@+id/top"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -67,7 +65,6 @@
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardVieww"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_gravity="center">
@@ -161,7 +158,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/popularRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="185dp"
                         android:layout_below="@+id/ll1"
 
                         android:orientation="horizontal">
@@ -229,7 +226,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="185dp"
                         android:layout_below="@+id/ll2"
 
                         android:orientation="horizontal">
@@ -300,7 +297,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="185dp"
                         android:layout_below="@+id/ll3"
                         android:orientation="horizontal">
 
@@ -441,7 +438,6 @@
                     </FrameLayout>
 
                     <ProgressBar
-                        android:id="@+id/pbTab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"

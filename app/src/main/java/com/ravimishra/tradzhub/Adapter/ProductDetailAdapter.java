@@ -34,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdapter.viewholder> {
 
     List<Product> menuModel;
-    private Context context;
+    private final Context context;
 
     public ProductDetailAdapter(Context context, List<Product> menuModel) {
         this.context = context;
@@ -72,11 +72,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
             public void onClick(View v) {
                 // addDataToWishlist()
                 //  holder.likeButton.setEnabled(false);
-                if (holder.likeButton.isLiked()) {
-                    holder.likeButton.setLiked(false);
-                } else {
-                    holder.likeButton.setLiked(true);
-                }
+                holder.likeButton.setLiked(!holder.likeButton.isLiked());
             }
         });
 

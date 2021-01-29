@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scroll_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background_vector_dark"
@@ -100,7 +99,6 @@
                     android:textSize="18dip" />
 
                 <RelativeLayout
-                    android:id="@+id/rlOrSection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -206,7 +204,7 @@
                                 <ImageView
                                     android:layout_width="@dimen/_24sdp"
                                     android:layout_height="@dimen/_24sdp"
-                                    android:src="@drawable/fb_small_icon" />
+                                    android:src="@drawable/fb_icon" />
 
                                 <TextView
                                     style="@style/TradzHubThemeFont"

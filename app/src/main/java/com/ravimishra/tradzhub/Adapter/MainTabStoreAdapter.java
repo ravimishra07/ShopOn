@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainTabStoreAdapter extends RecyclerView.Adapter<MainTabStoreAdapter.viewholder> {
 
-    private Context context;
+    private final Context context;
     int[] mList;
     int[] imageArray = new int[9];
     List<TradzHubProductModel.ResponseData> productModel;

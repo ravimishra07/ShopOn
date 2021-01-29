@@ -25,23 +25,13 @@ import com.ravimishra.tradzhub.Adapter.*
 import com.ravimishra.tradzhub.Model.*
 import com.ravimishra.tradzhub.R
 import com.ravimishra.tradzhub.Utils.Constants
-import com.ravimishra.tradzhub.api.APIService
-import com.ravimishra.tradzhub.api.APIUrl
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
+
 class HomeFragment : Fragment() {
-    private val topBannerList = ArrayList<Int>()
-    private var popularBtn: Button? = null
-    private var featuredBtn: Button? = null
-    private var newArrivalBtn: Button? = null
-    private var storeBtn: Button? = null
+
     private var topMenuRecyclerView: RecyclerView? = null
     private var popularRecyclerView: RecyclerView? = null
     private var recylerView2: RecyclerView? = null
@@ -50,7 +40,6 @@ class HomeFragment : Fragment() {
 
     //ViewPager
     private var viewP: ViewPager? = null
-    private var tabs: TabLayout? = null
     private var viewPager2: ViewPager? = null
     var progressBar: ProgressBar? = null
     var featuredProgressBar: ProgressBar? = null
@@ -58,14 +47,11 @@ class HomeFragment : Fragment() {
     var pbNewArrivals: ProgressBar? = null
     var pbPopularStories: ProgressBar? = null
     var pbBanner: ProgressBar? = null
-    private val topMenuModel: TopMenuModel? = null
     var swipeTimer: Timer? = null
-    private val banner = intArrayOf(R.drawable.banner4, R.drawable.banner3, R.drawable.banner2, R.drawable.banner1, R.drawable.banner2, R.drawable.banner3, R.drawable.banner4, R.drawable.banner1)
-    private val topMenu: CategoryModel? = null
-    private val imageModel: BannerImageModel? = null
-    private lateinit var popularModel: TradzHubProductModel
-    private lateinit var featuredModel: TradzHubProductModel
-    private lateinit var latestModel: TradzHubProductModel
+    var currentPage = 0
+    var timer: Timer? = null
+    val DELAY_MS: Long = 500
+    val PERIOD_MS: Long = 3000
 
     private val bannerImageArray: MutableList<String> = ArrayList()
     private var root: View? = null
@@ -118,32 +104,32 @@ class HomeFragment : Fragment() {
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "New Arrivals")
             i.putExtra("category", "new")
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
         root?.popularViewAllBtn?.setOnClickListener {
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "Popular")
             i.putExtra("category", "popular")
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
         root?.featuredViewAllBtn?.setOnClickListener { v: View? ->
             val i = Intent(activity, ItemDetailActivity::class.java)
             i.putExtra("title", "Featured")
             i.putExtra("category", "featured")
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
         root?.storeBtn?.setOnClickListener { v: View? ->
             val i = Intent(activity, StoreActivity::class.java)
             i.putExtra("type", 2)
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
         root?.popularRecyclerView?.setOnClickListener { v: View? ->
             val i = Intent(activity, ProductActivity::class.java)
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
         recylerView2!!.setOnClickListener { v: View? ->
@@ -152,7 +138,7 @@ class HomeFragment : Fragment() {
         }
         recylerView3!!.setOnClickListener { v: View? ->
             val i = Intent(activity, ProductActivity::class.java)
-            swipeTimer!!.cancel()
+            swipeTimer?.cancel()
             startActivity(i)
         }
     }
@@ -206,19 +192,23 @@ class HomeFragment : Fragment() {
                 }
 
                 viewP!!.adapter = BannerAddapter(activity, bannerUrls)
+                /*After setting the adapter use the timer */
                 val handler = Handler()
                 val Update = Runnable {
-                    if (currentPage == bannerImageArray.size) {
+                    if (currentPage === 3) {
                         currentPage = 0
                     }
-                    viewP!!.setCurrentItem(currentPage++, true)
+                    viewPager.setCurrentItem(currentPage++, true)
                 }
-                swipeTimer = Timer()
-                swipeTimer!!.schedule(object : TimerTask() {
+
+                timer = Timer() // This will create a new Thread
+
+                timer!!.schedule(object : TimerTask() {
+                    // task to be scheduled
                     override fun run() {
                         handler.post(Update)
                     }
-                }, 3000, 3000)
+                }, DELAY_MS, PERIOD_MS)
 
                 pbBanner!!.visibility = View.GONE
             }
@@ -251,7 +241,7 @@ class HomeFragment : Fragment() {
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
                     val category = ds.child("category").getValue(String()::class.java)!!
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
+                    val product = Product(id, name, price, discount, imgUrl, desc, wishlist, cart, category)
                     productArray.add(product)
                 }
                 popularRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
@@ -289,7 +279,7 @@ class HomeFragment : Fragment() {
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
                     val category = ds.child("category").getValue(String()::class.java)!!
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
+                    val product = Product(id, name, price, discount, imgUrl, desc, wishlist, cart, category)
 
                     productArray.add(product)
                 }
@@ -328,14 +318,14 @@ class HomeFragment : Fragment() {
                     val wishlist = ds.child("wishlist").getValue(String()::class.java)!!
 
                     val category = ds.child("category").getValue(String()::class.java)!!
-                    val product =  Product(id,name,price,discount,imgUrl,desc,wishlist,cart,category)
+                    val product = Product(id, name, price, discount, imgUrl, desc, wishlist, cart, category)
 
                     productArray.add(product)
                 }
                 recylerView3!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
                 val onEAdpater = OnEAdpater(activity, productArray)
                 recylerView3!!.adapter = onEAdpater
-                root?.newArrivalViewAllBtn?.isEnabled = true
+                root?.featuredViewAllBtn?.isEnabled = true
                 featuredProgressBar!!.visibility = View.GONE
             }
 
@@ -361,11 +351,11 @@ private  fun setStoreProduct(){
                 val imgUrl = ds.child("imgUrl").getValue(String()::class.java)!!
                 val storeDesc = ds.child("storeDesc").getValue(String()::class.java)!!
 
-                val store =  Store(id,name,imgUrl,storeDesc)
+                val store = Store(id, name, imgUrl, storeDesc)
                 storeArray.add(store)
             }
             storeRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = StoreAdapter(activity,storeArray)
+            val adapter = StoreAdapter(activity, storeArray)
             storeRecyclerView!!.adapter = adapter
             root?.newArrivalViewAllBtn?.isEnabled = true
             pbPopularStores?.visibility = View.GONE
@@ -378,143 +368,6 @@ private  fun setStoreProduct(){
     })
 
 }
-/*
-    private fun ApiCall() {
-        //building retrofit object
-        val retrofit = Retrofit.Builder()
-                .baseUrl(APIUrl.NEW_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        //Defining retrofit api service
-        val service = retrofit.create(APIService::class.java)
-        //Defining the user object as we need to pass it with the call
-        /** defining the category api call  */
-        val callCategoryModel = service.getCategory(
-                1
-        )
-        /** calling  api to get banner images */
-        val callBannerImgApi = service.getBannerImages(
-                1
-        )
-        /** defining the latest product api call  */
-        val callFeaturedProducts = service.getFeaturedProducts(
-                1
-        )
-        /** defining the latest product api call  */
-        val callLatestProducts = service.getLatestProducts(
-                1
-        )
-        /** defining the latest product api call  */
-        val callRecentlyViewedProducts = service.getRecentlyViewedProducts(
-                1
-        )
-        /** defining mostly viewed(popular) product api call  */
-        val callMostlyViewedproducts = service.getMostlyViewedProducts(
-                1
-        )
-        val callStoreApi = service.getStores(
-                1
-        )
-
-
-        //calling the api
-        callCategoryModel.enqueue(object : Callback<CategoryModel> {
-            override fun onResponse(call: Call<CategoryModel>, response: Response<CategoryModel>) {
-                Log.v("TAG_API", response.body().data[0].getCategoryImage + "msg")
-                val responseData = response.body().data
-                //                topMenu = new CategoryModel(1, "model", responseData);
-//                topMenuRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-//                TopMenuAdapter topMenuAdapter = new TopMenuAdapter(getContext(), topMenu.data);
-//                topMenuRecyclerView . setAdapter (topMenuAdapter);
-//                progressBar.setVisibility(View.GONE);
-                //inisilizerecycler();
-            }
-
-            override fun onFailure(call: Call<CategoryModel>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callCategoryModel")
-            }
-        })
-
-        //calling the api
-        callBannerImgApi.enqueue(object : Callback<BannerImageModel> {
-            override fun onResponse(call: Call<BannerImageModel>, response: Response<BannerImageModel>) {
-                Log.v("TAG_API", response.body().data[0].slideImage + "msg")
-                val bannerSize = response.body().data.size
-                for (i in 0..bannerSize - 1) {
-                    bannerImageArray.add(response.body().data[i].slideImage)
-                }
-                setUpanner()
-                pbBanner!!.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<BannerImageModel>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callCategoryModel")
-            }
-        })
-        callFeaturedProducts.enqueue(object : Callback<TradzHubProductModel> {
-            override fun onResponse(call: Call<TradzHubProductModel>, response: Response<TradzHubProductModel>) {
-                Log.v("TAG_API", response.body().toString() + "callFeaturedProducts api")
-                featuredModel = response.body()
-                recylerView3!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                val adapter3 = OnEAdpater(activity, featuredModel.data)
-                recylerView3!!.adapter = adapter3
-                featuredBtn!!.isEnabled = true
-                featuredProgressBar!!.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<TradzHubProductModel>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callFeaturedProducts")
-            }
-        })
-        callLatestProducts.enqueue(object : Callback<TradzHubProductModel> {
-            override fun onResponse(call: Call<TradzHubProductModel>, response: Response<TradzHubProductModel>) {
-                Log.v("TAG_API", response.body().toString() + "callLatestProducts api")
-                latestModel = response.body()
-                recylerView2!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                val adapter2 = OnEAdpater(activity, latestModel.data)
-                recylerView2!!.adapter = adapter2
-                newArrivalBtn!!.isEnabled = true
-                pbNewArrivals!!.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<TradzHubProductModel>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callLatestProducts")
-            }
-        })
-        callMostlyViewedproducts.enqueue(object : Callback<TradzHubProductModel> {
-            override fun onResponse(call: Call<TradzHubProductModel>, response: Response<TradzHubProductModel>) {
-                Log.v("TAG_API", response.body().toString() + "call mostly viewed api")
-                popularModel = response.body()
-                popularRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                val onEAdpater = OnEAdpater(activity, popularModel.data)
-                popularRecyclerView!!.adapter = onEAdpater
-                popularBtn!!.isEnabled = true
-                popularProgressbar!!.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<TradzHubProductModel>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callMostlyViewedproducts")
-            }
-        })
-        callStoreApi.enqueue(object : Callback<StoreModel?> {
-            override fun onResponse(call: Call<StoreModel?>, response: Response<StoreModel?>) {
-//                storeModel = response.body()
-//                storeRecyclerView!!.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-//                val storeAdapter = StoreAdapter(context, storeModel!!.data)
-//                storeRecyclerView!!.adapter = storeAdapter
-//                pbPopularStories!!.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<StoreModel?>, t: Throwable) {
-                Log.v("TAG_API", "Some error occured callStoreApi")
-            }
-        })
-    }
-*/
-    override fun onResume() {
-        super.onResume()
-    }
 
     private fun setUpanner() {
         viewP!!.adapter = BannerAddapter(activity, bannerImageArray)

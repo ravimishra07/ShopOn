@@ -13,7 +13,6 @@
         android:layout_height="match_parent" />
 
     <ScrollView
-        android:id="@+id/svSideMenu"
         android:layout_width="@dimen/_220sdp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
@@ -195,7 +194,6 @@
                     android:background="@color/lightGrey" />
                 <!--Loans-->
                 <RelativeLayout
-                    android:id="@+id/rlAboutUs"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginTop="@dimen/_2sdp">
@@ -226,7 +224,6 @@
 
                 <!--Rpayments-->
                 <RelativeLayout
-                    android:id="@+id/rlShare"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_marginTop="@dimen/_2sdp">

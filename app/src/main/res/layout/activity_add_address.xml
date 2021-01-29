@@ -226,7 +226,7 @@
             android:background="@color/lightgray" />
 
         <ProgressBar
-            android:id="@+id/progresbar"
+            android:id="@+id/address_progresbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

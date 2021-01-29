@@ -35,7 +35,6 @@
                     android:orientation="horizontal" />
 
                 <RelativeLayout
-                    android:id="@+id/rlTop"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_alignParentTop="true"
@@ -167,7 +166,6 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/rl1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -247,7 +245,6 @@
 
 
                     <RelativeLayout
-                        android:id="@+id/ll6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/rlprice"
@@ -488,7 +485,6 @@ android:visibility="gone"
                             android:src="@drawable/store1" />
 
                         <LinearLayout
-                            android:id="@+id/llStore"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_6sdp"
@@ -538,7 +534,6 @@ android:visibility="gone"
                         </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/followStore"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_alignParentRight="true"
@@ -600,7 +595,6 @@ android:visibility="gone"
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llBuyNow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -608,7 +602,6 @@ android:visibility="gone"
                 android:foreground="?android:attr/selectableItemBackground">
 
                 <LinearLayout
-                    android:id="@+id/tvBuyNow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"

@@ -24,7 +24,7 @@ import java.util.List;
 
 public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.viewholder> {
 
-    private Context context;
+    private final Context context;
     int[] mList;
     int[] imageArray = new int[9];
     List<TradzHubProductModel> productModel;

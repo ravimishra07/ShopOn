@@ -92,7 +92,7 @@ class WishlistActivtry : AppCompatActivity() {
 
                                     var oriPrice = price.toFloat()
                                     var discPercent = discount.toFloat()
-                                    var discountedPrc: Float = oriPrice!! * (1 - discPercent!! / 100)
+                                    var discountedPrc: Float = oriPrice * (1 - discPercent / 100)
 
                                     var orignalPrice = oriPrice.toInt()
                                     var discountPercent = discPercent.toInt()

@@ -11,7 +11,6 @@
         android:layout_marginLeft="@dimen/_24sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginRight="@dimen/_12sdp"
-        android:layout_toLeftOf="@+id/directionIcon"
         android:fontFamily="@font/poppins_light"
         android:text="Product Name"
         android:textColor="@color/colorPrimary"

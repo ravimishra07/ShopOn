@@ -22,7 +22,7 @@ import java.util.List;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.viewholder> {
 
-    private Context context;
+    private final Context context;
     int[] mList;
     int[] imageArray = new int[6];
     List<Store> responseData;

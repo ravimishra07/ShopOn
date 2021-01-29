@@ -204,7 +204,6 @@ android:visibility="gone"
                         android:layout_below="@+id/taxll" />
 
                     <LinearLayout
-                        android:id="@+id/totalll"
                         android:layout_below="@+id/sep2"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_24sdp"

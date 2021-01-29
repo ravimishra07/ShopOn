@@ -1,213 +1,15 @@
 <resources>
     <string name="app_name">Shop On</string>
-    <string name="database_name">zozima</string>
-    <string name="errorInternet">Please check your internet connection.</string>
-    <string name="please_wait">Please Wait</string>
-    <string name="permission_message">Allow Permissions</string>
-    <string name="ok">Ok</string>
-    <string name="comma">,</string>
-    <string name="cancel">Cancel</string>
-    <string name="worest">WORST!</string>
-    <string name="best">BEST!</string>
-    <string name="getStarted">Get Started</string>
-    <string name="signIn">Sign In</string>
-    <string name="mobile_number">Enter your Mobile Number</string>
-    <string name="submit">Submit</string>
-    <string name="tapSubmit">Tap Submit to verify your account. An SMS will be sent to verify your number.</string>
-    <string name="errorMobile">Enter Valid Mobile Number</string>
-    <string name="errorOtp">Enter Valid Verification Code</string>
-    <string name="verification_code">Verification Code</string>
-    <string name="enterCode">Enter the Code that was send to</string>
-    <string name="errorCode">Please type Correct Verification Code</string>
-    <string name="countryCode">+91</string>
-    <string name="resend">I didn\'t get a code. Resend</string>
-    <string name="newVersion">We have updated our application. \nKindly update</string>
-    <string name="update">Update</string>
-    <string name="home">Browse</string>
-    <string name="plus"> + </string>
-    <string name="rupaye"> ₹ </string>
-    <string name="existAppMessage">Press Back again to Exit.</string>
 
-    <string name="collections">Purchase</string>
-    <string name="cart">Cart</string>
-    <string name="account">Account</string>
-    <string name="addtocard">ADD TO CART</string>
-    <string name="addanother"> ADD ANOTHER</string>
-    <string name="startingFrom">Starting from</string>
-    <string name="download">Download</string>
-    <string name="facebook">Facebook</string>
-    <string name="share">Shared Catalog</string>
-    <string name="sharee">SHARE ON OTHERS</string>
-    <string name="shareNow">SHARE ON WHATSAPP </string>
-    <string name="collections_for_you">Collections for YOU</string>
-    <string name="mybank">My Bank Details</string>
-    <string name="mypaytem">My Payments</string>
-    <string name="settings">Settings</string>
-    <string name="shared">My Shared Catalogs </string>
-    <string name="refer">Refer &amp; Earn </string>
-    <string name="notification">Message </string>
-    <string name="help">Help </string>
-    <string name="about">About Us </string>
-    <string name="termscondtion">Terms &amp; Conditions</string>
-    <string name="feedback">Feedback</string>
-    <string name="privacy">Privacy Policy</string>
-    <string name="lunguage">Language </string>
-    <string name="rate">Rate </string>
-    <string name="ifsccode">IFSC CODE </string>
-    <string name="sort">SORT</string>
-    <string name="accountnumber">ACCOUNT NUMBER</string>
-    <string name="newarrrivals">New Arrivels</string>
-    <string name="filter">FILTERS</string>
-    <string name="copy">Copy</string>
-    <string name="productdetail">PRODUCT DETAILS</string>
-    <string name="productdetails">Special PriceGet extra 5% off (price inclusive of discount)Bank
-        Offer10% Instant Discount* with Axis Bank Credit
-        and Debit Card Bank Offer10% off* with Axis Bank
-        Buzz Credit CardT
-     </string>
-    <string name="confiemaccount">CONFIRM ACCOUNT NUMBER</string>
-    <string name="select">Select filter</string>
-    <string name="bank"> Please enter your Correct bank details
-     carefully.They will be used for all reunds,
-     margins, and bonus payment</string>
-    <string name="contacteditprofile">Your Contact Details are saves , Please fill your Bank Detail</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="bankDetails">My Bank details</string>
-    <string name="cheack">Check Availability</string>
-    <string name="selectt"> If you select \'Cash on Delivery\'-</string>
-    <string name="question">Zozima collects cash from Customer (include your margin) at the time of delivery-After successful delivery,Zozima Transfer your margin sefely to your bank account  If you select You pay Zozima only the Order Total(without any margin)</string>
-    <string name="selecttt"> If you select \'Online\'</string>
-    <string name="selectttt"> -You pay Zozima only the order Total(Without any margin) -Zozima will not collect any cash from custmor-You can directly collect the final amount from customer (including you margin) via any other channel</string>
-    <string name="online">Online</string>
-    <string name="cashonedelivery">Cash On Delivery</string>
-    <string name="productcharj">Product Charges</string>
-    <string name="productdiscount">Product Discount</string>
-    <string name="shippingcharges">Shipping Charges</string>
-    <string name="cod">COD Charges</string>
-    <string name="copoundiscount">Copoun Discount</string>
-    <string name="order">Order Total</string>
-    <string name="Details">Material :poly-carbonateCaacity :300 mlDimension(L X B X H):
-        It Has 6 Pieces of Multi PurposeUnbreakable Drinking Glass</string>
-    <string name="oops">Oops! \n\n Seems like no product is in this Catalog right now.</string>
-    <string name="helpp">Call supports timings are from 10am - 7pm \n\nBeware of fraudulent calls-Zozima will never call you asking for your bank/card details or otp</string>
-    <string name="wishlist">It\'s quite empty here!</string>
-    <string name="resend_otp">Resend OTP</string>
-    <string name="detailswishlist">You haven\'t saved any catalogs to wishlist! Just click Wishlist on catalogs to save them to wishlist and share them later with your customers</string>
-    <string name="ddeliverypincode">Enter Delivery Pincode</string>
-    <string name="placeorder">PLACE ORDER</string>
-    <string name="id">ID: </string>
-    <string name="Ordered">Ordered</string>
-    <string name="phonenumber">PHONE NUMBER<font color='#FF0000'>*</font></string>
-    <string name="pincode">PINCODE<font color='#FF0000'>*</font></string>
-    <string name="city">CITY<font color='#FF0000'>*</font></string>
-    <string name="state">STATE<font color='#FF0000'>*</font></string>
-    <string name="price">Category</string>
-    <string name="category">Price</string>
-    <string name="brand">Discount</string>
-    <string name="discount">Size</string>
-    <string name="color">Color</string>
-    <string name="string1">1</string>
-    <string name="string2">2</string>
-    <string name="string3">3</string>
-    <string name="string4">4</string>
-    <string name="string5">5</string>
-    <string name="string6">6</string>
-    <string name="days">If there is any issue with the product, you can raise a refund/Exchange request with 7 days of receiving order.
-         \n\n\The product should be unused, undamaged and in original condition without any stain, scratches or holes.</string>
-    <string name="supplier">Your cart contains products from "supplier name".  \n\n\Do you want to discard them and add products from "supplier name"  </string>
-    <string name="shippinaddres">SHIPPING ADDRESS</string>
-    <string name="shiped">Shipped</string>
-    <string name="deliverd">Delivered</string>
-    <string name="cancelled">Cancelled</string>
-    <string name="resturn">Return</string>
-    <string name="addlanguage">Language</string>
-    <string name="hindi">Hindi</string>
-    <string name="selectYourCountry">Select Language</string>
-    <string name="English">English</string>
-    <string name="privacyplicy"><b><font color="#000000">Introduction</font></b>\n\We respect the privacy of its users accessing this mobile application/website which provides a collection of online resources, including online stores, classified advertisements, forums, related sites including the mobile application of the platform at <a href="http://www.zozima.in"> <font color="#0000FF">http://www.zozima.in</font></a> and Google Play Store(“Platform”). For the purposes of this privacy policy the term “User(s)” and wherever the context so requires “You”, “Your”, “Yourself” shall mean any natural or legal person who accesses or uses the Platform and in the event that a natural person is representing a business entity, reference to such terms shall include a reference to such business entity as well ZoZima has adopted this privacy policy (“Privacy Policy”) to inform You of:
-       \n\(i) The information We collect from You through the Platform;Policy (as amended from time to time).
-        \n\(ii) The manner of collection of such information;
-        \n\(iii) Our use of such information; and
-         \n\(iv) The steps we take to protect it. Capitalized terms not defined herein shall have the meaning ascribed to them in the Merchants’ Agreement and the Buyers’ Agreement. By using the Platform, You unconditionally agree to the terms and conditions of this Privacy Policy and consent to the usage, storage and handling of the information submitted by You in accordance with the terms contained hereunder. If You do not agree with the terms and conditions of this Privacy Policy, please do not proceed further to use this Platform.
-         \n\n\<b><font color="#000000">Use Information</font></b>\nZozima collects Your Information when You successfully submit information while creating Your account or while confirming Your order on the Platform (“User Information”). User Information is the data that can be used to uniquely identify or contact a person and/or the business entity that a person represents and shall include, but not be limited to, information regarding Your name, name of the business entity that You represent, address and telephone number of the business entity, Your email address,
-        information associated to Your social networking platform and such other information for the purposes of identification and verification. We do not directly process any payments and do not store your debit/credit card information. Secured socket layer technology is used for processing payment transactions with third-party service provider partners. When You submit User Information on the Platform, it shall be deemed that You have granted Us the right to collect, store, process, handle and use such User Information, in accordance with this Privacy Policy (as amended from time to time).\n\You may visit the Platform and browse the Platform without having to provide User Information. Where possible, We indicate which fields are mandatory and which fields are optional to be filled on the Platform. You always have the option to not provide information by choosing not to submit particular information or feature on the Platform. When you visit the Platform, we may collect certain non-personal information such as your internet protocol address, operating system, browser type, and internet service provider. This type of information does not identify you personally during your visit to the Platform. We can identify You only after You submit User Information at the time of registering Yourself with the Platform. \n\By using this Platform, You consent to the collection, storage, and use of the User Information that you provide for any of the services that we offer, and You consent to our collection of any changes or updates that you may provide to the User Information. ZoZima collects only such User Information that ZoZima believes to be relevant for the purpose of identification and verification and is required to understand You or Your interests. It is clarified that We shall not be liable, for any reason whatsoever, for the authenticity of any User Information provided by You to Us. You hereby confirm that the User Information provided by You is and shall continue to be valid, true and accurate to the best of Your knowledge.\n\n<b><font color="#000000">Collection of information</font></b>\n\To enhance Your use of the Platform, certain information may be collected each time You visit the Platform which is saved in server logs. It is clarified that these statistics help Us in improving the efficiency of the Platform by giving Us information relating to Your use of the Platform. Such information may include details of the server from where the Platform is being accessed, the browser and operating system used to browse the Platform, details of Your last visit to the Platform, including time, date and the duration of your session on the Platform. This information is used by ZoZima to understand the number of users visiting the Platform and gather broad demographic information for aggregate use of the Platform. While collecting such information, Your anonymity is maintained at all times and at no time can We identity You personally, unless You submit the User Information on the Platform or through the email feature. ZoZima reserves the right to share such general information to any person on its discretion.\n\n\<b><font color="#000000">Change in Privacy Policy</font></b>\n\We reserve the right to update, modify and amend any of the terms of Our Privacy Policy, at any time without prior intimation to You. We will post those changes on Our Platform for Your information. These changes will become effective immediately on posting. We shall not be liable for any failure or negligence on Your part to review the updated Privacy Policy before accessing or availing the Platform for availing the services. Your continued use of the Platform, following changes to the Privacy Policy, will constitute Your acceptance of those changes\n\n\<b><font color="#000000">Intellectual Property rights</font></b>\n\All Content on Our Platform, including graphics, text, icons, interfaces, audio clips, logos, images, reviews, comments and software is the property of ZoZima and/or its Content suppliers and is protected by Indian and international copyright laws. Any use, including the reproduction, modification, distribution, transmission, republication, display or performance, of the Content on this Platform can only be made with the express permission of ZoZima. All other trademarks, brands and copyrights other than those belonging to ZoZima, belong to their respective owners and are their property.
-    \n\n\</string>
-    <string name="aboutss"><b><font color="#000000">About Us</font></b>\nZoZima is an Indian-origin social commerce platform founded by Abdul Mazid and Shadab Rais in January 2018. It enables small businesses and individuals to start their online stores via social channels such as WhatsApp, Facebook, Instagram etc. ZoZima is headquartered in Lucknow.\n\n<b><font color="#000000">Overview</font></b>\nZoZima has become one of the fastest-growing e-commerce companies in India.  Our Story It was an incidental meeting with a few small business owners who had discovered the power of social platforms in starting and scaling their business that led to the inception of ZoZima. The founders quickly realized that this is how small businesses will work in the future and built a product to democratize social commerce and enable literally anyone to start this. Our Journey: ZoZima - short for “Leading Reselling Platform” - was preceded by FashNear, a hyperlocal fashion discovery. Website <a href="http://www.zozima.in"> <font color="#0000FF">http://www.zozima.in</font></a> \n\n\</string>
-    <string name="terms"><b><font color="#000000">Terms and Condition</font></b>\nZoZima is an application which provides an online marketplace (“Application”) where registered suppliers (“Suppliers”) can offer to sell their respective products to registered users of the Application (“Resellers”). The Company’s role is limited to the managing Application and associated marketing, payment collections, order management, enquiry management and other incidental services to enable the transactions between the Suppliers and the Reseller (“Business”). The Application is not made available on a browser environment and will have to be installed as a standalone mobile application.
-        By installing, downloading or even merely visiting or accessing any part of the Application or utilising the Services and accessing the Website, users, including without limitation users who are browsers, Suppliers, Resellers, merchants, or contributors of content (collectively, “User”) agree to be bound by the Terms of Use (“Terms”) contained herein and by other policies of the Company (“Policies”) as posted on the Application or Website from time to time. References to the User in these Terms must be construed in the context in which the term is used. For instance, in these Terms, a User placing an order should be read as the Reseller placing an order.\n\n\The Terms and  the Policies take effect on the date on which the Application is downloaded/Website is used and/or the date on which they are updated, creating a legally binding arrangement between the User and the Company. Users can review the most current version of the Terms and Policies at any time on this page. The Company reserves the right to unilaterally update, change or replace any part of these Terms by posting updates or changes to the Application. It is the responsibility of the Users to check this page periodically for changes. The Users continued use of or access to the Application following the posting of any changes constitutes acceptance of those changes. As long as the User complies with these Terms, the Company grants the User a personal, non-exclusive, non-transferable, limited privilege to enter and use our Platforms and services.\n\n\<b><font color="#000000">USER ELIGIBILITY</font></b>\n\User(s) represent and warrant that they have the right to access or use the Platform. Persons who are “incompetent to contract” within the meaning of the Indian Contract Act, 1872 including minors, un-discharged insolvents etc. are not eligible to access and use the Platform.
-       The Users understand that any order that they place shall be subject to the terms and conditions set out in these Terms, and any terms and conditions imposed by the Suppliers concerned.
-       All commercial/contractual terms are offered by and agreed to between Suppliers and the Users alone. The commercial/contractual terms include without limitation, price, shipping costs, payment methods, payment terms, date, period and mode of delivery, warranties related to products, etc. The Company does not have any control or does not determine or advise or in any way involve itself in the offering or acceptance of such commercial/contractual terms between the Suppliers and the Users. All discounts and offers are by the Suppliers and not by the Company.
-      The Users acknowledge and agree that the Company may, at the request of the Supplier, act as the payment agent for the limited purpose of accepting payments from them on behalf of the Supplier. Upon payment of the amounts to the Company, which are due to the Supplier, the payment obligation to the Supplier for such amounts is completed, and the Company will be responsible for remitting such amounts, to the seller. The Users understand, accept and agree that the payment facility provided by the Company is neither a banking nor financial service but is merely a facilitator providing a third party payment processor for the transactions on the Application. Further, by providing a payment facility, the Company is neither acting as a trustee nor acting in a fiduciary capacity with respect to the transaction or the transaction price. The Company will not be liable for any charges made by the Users bank in relation to the payment of the total amount.
-      Food Safety and Standard Act, 2006, Food Safety and Standard (Packaging and labelling) Regulation 2011, (FSS Packaging Regulation) Food Safety and Standard (Food Product Standard and Food Addictive) Regulation, 2011 (FSS Standard Regulations) and Food Safety and Standard (food or Health Supplements, Nutraceuticals, Food for Special Special Medical Purpose, Functional Food and Novel Food) Regulation 2016 (FSS Supplement Regulation).
-        As per above-mentioned acts and regulations and any other relevant law in place during the tenure of this association, the Company understands that there is an obligation on the Supplier to ensure that the package in which the products are sold complies with labelling and packing requirements and other laws that may be prescribed in this regard. Hence, it shall be the sole responsibility of the Supplier to comply with applicable laws and the Company or the shall not be held responsible in any manner. Suppliers shall indemnify the Company and the Platform for any harm or loss in relation to a contravention of the above regulations.\n\n\<b><font color="#000000">ENTIRE AGREEMENT</font></b>\n\These Terms, Policies, Privacy Policies and any policies or operating rules posted by the Company on the Application constitute the entire agreement and understanding between the Users and the Company with respect to the Application, and supersede any prior or contemporaneous agreements, communications and proposals, whether oral or written, between the Users and the Company (including, but not limited to, any prior versions of the Terms of Service).
-        Any ambiguities in the interpretation of these Terms shall not be construed against the Company.\n\n\<b><font color="#000000">CONTACT INFORMATION</font></b>\n\Questions about the Terms should be sent to us at <a href="http://www.zozima.in"> <font color="#0000FF">http://www.zozima.in</font></a>\n\n\<b><font color="#000000">POLICIES</font></b>\n\Policies related to returns/ exchanges, penalties, refunds, the cancellation will be updated in the Application from time to time. The Company holds the right to change these policies as required in the Application without any permission from the Users.
-    \n\n\</string>
-    <string name="coupons">COUPONS</string>
-    <string name="get">You Save</string>
-    <string name="upload_pic">Upload Image</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
-    <string name="give_permission">Give The Permission</string>
-    <string name="remove_pic">Remove Image</string>
 
     <!-- font families -->
-    <string name="font_family_light">sans-serif-light</string>
-    <string name="font_family_medium">sans-serif-medium</string>
-    <string name="font_family_regular">sans-serif</string>
-    <string name="font_family_condensed">sans-serif-condensed</string>
-    <string name="font_family_black">sans-serif-black</string>
-    <string name="font_family_thin">sans-serif-thin</string>
-    <string name="dialog_permission_title">Grant Permissions</string>
-    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
-    <string name="go_to_settings">GOTO SETTINGS</string>
-    <string name="title_activity_main_page">MainPage</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_store">StoreActivity</string>
 
-    <string name="title_activity_sign_in">Sign in</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-
-    <string name="hello_world">Hello world!</string>
-
-    <string name="email">Email Id</string>
-    <string name="passowrd">Password</string>
-    <string name="login">LOGIN</string>
-    <string name="show_pwd">Show Password</string>
-    <string name="hide_pwd">Hide Password</string>
-    <string name="forgot">Forgot password?</string>
-    <string name="closebutton">Close Button for Activity</string>
-    <string name="newUser">Not a Member yet? Sign Up here.</string>
-    <string name="fullName">Full Name</string>
-    <string name="mobileNumber">Mobile Number</string>
-    <string name="location">Location</string>
-    <string name="confirmPassword">Confirm Password</string>
-    <string name="terms_conditions">By clicking SignUp you agree all the Terms and Conditions.</string>
-    <string name="signUp">SIGN UP</string>
-    <string name="already_user">Already have Account? Login here.</string>
-    <string name="registered_emailid">Please enter your Registered Email Id below:</string>
-
-    <string name="back">BACK</string>
-    <string name="title_activity_item_detail">ItemDetailActivity</string>
-    <string name="title_activity_product">ProductActivity</string>
     <string name="demo_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="title_activity_cart">CartActivity</string>
-    <string name="title_activity_wishlist_activtry">WishlistActivtry</string>
 
 
-    <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
@@ -224,16 +26,8 @@
     <string name="slide_4_title">Super fast delivery</string>
     <string name="slide_4_desc">Get order delivered at your doorstep!</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
-    <string name="title_activity_manage_address">ManageAddressActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="logout">Logout</string>
     <string name="login_text">Login Here</string>
     <string name="guest">Guest user</string>

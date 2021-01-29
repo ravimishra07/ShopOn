@@ -56,7 +56,6 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/searchImg"
                     android:layout_width="@dimen/_32sdp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_centerVertical="true"
