@@ -121,12 +121,7 @@ class HomeFragment : Fragment() {
             swipeTimer?.cancel()
             startActivity(i)
         }
-        root?.storeBtn?.setOnClickListener { v: View? ->
-            val i = Intent(activity, StoreActivity::class.java)
-            i.putExtra("type", 2)
-            swipeTimer?.cancel()
-            startActivity(i)
-        }
+
         root?.popularRecyclerView?.setOnClickListener { v: View? ->
             val i = Intent(activity, ProductActivity::class.java)
             swipeTimer?.cancel()
