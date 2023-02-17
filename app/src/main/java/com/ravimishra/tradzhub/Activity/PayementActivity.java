@@ -11,12 +11,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ravimishra.tradzhub.R;
-import com.razorpay.Checkout;
-import com.razorpay.PaymentResultListener;
+//import com.razorpay.Checkout;
+//import com.razorpay.PaymentResultListener;
 
 import org.json.JSONObject;
 
-public class PayementActivity extends AppCompatActivity implements PaymentResultListener {
+public class PayementActivity extends AppCompatActivity {
     private static final String RAZORPAY_API_KEY = "rzp_test_AXtJiPK3oRVSCs";
     private Button buttonConfirmOrder;
     private EditText editTextPayment;
@@ -55,7 +55,7 @@ public class PayementActivity extends AppCompatActivity implements PaymentResult
          */
         final Activity activity = this;
 
-        final Checkout co = new Checkout();
+      //  final Checkout co = new Checkout();
 
         try {
             JSONObject options = new JSONObject();
@@ -77,25 +77,9 @@ public class PayementActivity extends AppCompatActivity implements PaymentResult
 
             options.put("prefill", preFill);
 
-            co.open(activity, options);
         } catch (Exception e) {
             Toast.makeText(activity, "Error in payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onPaymentSuccess(String s) {
-        Toast.makeText(this, "Payment successfully done! ", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void onPaymentError(int i, String s) {
-        try {
-            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Log.e("OnPaymentError", "Exception in onPaymentError", e);
         }
     }
 }

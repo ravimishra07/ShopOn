@@ -198,8 +198,8 @@ class CartActivity : AppCompatActivity(), View.OnClickListener {
         getcartItem.enqueue(object : Callback<TradzHubProductModel> {
             override fun onResponse(call: Call<TradzHubProductModel>, response: Response<TradzHubProductModel>) {
                 Log.v("TAG_API", response.body().toString() + "callLatestProducts api")
-                latestModel = response.body()
-                var resData = response.body().data
+                latestModel = response.body()!!
+                var resData = response.body()!!.data
                 if (resData != null) {
                     var purchasePrice: Double? = latestModel.data[0].purchasePrice.toDouble()
                     var shippingCost: Double? = latestModel.data[0].shippingCost.toDouble()

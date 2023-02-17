@@ -86,11 +86,11 @@ class LogActivity : AppCompatActivity() {
                 //hiding progress dialog
                 progressDialog.dismiss()
                 val authModel = response.body()
-                if (response.body().status === "0") {
+                if (response.body()?.status === "0") {
                     input_email.error = "email or password is incorrect"
                     return
                 }
-                Log.v("successLogin", authModel.data[0].token)
+                Log.v("successLogin", authModel!!.data[0].token)
                 val username = authModel.data[0].username
                 val preferences = PreferenceManager.getDefaultSharedPreferences(this@LogActivity)
                 val editor = preferences.edit()
@@ -102,7 +102,7 @@ class LogActivity : AppCompatActivity() {
                 val preferences2 = PreferenceManager.getDefaultSharedPreferences(this@LogActivity)
                 val user_name = preferences2.getString(Constants.SHARED_USERNAME, "")
                 if (!user_name.equals("", ignoreCase = true)) {
-                    Log.v("email_tag", user_name)
+                    Log.v("email_tag", user_name!!)
                 }
                 val i = Intent(this@LogActivity, MainPage::class.java)
                 startActivity(i)
@@ -119,9 +119,6 @@ class LogActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == Activity.RESULT_OK) {
-
-                // TODO: Implement successful signup logic here
-                // By default we just finish the Activity and log them in automatically
                 finish()
             }
         }

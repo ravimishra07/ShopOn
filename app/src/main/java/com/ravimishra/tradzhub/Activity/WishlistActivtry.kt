@@ -154,7 +154,7 @@ class WishlistActivtry : AppCompatActivity() {
         getcartItem.enqueue(object : Callback<TradzHubProductModel> {
             override fun onResponse(call: Call<TradzHubProductModel>, response: Response<TradzHubProductModel>) {
                 Log.v("TAG_API", response.body().toString() + "callLatestProducts api")
-                latestModel = response.body()
+                latestModel = response.body()!!
                 cartModelArray.add(latestModel)
                 if (cartArrayCount == cartItemArray.size) {
                     wishListProgressbar.visibility = View.GONE

@@ -13,9 +13,10 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Activity.StoreListActivity"></activity>
 
-        <meta-data
-            android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_AXtJiPK3oRVSCs" />
+<!--        <meta-data-->
+<!--            android:name="com.razorpay.ApiKey"-->
+<!--            android:value="rzp_test_AXtJiPK3oRVSCs"-->
+<!--            />-->
 
         <activity
             android:name=".Activity.PayementActivity"
@@ -36,10 +37,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
